@@ -52,17 +52,17 @@ def main():
     jobs = json.loads(Path(args.jobs).read_text(encoding="utf-8"))["jobs"]
     jobs = [j for j in jobs if not j.get("closed")]
     jobs.sort(key=lambda j: (bool(emails(j.get("email"))), str(j.get("published_at") or "")), reverse=True)
-    lines = [START, f"## 在招岗位（{len(jobs)}）", "", "| 公司 | 岗位 | Base | 投递 | 状态 | 转正 | 发布 |", "|---|---|---|---|---|---|---|"]
+    lines = [START, f"## 在招岗位（{len(jobs)}）", "", "| 公司 | 岗位 | Base | 投递 | 转正 | 发布 |", "|---|---|---|---|---|---|"]
     for j in jobs:
         email = emails(j.get("email"))
-        apply_cell = f"[{email}](mailto:{email})" if email else f"[见原帖]({j.get('source_url','')})"
+        source = j.get('source_url','')
+        apply_cell = f"[{email}](mailto:{email}) · [见原帖]({source})" if email else f"[见原帖]({source})"
         pos = j.get("position") or j.get("title") or "未识别"
         lines.append("| " + " | ".join([
             company_of(j),
             f"[{cell(position_of(j))}]({j.get('source_url','')})",
             cell(j.get("base_location") or j.get("location") or "待确认"),
             apply_cell,
-            cell(j.get("still_hiring") or "无法确认"),
             "可转正" if j.get("convertible") else "日常实习",
             cell(str(j.get("published_at") or "")[:10]),
         ]) + " |")

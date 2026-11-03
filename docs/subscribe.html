@@ -1,19 +1,89 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>订阅产品实习日报</title>
-<style>body{font:16px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;max-width:680px;margin:48px auto;padding:0 20px;color:#1f2328}
-input{width:100%;padding:10px;border:1px solid #d0d7de;border-radius:8px;margin:8px 0 14px;box-sizing:border-box}
-button{padding:10px 18px;border:0;border-radius:8px;background:#0969da;color:#fff;font-size:16px;cursor:pointer}
-.muted{color:#656d76;font-size:14px} code{background:#f6f8fa;padding:1px 4px;border-radius:4px}</style></head><body>
-<h1>订阅产品实习日报</h1>
-<p>每天一封，包含公司、岗位、Base、邮箱、状态和原帖链接。只发产品实习，不卖数据。</p>
-<form action="https://buttondown.com/api/emails/embed-subscribe/yixiao" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/yixiao','popupwindow')">
-  <label for="email">邮箱</label>
-  <input id="email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-  <input type="hidden" value="1" name="embed">
-  <input type="hidden" value="product-intern-daily" name="tag">
-  <button type="submit">免费订阅</button>
-</form>
-<p class="muted">由 <a href="https://buttondown.com/yixiao">Buttondown</a> 提供。提交后会收到确认邮件（double opt-in），确认后才开始发送；每封都有退订链接。</p>
-<p class="muted">这个页面是静态 HTML，不收集、不存储你的邮箱；邮箱只存在 Buttondown。</p>
-</body></html>
+<style>
+:root{--bg:#0d1117;--panel:#161b22;--line:#30363d;--fg:#e6edf3;--muted:#8b949e;--green:#3fb950;--blue:#58a6ff;--yellow:#d29922}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.7 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.window{width:min(760px,100%);background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,.45);overflow:hidden}
+.bar{display:flex;gap:8px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);background:#0f141a}
+.dot{width:11px;height:11px;border-radius:50%}
+.red{background:#ff5f56}.yellow{background:#ffbd2e}.green{background:#27c93f}
+.title{margin-left:8px;color:var(--muted);font-size:12px}
+.body{padding:30px 30px 26px}
+.prompt{color:var(--green);margin-bottom:6px}
+.cmd{color:var(--fg)}
+.dim{color:var(--muted)}
+.step{margin:22px 0 0}
+.label{color:var(--blue);margin-bottom:6px}
+input[type=email]{width:100%;background:#0d1117;border:1px solid var(--line);border-radius:6px;padding:11px 12px;color:var(--fg);font:inherit;outline:none}
+input[type=email]:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(88,166,255,.15)}
+.choice{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.choice label{border:1px solid var(--line);border-radius:6px;padding:6px 12px;cursor:pointer;color:var(--muted)}
+.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice label:has(input:checked){border-color:var(--green);color:var(--green);background:rgba(63,185,80,.08)}
+button{width:100%;margin-top:26px;padding:12px;border:0;border-radius:6px;background:var(--green);color:#04130a;font:700 15px ui-monospace,Menlo,monospace;cursor:pointer}
+button:hover{filter:brightness(1.08)}
+.note{margin-top:18px;color:var(--muted);font-size:12px}
+a{color:var(--blue)}
+@media(max-width:520px){.body{padding:22px 18px}.step{margin-top:18px}}
+</style>
+</head>
+<body>
+<main class="window">
+  <div class="bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="title">product-intern-daily — subscribe</span></div>
+  <div class="body">
+    <div class="prompt">$ <span class="cmd">product-intern-daily subscribe</span></div>
+    <div class="dim">每天 20:00 前，把还在招的产品实习发到你的邮箱。</div>
+
+    <form action="https://buttondown.com/api/emails/embed-subscribe/yixiao" method="post" target="_blank" id="subscribe-form">
+      <input type="hidden" name="embed" value="1">
+      <input type="hidden" name="tag" value="product-intern-daily">
+
+      <div class="step">
+        <div class="label">? 你的邮箱</div>
+        <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required autofocus>
+      </div>
+
+      <div class="step">
+        <div class="label">? 推送频率</div>
+        <div class="choice">
+          <label><input type="radio" name="frequency" value="daily" checked> 每日</label>
+          <label><input type="radio" name="frequency" value="weekly"> 每周</label>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="label">? 关注方向</div>
+        <div class="choice">
+          <label><input type="radio" name="direction" value="all-product" checked> 产品实习</label>
+          <label><input type="radio" name="direction" value="ai-product"> AI 产品</label>
+          <label><input type="radio" name="direction" value="all"> 全部</label>
+        </div>
+      </div>
+
+      <button type="submit">⏎ 订阅</button>
+    </form>
+
+    <div class="note">
+      由 <a href="https://buttondown.com/yixiao" target="_blank" rel="noreferrer">Buttondown</a> 提供 · double opt-in · 随时退订<br>
+      这个页面不存储你的邮箱；提交后邮箱只存在 Buttondown。
+    </div>
+  </div>
+</main>
+<script>
+document.getElementById('subscribe-form').addEventListener('submit', function () {
+  const freq = this.querySelector('input[name="frequency"]:checked')?.value || 'daily';
+  const dir = this.querySelector('input[name="direction"]:checked')?.value || 'all-product';
+  for (const value of [freq, dir]) {
+    const input = document.createElement('input');
+    input.type = 'hidden'; input.name = 'tag'; input.value = value;
+    this.appendChild(input);
+  }
+});
+</script>
+</body>
+</html>
