@@ -23,3 +23,8 @@ preview/
 images/
 
 .secrets/
+
+docs/index.html
+docs/feed.xml
+docs/JOBS.md
+docs/covers/

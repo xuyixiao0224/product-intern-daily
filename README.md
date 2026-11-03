@@ -15,7 +15,6 @@
 ## 每日更新与免费订阅
 
 - **邮件订阅**：每天一封，只发产品实习；免费，不卖邮箱。
-- **RSS**：[feed.xml](docs/feed.xml)
 - **订阅页**：[subscribe.html](docs/subscribe.html)
 - 邮件服务用 Buttondown / Resend / Listmonk，不用私人 Gmail/QQ；配置见 [docs/SUBSCRIBE.md](docs/SUBSCRIBE.md)。
 
@@ -61,7 +60,7 @@
 
 1. 从公开帖子拉取产品实习线索；
 2. 用 Agent 抽取公司/岗位/Base/邮箱/状态/转正；
-3. 生成网页、RSS 和每日邮件。
+3. 生成页面和每日邮件。
 
 ### 前置
 
@@ -109,7 +108,7 @@ python run.py export --format csv,html,json --out exports
 - **每日 3 个关键词**：产品实习、产品继任、互联网产品；不做 Base × 时间矩阵。
 - **投递方式**：邮箱、内推码、评论/图片/置顶评论里的邮箱，一键复制纯邮箱。
 - **状态与转正**：在招/无法确认、已截止；可转正/日常实习，带原话证据。
-- **输出**：CSV、HTML、RSS、每日邮件；邮箱优先去重。
+- **输出**：CSV、HTML、每日邮件；邮箱优先去重。
 
 ---
 
@@ -164,7 +163,7 @@ GitHub-hosted Actions 不能登录小红书；Cookie 不要进 Secrets。
 ## 如果这个项目帮你省了时间
 
 - 点个 **Star**；
-- 订阅 [RSS](docs/feed.xml) 或 [邮件](docs/subscribe.html)；
+- 订阅 [邮件](docs/subscribe.html)；
 - 发现好帖子/错误信息，用 [Issue 模板](.github/ISSUE_TEMPLATE/new-job.yml) 提交；
 - 想自己跑：clone + 自己的 `xiaohongshu-mcp` + 自己的 Cookie。
 
@@ -172,7 +171,7 @@ GitHub-hosted Actions 不能登录小红书；Cookie 不要进 Secrets。
 
 - [x] 产品实习字段：公司/岗位/Base/邮箱/内推码/状态/转正
 - [x] 多图 OCR + 翻转 + 评论邮箱 + 置顶评论
-- [x] 静态站 + RSS + 邮件 dry-run
+- [x] 静态页 + 每日邮件 dry-run
 - [x] Issue 模板 + CI
 - [ ] 第二数据源（公众号/官网/牛客）
 - [ ] 每周产品实习报告
