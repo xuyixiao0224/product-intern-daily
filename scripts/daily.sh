@@ -9,11 +9,12 @@ if ! lsof -nP -iTCP:18060 -sTCP:LISTEN >/dev/null 2>&1; then
   sleep 6
 fi
 DAY="$(date +%F)"
+TARGET="${DAILY_TARGET:-60}"
 OUT="data/daily/$DAY"
 mkdir -p "$OUT"
 
-python3 scripts/collect_seed.py --mode daily --target 60 --out "$OUT/candidates.json"
-python3 scripts/fetch_parallel.py "$OUT/candidates.json" "$OUT/details" 60 2
+python3 scripts/collect_seed.py --mode daily --target "$TARGET" --out "$OUT/candidates.json"
+python3 scripts/fetch_parallel.py "$OUT/candidates.json" "$OUT/details" "$TARGET" 2
 python3 scripts/ocr_covers.py --details "$OUT/details" --out "$OUT/ocr" --covers "$OUT/covers_raw"
 OCR_DIR="$OUT/ocr" python3 scripts/heuristic_extract.py "$OUT/details" "$OUT/extractions.json"
 python3 scripts/build_seed_report.py --details "$OUT/details" --extractions "$OUT/extractions.json" --out "$OUT/jobs.json" --covers "$OUT/covers"
@@ -24,8 +25,10 @@ python3 scripts/generate_readme.py data/jobs.json docs/JOBS.md
 python3 scripts/build_feed.py data/jobs.json docs/feed.xml "https://xuyixiao0224.github.io/product-intern-daily/"
 
 # 只提交真实精选数据与站点；原始详情仍留在本地 data/daily
-$GIT add data/jobs.json docs
-$GIT commit -m "chore: daily ${DAY}" || true
-$GIT push
+if [ "${DAILY_PUSH:-1}" = "1" ]; then
+  $GIT add data/jobs.json docs
+  $GIT commit -m "chore: daily ${DAY}" || true
+  $GIT push
+fi
 date -Iseconds > data/.last_success
 echo "daily done: $DAY"
