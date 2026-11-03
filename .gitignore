@@ -19,3 +19,5 @@ src/*.egg-info/
 .chrome-tmp/
 preview/
 images/
+
+.secrets/
