@@ -1,0 +1,35 @@
+{
+  "data": {
+    "note": {
+      "noteId": "aaaaaaaaaaaaaaaaaaaaaaaa",
+      "xsecToken": "test-token",
+      "title": "字节跳动 AI产品经理实习生",
+      "desc": "负责 AI Agent 产品设计。投递邮箱：HR@Example.com\n最晚八月底到岗。",
+      "time": 1793500000000,
+      "user": {"nickname": "测试作者"},
+      "imageList": [
+        {"urlDefault": "https://example.com/cover.webp"},
+        {"urlDefault": "https://example.com/jd.webp"}
+      ]
+    },
+    "comments": {
+      "list": [
+        {
+          "content": "还在招吗",
+          "createTime": 1793500100000,
+          "userInfo": {"nickname": "同学A"},
+          "showTags": [],
+          "subComments": [
+            {
+              "content": "还在招，欢迎投递",
+              "createTime": 1793500200000,
+              "userInfo": {"nickname": "测试作者"},
+              "showTags": ["is_author"],
+              "subComments": []
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+name: 新增岗位
+description: 提交一条小红书招聘帖
+title: "[job] "
+labels: ["new-job"]
+body:
+  - type: input
+    id: url
+    attributes: {label: 原帖链接, placeholder: "https://www.xiaohongshu.com/explore/..."}
+    validations: {required: true}
+  - type: input
+    id: company
+    attributes: {label: 公司}
+    validations: {required: true}
+  - type: input
+    id: position
+    attributes: {label: 岗位}
+    validations: {required: true}
+  - type: input
+    id: base
+    attributes: {label: Base 地, placeholder: "北京/上海/深圳/远程"}
+  - type: input
+    id: email
+    attributes: {label: 邮箱, placeholder: "没有就留空"}
+  - type: input
+    id: referral
+    attributes: {label: 内推码, placeholder: "没有就留空"}
+  - type: dropdown
+    id: status
+    attributes: {label: 状态, options: ["在招", "无法确认"]}
+    validations: {required: true}
+  - type: textarea
+    id: evidence
+    attributes: {label: 在招/截止证据, description: "作者回复/正文二编原话 + 日期"}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "product-intern-daily job",
+  "type": "object",
+  "required": ["post_id", "company", "position", "published_at", "still_hiring", "source_url"],
+  "properties": {
+    "post_id": {"type": "string", "minLength": 1},
+    "platform": {"type": "string", "enum": ["xhs"]},
+    "source_url": {"type": "string", "pattern": "^https://"},
+    "author": {"type": "string"},
+    "published_at": {"type": "string"},
+    "title": {"type": "string"},
+    "description": {"type": "string"},
+    "company": {"type": "string"},
+    "position": {"type": "string"},
+    "base_location": {"type": "string"},
+    "location": {"type": "string"},
+    "employment_type": {"type": "string"},
+    "salary": {"type": "string"},
+    "email": {"type": "string"},
+    "email_source": {"type": "string"},
+    "comment_email": {"type": "string"},
+    "referral_code": {"type": "string"},
+    "still_hiring": {"type": "string", "enum": ["在招", "无法确认"]},
+    "status_evidence": {"type": "string"},
+    "closed": {"type": "boolean"},
+    "convertible": {"type": "boolean"},
+    "conversion_evidence": {"type": "string"},
+    "excluded_reason": {"type": "string"},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "dedup_key": {"type": "string"}
+  }
+}

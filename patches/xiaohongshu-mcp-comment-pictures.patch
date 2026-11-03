@@ -1,0 +1,14 @@
+--- a/xiaohongshu/types.go
++++ b/xiaohongshu/types.go
+@@ -266,6 +266,11 @@
+ 	SubCommentCount string    `json:"subCommentCount"`
+ 	SubComments     []Comment `json:"subComments"`
+ 	ShowTags        []string  `json:"showTags"`
++	// 评论图片：不同版本/端可能用不同字段名，用 RawMessage 原样透传，
++	// 避免字段不存在或结构变化导致整个 comment 解析失败。
++	Pictures  json.RawMessage `json:"pictures,omitempty"`
++	ImageList json.RawMessage `json:"imageList,omitempty"`
++	Images    json.RawMessage `json:"images,omitempty"`
+ }
+ 
+ // UserProfileResponse 用户详情页完整响应

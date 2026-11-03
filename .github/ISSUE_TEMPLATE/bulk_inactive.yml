@@ -1,0 +1,12 @@
+name: 批量标记失效
+description: 一组已经截止/删除的帖子
+title: "[inactive] "
+labels: ["inactive"]
+body:
+  - type: textarea
+    id: urls
+    attributes: {label: 帖子链接（每行一个）}
+    validations: {required: true}
+  - type: textarea
+    id: reason
+    attributes: {label: 依据, placeholder: "作者说已招到 / 原帖删除"}

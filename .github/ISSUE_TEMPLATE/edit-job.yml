@@ -1,0 +1,13 @@
+name: 修正岗位
+description: 修正公司/岗位/Base/邮箱/状态
+title: "[edit] "
+labels: ["edit-job"]
+body:
+  - type: input
+    id: url
+    attributes: {label: 原帖链接}
+    validations: {required: true}
+  - type: textarea
+    id: change
+    attributes: {label: 需要改什么, placeholder: "例如：Base 改为上海；邮箱改为 hr@example.com"}
+    validations: {required: true}

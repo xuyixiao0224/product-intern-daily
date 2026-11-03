@@ -1,0 +1,17 @@
+[
+  {
+    "post_id": "aaaaaaaaaaaaaaaaaaaaaaaa",
+    "is_job_post": true,
+    "company": "示例科技",
+    "position": "AI产品实习生",
+    "email": ["hr@example.com"],
+    "contact": "",
+    "location": "北京",
+    "employment_type": "实习",
+    "salary": "300/天",
+    "still_hiring": "在招",
+    "status_evidence": "作者 11-02 回复：没删就是在招",
+    "confidence": 0.9,
+    "reason": "有具体 JD、邮箱和作者回复"
+  }
+]
