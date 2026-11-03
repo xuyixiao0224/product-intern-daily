@@ -2,17 +2,18 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>订阅产品实习日报</title>
 <style>body{font:16px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;max-width:680px;margin:48px auto;padding:0 20px;color:#1f2328}
-input{width:100%;padding:10px;border:1px solid #d0d7de;border-radius:8px;margin:8px 0 14px}
+input{width:100%;padding:10px;border:1px solid #d0d7de;border-radius:8px;margin:8px 0 14px;box-sizing:border-box}
 button{padding:10px 18px;border:0;border-radius:8px;background:#0969da;color:#fff;font-size:16px;cursor:pointer}
-.muted{color:#656d76;font-size:14px}</style></head><body>
+.muted{color:#656d76;font-size:14px} code{background:#f6f8fa;padding:1px 4px;border-radius:4px}</style></head><body>
 <h1>订阅产品实习日报</h1>
 <p>每天一封，包含公司、岗位、Base、邮箱、状态和原帖链接。只发产品实习，不卖数据。</p>
-<form action="https://buttondown.email/api/emails/embed-subscribe/YOUR_BUTTONDOWN_USERNAME" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.email/YOUR_BUTTONDOWN_USERNAME','popupwindow')">
-  <label>邮箱</label>
-  <input type="email" name="email" placeholder="you@example.com" required>
+<form action="https://buttondown.com/api/emails/embed-subscribe/yixiao" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/yixiao','popupwindow')">
+  <label for="email">邮箱</label>
+  <input id="email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
   <input type="hidden" value="1" name="embed">
-  <button type="submit">订阅</button>
+  <input type="hidden" value="product-intern-daily" name="tag">
+  <button type="submit">免费订阅</button>
 </form>
-<p class="muted">提交后会收到一封确认邮件（double opt-in），确认后才开始发送；每封都有退订链接。也可以直接订阅 <a href="feed.xml">RSS</a>。</p>
-<p class="muted">维护者请把 <code>YOUR_BUTTONDOWN_USERNAME</code> 换成自己的 Buttondown 用户名；不要用私人 Gmail/QQ 邮箱群发。</p>
+<p class="muted">由 <a href="https://buttondown.com/yixiao">Buttondown</a> 提供。提交后会收到确认邮件（double opt-in），确认后才开始发送；每封都有退订链接。</p>
+<p class="muted">这个页面是静态 HTML，不收集、不存储你的邮箱；邮箱只存在 Buttondown。</p>
 </body></html>
