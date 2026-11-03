@@ -60,11 +60,20 @@ def main():
     ap.add_argument("src", nargs="?", default="data/jobs.json")
     ap.add_argument("out", nargs="?", default="docs/index.html")
     ap.add_argument("--images-dir", default="")
+    ap.add_argument("--only-email", action="store_true", help="only show jobs with an email")
     ap.add_argument("--site-url", default="https://example.github.io/product-intern-daily/")
     args = ap.parse_args()
 
     data = json.loads(Path(args.src).read_text(encoding="utf-8"))
     jobs = data.get("jobs", []) if isinstance(data, dict) else data
+    if args.only_email:
+        seen, keep = set(), []
+        for j in jobs:
+            e = flat(j.get("email")).split(";")[0].strip().lower()
+            if not e or e in seen:
+                continue
+            seen.add(e); keep.append(j)
+        jobs = keep
     active = [j for j in jobs if not j.get("closed")]
     closed = [j for j in jobs if j.get("closed")]
     today = datetime.now().astimezone().date().isoformat()
@@ -166,7 +175,7 @@ footer{{max-width:1100px;margin:20px auto;padding:0 24px 30px;color:var(--muted)
 </div></div></header>
 <main><div class="list" id="list">{''.join(rows)}</div></main>
 <section class="closed"><h2>已截止 / 已招到</h2><table><thead><tr><th>公司</th><th>岗位</th><th>发布</th><th>依据</th></tr></thead><tbody>{closed_rows}</tbody></table></section>
-<footer>数据来自公开帖子，仅供参考；投递前请核实身份。想删除自己的帖子/邮箱，请开 Issue。 · <a href="{esc(args.site_url)}">GitHub Pages</a></footer>
+<footer>数据来自公开帖子，仅供参考；投递前请核实身份。想删除自己的帖子/邮箱，请开 Issue。 · <a href="{esc(args.site_url)}">私有站点</a></footer>
 <script>
 function filterRows(){{const q=document.getElementById('q').value.toLowerCase();for(const r of document.querySelectorAll('#list .row')){{r.style.display=r.innerText.toLowerCase().includes(q)?'':'none';}}}}
 document.querySelectorAll('.copy').forEach(btn=>btn.addEventListener('click',async()=>{{
