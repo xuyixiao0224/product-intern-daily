@@ -4,7 +4,9 @@ __pycache__/
 dist/
 build/
 *.egg-info/
-data/
+data/*
+!data/jobs.json
+!data/jobs.example.json
 details/
 exports/
 candidates.json
