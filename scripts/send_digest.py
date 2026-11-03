@@ -1,19 +1,14 @@
 #!/usr/bin/env python3
 """Render (and optionally send) the daily product-internship digest.
 
-Never uses a personal mailbox. Pick a transactional provider or a webhook:
+Plain Markdown body, no HTML. Table mirrors the README job table.
 
-  # preview only
-  python scripts/send_digest.py --jobs data/jobs.json --dry-run
-
-  # Buttondown/Listmonk/Zapier via webhook
-  DIGEST_WEBHOOK_URL=https://... python scripts/send_digest.py --provider webhook
-
-  # Resend test send (domain must be verified)
-  RESEND_API_KEY=... DIGEST_FROM=digest@yourdomain.com \
-    python scripts/send_digest.py --provider resend --to you@example.com
+  python scripts/send_digest.py --jobs data/jobs.json --since 1d --dry-run
+  BUTTONDOWN_API_KEY=... python scripts/send_digest.py --jobs data/jobs.json --since 1d --provider buttondown
 """
-import argparse, html, json, os, re, sys, urllib.request
+import argparse, json, os, re, sys, urllib.request
+from datetime import datetime, timedelta
+from pathlib import Path
 
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
 
@@ -22,8 +17,10 @@ def emails(value):
     text = " ; ".join(value) if isinstance(value, (list, tuple)) else str(value or "")
     found = list(dict.fromkeys(EMAIL_RE.findall(text)))
     return "; ".join(found) if found else text
-from datetime import datetime, timedelta
-from pathlib import Path
+
+
+def cell(s):
+    return str(s or "").replace("|", "\\|").replace("\n", " ").strip()
 
 
 def load_jobs(path):
@@ -44,31 +41,30 @@ def select(jobs, since, limit):
 
 def render(jobs):
     today = datetime.now().astimezone().strftime("%Y-%m-%d")
-    rows = []
+    lines = [
+        f"# 产品实习日报 · {today}",
+        "",
+        f"今日新增 **{len(jobs)}** 条产品实习。免费订阅，不卖数据。",
+        "",
+        "| 公司 | 岗位 | Base | 投递 | 状态 | 转正 |",
+        "|---|---|---|---|---|---|",
+    ]
     for j in jobs:
-        rows.append(
-            "<tr>"
-            f"<td>{html.escape(str(j.get('company','')))}</td>"
-            f"<td>{html.escape(str(j.get('position','')))}</td>"
-            f"<td>{html.escape(str(j.get('base_location') or j.get('location') or ''))}</td>"
-            f"<td>{html.escape(emails(j.get('email')) or '见原帖')}</td>"
-            f"<td>{html.escape(str(j.get('still_hiring','')))}</td>"
-            f"<td><a href=\"{html.escape(str(j.get('source_url','')))}\">原帖</a></td>"
-            "</tr>"
-        )
-    doc = f"""<!doctype html><html><body style="font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif">
-<h2>产品实习日报 · {today}</h2>
-<p>今日精选 {len(jobs)} 条。投递前请核实身份；回复邮件可退订。</p>
-<table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;font-size:14px">
-<thead><tr><th>公司</th><th>岗位</th><th>Base</th><th>邮箱</th><th>状态</th><th>原帖</th></tr></thead>
-<tbody>{''.join(rows)}</tbody></table>
-<p style="color:#666;font-size:12px">数据来自公开帖子，仅供参考；如需删除请联系维护者。</p>
-</body></html>"""
-    text = f"产品实习日报 {today}\n" + "\n".join(
-        f"- {j.get('company')} | {j.get('position')} | {j.get('base_location') or j.get('location')} | {emails(j.get('email')) or '见原帖'} | {j.get('source_url')}"
-        for j in jobs
-    )
-    return doc, text
+        lines.append("| " + " | ".join([
+            cell(j.get("company") or "未识别"),
+            cell(j.get("position") or j.get("title") or "未识别"),
+            cell(j.get("base_location") or j.get("location") or "待确认"),
+            emails(j.get("email")) or f"[见原帖]({j.get('source_url','')})",
+            cell(j.get("still_hiring") or "无法确认"),
+            "可转正" if j.get("convertible") else "日常实习",
+        ]) + " |")
+    lines += ["", "原帖：", ""]
+    for j in jobs:
+        lines.append(f"- {cell(j.get('company') or '未识别')} · {cell(j.get('position') or j.get('title'))}：{j.get('source_url','')}")
+    lines += ["", "投递前请核实身份。想删除自己的帖子/邮箱，请在 GitHub 仓库开 Issue。", ""]
+    body = "\n".join(lines)
+    subject = f"产品实习日报 · {today}（新增 {len(jobs)} 条）"
+    return subject, body
 
 
 def post_json(url, payload, headers=None):
@@ -87,41 +83,39 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
     jobs = select(load_jobs(args.jobs), args.since, args.limit)
-    doc, text = render(jobs)
+    subject, body = render(jobs)
     out = Path("exports"); out.mkdir(exist_ok=True)
-    (out / "digest.html").write_text(doc, encoding="utf-8")
-    (out / "digest.txt").write_text(text, encoding="utf-8")
+    (out / "digest.md").write_text(body, encoding="utf-8")
     if args.dry_run or not args.provider:
-        print(json.dumps({"jobs": len(jobs), "dry_run": True, "html": "exports/digest.html"}, ensure_ascii=False))
+        print(json.dumps({"jobs": len(jobs), "dry_run": True, "file": "exports/digest.md"}, ensure_ascii=False))
         return
-    subject = f"产品实习日报 · {datetime.now().astimezone():%Y-%m-%d}"
     if args.provider == "webhook":
         url = os.environ.get("DIGEST_WEBHOOK_URL")
         if not url:
             sys.exit("DIGEST_WEBHOOK_URL is required for --provider webhook")
-        status, body = post_json(url, {"subject": subject, "html": doc, "text": text})
-        print(json.dumps({"provider": "webhook", "status": status, "body": body}, ensure_ascii=False))
+        status, resp = post_json(url, {"subject": subject, "body": body})
+        print(json.dumps({"provider": "webhook", "status": status, "body": resp}, ensure_ascii=False))
     elif args.provider == "buttondown":
         key = os.environ.get("BUTTONDOWN_API_KEY")
         if not key:
             sys.exit("BUTTONDOWN_API_KEY is required for --provider buttondown")
-        status, body = post_json(
+        status, resp = post_json(
             "https://api.buttondown.com/v1/emails",
-            {"subject": subject, "body": doc, "status": "about_to_send"},
+            {"subject": subject, "body": body, "status": "about_to_send"},
             headers={"Authorization": "Token " + key},
         )
-        print(json.dumps({"provider": "buttondown", "status": status, "body": body}, ensure_ascii=False))
+        print(json.dumps({"provider": "buttondown", "status": status, "body": resp}, ensure_ascii=False))
     elif args.provider == "resend":
         key = os.environ.get("RESEND_API_KEY")
         frm = os.environ.get("DIGEST_FROM")
         if not key or not frm or not args.to:
             sys.exit("RESEND_API_KEY, DIGEST_FROM and --to are required for --provider resend")
-        status, body = post_json(
+        status, resp = post_json(
             "https://api.resend.com/emails",
-            {"from": frm, "to": [args.to], "subject": subject, "html": doc, "text": text},
+            {"from": frm, "to": [args.to], "subject": subject, "text": body},
             {"Authorization": f"Bearer {key}"},
         )
-        print(json.dumps({"provider": "resend", "status": status, "body": body}, ensure_ascii=False))
+        print(json.dumps({"provider": "resend", "status": status, "body": resp}, ensure_ascii=False))
 
 
 if __name__ == "__main__":
