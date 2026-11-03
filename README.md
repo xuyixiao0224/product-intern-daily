@@ -5,7 +5,7 @@
 
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![CI](https://github.com/yourname/product-intern-daily/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
+[![CI](https://github.com/xuyixiao0224/product-intern-daily/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
 [![Pages](https://img.shields.io/badge/site-GitHub%20Pages-0969da)](docs/index.html)
 
 ![产品实习日报截图](docs/screenshot.png)
@@ -384,7 +384,7 @@ make readme
 ```bash
 # 生成公开静态页、RSS、岗位列表
 python scripts/build_site.py exports/jobs.json docs/index.html
-python scripts/build_feed.py exports/jobs.json docs/feed.xml "https://yourname.github.io/product-intern-daily/"
+python scripts/build_feed.py exports/jobs.json docs/feed.xml "https://xuyixiao0224.github.io/product-intern-daily/"
 python scripts/generate_readme.py exports/jobs.json docs/JOBS.md
 
 # 渲染每日邮件（默认 dry-run，不发送）
