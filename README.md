@@ -6,7 +6,6 @@
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![CI](https://github.com/xuyixiao0224/product-intern-daily/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
-[![Pages](https://img.shields.io/badge/site-GitHub%20Pages-0969da)](docs/index.html)
 
 ![产品实习日报截图](docs/screenshot.png)
 
@@ -346,13 +345,13 @@ product-intern-daily/
 ├── scripts/
 │   ├── validate_data.py      # 校验 jobs.json
 │   ├── generate_readme.py    # 生成 docs/JOBS.md
-│   └── build_site.py         # 生成 docs/index.html（GitHub Pages）
+│   └── build_site.py         # 生成 docs/index.html（本地/私有站点）
 ├── schema/job.schema.json
 ├── data/jobs.example.json    # 脱敏示例；真实 jobs.json 不提交
-├── docs/                     # 架构/数据模型/岗位列表/Pages
+├── docs/                     # 架构/数据模型/岗位列表
 ├── patches/                  # xiaohongshu-mcp 评论图片补丁
 ├── .github/ISSUE_TEMPLATE/   # 新增/修正/批量失效
-├── .github/workflows/        # CI + Pages
+├── .github/workflows/        # CI（Pages 已关闭）
 └── tests/                    # 24 个离线测试
 ```
 
@@ -384,7 +383,7 @@ make readme
 ```bash
 # 生成公开静态页、RSS、岗位列表
 python scripts/build_site.py exports/jobs.json docs/index.html
-python scripts/build_feed.py exports/jobs.json docs/feed.xml "https://xuyixiao0224.github.io/product-intern-daily/"
+python scripts/build_feed.py exports/jobs.json docs/feed.xml "http://127.0.0.1:8000/"
 python scripts/generate_readme.py exports/jobs.json docs/JOBS.md
 
 # 渲染每日邮件（默认 dry-run，不发送）
@@ -394,8 +393,8 @@ python scripts/send_digest.py --jobs exports/jobs.json --since 1d --dry-run
 # 见 docs/SUBSCRIBE.md（Buttondown / Resend / Listmonk）
 ```
 
-- 消费者：打开 GitHub Pages / RSS，零登录。
-- Pages 只部署已提交的 `docs/`；维护者本地生成 `docs/index.html`、`docs/feed.xml`、`docs/JOBS.md` 后再提交，CI 不用 Cookie、不覆盖真实数据。
+- 消费者：打开私有页面 / RSS，零登录（仓库转私密后不公开）。
+- 维护者本地生成 `docs/index.html`、`docs/feed.xml`、`docs/JOBS.md` 后再提交；CI 不用 Cookie、不覆盖真实数据。
 - 维护者：本地跑 MCP + OCR + 管线，提交 `docs/` 静态产物；`data/jobs.json` 不公开。
 - 邮件：Buttondown（推荐起步）/ Resend / 自托管 Listmonk；**不要用私人 Gmail/QQ 群发**。
 
@@ -413,7 +412,7 @@ python scripts/send_digest.py --jobs exports/jobs.json --since 1d --dry-run
 - [x] 产品实习字段：公司/岗位/Base/邮箱/内推码/状态/证据
 - [x] 多图 OCR + 翻转 + 评论邮箱 + 置顶评论
 - [x] 静态站 + RSS + 邮件 dry-run
-- [x] Issue 模板 + CI + Pages
+- [x] Issue 模板 + CI（Pages 暂关）
 - [ ] 300–500 条种子数据 + 人工复核
 - [ ] 每周产品实习报告
 - [ ] 第二数据源（公众号/官网/牛客）
