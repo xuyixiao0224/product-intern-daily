@@ -6,7 +6,7 @@
 
 - 免费档约 100 订阅；
 - 自带 double opt-in、退订、隐私页；
-- GitHub Pages 静态页可直接嵌表单；
+- 私有静态页/本地页面可直接嵌表单；
 - 把 `docs/subscribe.html` 里的 `YOUR_BUTTONDOWN_USERNAME` 换成你的用户名。
 
 发送：

@@ -24,9 +24,9 @@ OCR_DIR="$OUT/ocr" python3 scripts/heuristic_extract.py "$OUT/details" "$OUT/ext
 python3 scripts/build_seed_report.py --details "$OUT/details" --extractions "$OUT/extractions.json" --out "$OUT/jobs.json" --covers "$OUT/covers"
 
 python3 scripts/merge_jobs.py --base data/jobs.json --new "$OUT/jobs.json" --out data/jobs.json
-python3 scripts/build_site.py data/jobs.json docs/index.html --images-dir "$OUT/covers" --site-url "https://xuyixiao0224.github.io/product-intern-daily/"
+python3 scripts/build_site.py data/jobs.json docs/index.html --images-dir "$OUT/covers" --site-url "http://127.0.0.1:8000/"
 python3 scripts/generate_readme.py data/jobs.json docs/JOBS.md
-python3 scripts/build_feed.py data/jobs.json docs/feed.xml "https://xuyixiao0224.github.io/product-intern-daily/"
+python3 scripts/build_feed.py data/jobs.json docs/feed.xml "http://127.0.0.1:8000/"
 
 # 只提交真实精选数据与站点；原始详情仍留在本地 data/daily
 if [ "${DAILY_PUSH:-1}" = "1" ]; then

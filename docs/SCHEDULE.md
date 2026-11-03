@@ -5,7 +5,7 @@
 **不要让 GitHub-hosted Actions 直接登录小红书。**  
 GitHub 的 runner 没有你的 Cookie，也不应该把 Cookie 放进 Secrets；正确做法是：
 
-> **本地/自托管机器跑采集 → 提交 `jobs.json` + 生成 `docs/` → GitHub Actions 只做校验和 Pages 部署。**
+> **本地/自托管机器跑采集 → 提交 `jobs.json` + 生成 `docs/` → GitHub Actions 只做 CI 校验（Pages 已关闭）。**
 
 ## 推荐架构
 
@@ -20,7 +20,7 @@ GitHub 的 runner 没有你的 Cookie，也不应该把 Cookie 放进 Secrets；
   ├─ git push
   └─ send_digest.py（可选）
         ↓
-GitHub Actions: validate + Pages
+GitHub Actions: CI validate
 ```
 
 ## 每日命令
