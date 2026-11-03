@@ -19,8 +19,28 @@ def emails(value):
     return "; ".join(found) if found else text
 
 
+KNOWN_COMPANIES = ["字节跳动", "腾讯", "百度", "阿里巴巴", "美团", "快手", "小红书", "小米", "爱奇艺", "哔哩哔哩", "网易", "京东", "滴滴", "OPPO", "科大讯飞", "航旅纵横", "中银基金"]
+
+
 def cell(s):
     return str(s or "").replace("|", "\\|").replace("\n", " ").strip()
+
+
+def company_of(j):
+    name = cell(j.get("company"))
+    if name and name not in ("未识别", "None"):
+        return name
+    text = f"{j.get('title','')} {j.get('description','')}"
+    for known in KNOWN_COMPANIES:
+        if known in text:
+            return known
+    return "公司未注明"
+
+
+def position_of(j):
+    pos = cell(j.get("position") or j.get("title"))
+    pos = re.sub(r"^(?:(?:啦|组内直推|急招|实习招聘[丨|]?|招聘[丨|]?)\s*)+", "", pos)
+    return pos.strip() or "岗位未注明"
 
 
 def load_jobs(path):
@@ -42,28 +62,35 @@ def select(jobs, since, limit):
 def render(jobs):
     today = datetime.now().astimezone().strftime("%Y-%m-%d")
     lines = [
-        f"# 产品实习日报 · {today}",
+        f"# 🗓 {today} · 新增 {len(jobs)} 条",
         "",
-        f"今日新增 **{len(jobs)}** 条产品实习。免费订阅，不卖数据。",
-        "",
-        "| 公司 | 岗位 | Base | 投递 | 状态 | 转正 |",
-        "|---|---|---|---|---|---|",
+        "| 公司 | 岗位 | Base | 投递 | 转正 |",
+        "|---|---|---|---|---|",
     ]
     for j in jobs:
+        email = emails(j.get("email"))
+        apply_cell = f"{email}（[见原帖]({j.get('source_url','')})）" if email else f"[见原帖]({j.get('source_url','')})"
         lines.append("| " + " | ".join([
-            cell(j.get("company") or "未识别"),
-            cell(j.get("position") or j.get("title") or "未识别"),
+            company_of(j),
+            position_of(j),
             cell(j.get("base_location") or j.get("location") or "待确认"),
-            emails(j.get("email")) or f"[见原帖]({j.get('source_url','')})",
-            cell(j.get("still_hiring") or "无法确认"),
+            apply_cell,
             "可转正" if j.get("convertible") else "日常实习",
         ]) + " |")
-    lines += ["", "原帖：", ""]
-    for j in jobs:
-        lines.append(f"- {cell(j.get('company') or '未识别')} · {cell(j.get('position') or j.get('title'))}：{j.get('source_url','')}")
-    lines += ["", "投递前请核实身份。想删除自己的帖子/邮箱，请在 GitHub 仓库开 Issue。", ""]
+    lines += [
+        "",
+        "---",
+        "",
+        "⚠️ **免责声明**",
+        "",
+        "数据来自公开帖子，仅供求职参考，不构成投递建议。投递前请核实招聘方身份与岗位真实性；请勿将本邮件用于商业转售。",
+        "",
+        "若你是帖子作者，希望删除邮箱或帖子，请在 GitHub 仓库提交 Issue：",
+        "<https://github.com/xuyixiao0224/product-intern-daily/issues>",
+        "",
+    ]
     body = "\n".join(lines)
-    subject = f"产品实习日报 · {today}（新增 {len(jobs)} 条）"
+    subject = f"产品实习日报 · {today}"
     return subject, body
 
 

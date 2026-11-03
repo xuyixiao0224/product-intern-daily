@@ -20,8 +20,28 @@ def emails(v):
     return "; ".join(found)
 
 
+KNOWN_COMPANIES = ["字节跳动", "腾讯", "百度", "阿里巴巴", "美团", "快手", "小红书", "小米", "爱奇艺", "哔哩哔哩", "网易", "京东", "滴滴", "OPPO", "科大讯飞", "航旅纵横", "中银基金"]
+
+
 def cell(s):
     return str(s or "").replace("|", "\\|").replace("\n", " ").strip()
+
+
+def company_of(j):
+    name = cell(j.get("company"))
+    if name and name not in ("未识别", "None"):
+        return name
+    text = f"{j.get('title','')} {j.get('description','')}"
+    for known in KNOWN_COMPANIES:
+        if known in text:
+            return known
+    return "公司未注明"
+
+
+def position_of(j):
+    pos = cell(j.get("position") or j.get("title"))
+    pos = re.sub(r"^(?:(?:啦|组内直推|急招|实习招聘[丨|]?|招聘[丨|]?)\s*)+", "", pos)
+    return pos.strip() or "岗位未注明"
 
 
 def main():
@@ -38,8 +58,8 @@ def main():
         apply_cell = f"[{email}](mailto:{email})" if email else f"[见原帖]({j.get('source_url','')})"
         pos = j.get("position") or j.get("title") or "未识别"
         lines.append("| " + " | ".join([
-            cell(j.get("company") or "未识别"),
-            f"[{cell(pos)}]({j.get('source_url','')})",
+            company_of(j),
+            f"[{cell(position_of(j))}]({j.get('source_url','')})",
             cell(j.get("base_location") or j.get("location") or "待确认"),
             apply_cell,
             cell(j.get("still_hiring") or "无法确认"),
