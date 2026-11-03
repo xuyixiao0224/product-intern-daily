@@ -52,7 +52,7 @@ def main():
     jobs = json.loads(Path(args.jobs).read_text(encoding="utf-8"))["jobs"]
     jobs = [j for j in jobs if not j.get("closed")]
     jobs.sort(key=lambda j: (bool(emails(j.get("email"))), str(j.get("published_at") or "")), reverse=True)
-    lines = [START, f"## 在招岗位（{len(jobs)}）", "", f"> 最近更新：{datetime.now().astimezone().strftime('%Y-%m-%d %H:%M')} · 只列产品实习；投递前请核实身份。", "", "| 公司 | 岗位 | Base | 投递 | 状态 | 转正 | 发布 |", "|---|---|---|---|---|---|---|"]
+    lines = [START, f"## 在招岗位（{len(jobs)}）", "", "| 公司 | 岗位 | Base | 投递 | 状态 | 转正 | 发布 |", "|---|---|---|---|---|---|---|"]
     for j in jobs:
         email = emails(j.get("email"))
         apply_cell = f"[{email}](mailto:{email})" if email else f"[见原帖]({j.get('source_url','')})"

@@ -2,7 +2,7 @@
 
 > **找产品实习，只用看这个。**
 >
-> **每日更新，免费邮箱订阅。** 可以部署到本地，自行修改搜索逻辑。来源：小红书。
+> **每日更新，免费邮箱订阅。** 可作为 Codex/DSH 的本地工具（CLI）调用，也可自部署、自行修改搜索逻辑。岗位来源：小红书。
 
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -12,13 +12,17 @@
 
 ---
 
-## 每日更新与免费订阅
+## 每日更新，免费订阅
 
-- **邮件订阅**：每天 20:00 前发一封，只发产品实习；免费，不卖邮箱。
-- **订阅页**：[subscribe.html](docs/subscribe.html)
-- 邮件服务用 Buttondown / Resend / Listmonk，不用私人 Gmail/QQ；配置见 [docs/SUBSCRIBE.md](docs/SUBSCRIBE.md)。
+**每天 20:00 前，把还在招的产品实习发到你的邮箱。**
 
-> 订阅是免费的。这个项目不靠卖岗位表赚钱。
+[**免费订阅每日邮件 →**](https://buttondown.com/yixiao)　[查看今日岗位 ↓](#在招岗位17)
+
+- 免费，不卖邮箱，不卖岗位表
+- Double opt-in，随时退订
+- 无需登录，零配置
+
+> 邮件由 Buttondown 发送；订阅页在 [buttondown.com/yixiao](https://buttondown.com/yixiao)。
 
 ---
 
@@ -43,8 +47,6 @@
 
 <!-- JOBS:START -->
 ## 在招岗位（17）
-
-> 最近更新：2026-11-03 22:07 · 只列产品实习；投递前请核实身份。
 
 | 公司 | 岗位 | Base | 投递 | 状态 | 转正 | 发布 |
 |---|---|---|---|---|---|---|
@@ -179,15 +181,6 @@ GitHub-hosted Actions 不能登录小红书；Cookie 不要进 Secrets。
 - 订阅 [邮件](docs/subscribe.html)；
 - 发现好帖子/错误信息，用 [Issue 模板](.github/ISSUE_TEMPLATE/new-job.yml) 提交；
 - 想自己跑：clone + 自己的 `xiaohongshu-mcp` + 自己的 Cookie。
-
-## Roadmap
-
-- [x] 产品实习字段：公司/岗位/Base/邮箱/内推码/状态/转正
-- [x] 多图 OCR + 翻转 + 评论邮箱 + 置顶评论
-- [x] 静态页 + 每日邮件 dry-run
-- [x] Issue 模板 + CI
-- [ ] 第二数据源（公众号/官网/牛客）
-- [ ] 每周产品实习报告
 
 ## 免责声明
 
