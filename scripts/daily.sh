@@ -1,6 +1,23 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -Eeuo pipefail
 cd "$(dirname "$0")/.."
+
+on_error() {
+  local code=$?
+  local msg="daily failed at line ${LINENO}: ${BASH_COMMAND}"
+  mkdir -p data
+  printf '%s\n%s\n' "$(date -Iseconds)" "$msg" > data/.last_error
+  echo "$msg" >&2
+  if command -v osascript >/dev/null 2>&1; then
+    osascript -e "display notification \"${msg//\"/}\" with title \"产品实习日报失败\"" >/dev/null 2>&1 || true
+  fi
+  if [ -n "${DAILY_ALERT_WEBHOOK:-}" ]; then
+    curl -sS --max-time 10 -X POST "$DAILY_ALERT_WEBHOOK" -H 'Content-Type: application/json' \
+      -d "{\"text\":\"产品实习日报失败: ${msg//\"/}\"}" >/dev/null 2>&1 || true
+  fi
+  exit "$code"
+}
+trap on_error ERR
 GIT="${GIT:-git}"
 ROOT="$(cd ../.. && pwd)"
 MCP_BIN="$ROOT/work/xhs-mcp-src/xiaohongshu-mcp-patched"
@@ -9,12 +26,13 @@ if ! lsof -nP -iTCP:18060 -sTCP:LISTEN >/dev/null 2>&1; then
   sleep 6
 fi
 DAY="$(date +%F)"
-TARGET="${DAILY_TARGET:-60}"
+TARGET="${DAILY_TARGET:-300}"
+PER_KEYWORD="${DAILY_PER_KEYWORD:-100}"
 OUT="data/daily/$DAY"
 mkdir -p "$OUT"
 
 # 19:00 跑采集
-python3 scripts/collect_seed.py --mode daily --target "$TARGET" --out "$OUT/candidates.json"
+python3 scripts/collect_seed.py --mode daily --target "$TARGET" --per-keyword "$PER_KEYWORD" --out "$OUT/candidates.json"
 FETCH_LOG="$(mktemp)"
 python3 scripts/fetch_parallel.py "$OUT/candidates.json" "$OUT/details" "$TARGET" 2 | tee "$FETCH_LOG"
 LAST="$(tail -1 "$FETCH_LOG")"
@@ -43,7 +61,7 @@ python3 scripts/update_readme_table.py --jobs data/jobs.json --readme README.md
 # 发送今日邮件（Buttondown）
 if [ -f .secrets/buttondown.key ]; then
   export BUTTONDOWN_API_KEY="$(cat .secrets/buttondown.key)"
-  python3 scripts/send_digest.py --jobs data/jobs.json --since 1d --provider buttondown || true
+  python3 scripts/send_digest.py --jobs data/jobs.json --since 1d --provider buttondown
 fi
 
 if [ "${DAILY_PUSH:-1}" = "1" ]; then
@@ -52,4 +70,5 @@ if [ "${DAILY_PUSH:-1}" = "1" ]; then
   $GIT push
 fi
 date -Iseconds > data/.last_success
+rm -f data/.last_error
 echo "daily done: $DAY"

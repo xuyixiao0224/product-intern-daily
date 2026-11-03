@@ -5,7 +5,7 @@
 > **每日更新，免费邮箱订阅。** 可作为 Codex/DSH 的本地工具（CLI）调用，也可自部署、自行修改搜索逻辑。岗位来源：小红书。
 
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
-[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![License](https://img.shields.io/badge/license-PolyForm%20Noncommercial-orange)](LICENSE)
 [![CI](https://github.com/xuyixiao0224/product-intern-daily/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
 
 ![产品实习日报截图](docs/screenshot.png)
@@ -108,6 +108,7 @@ python run.py fetch candidates.json --out details --ocr
 python run.py extract --details details --out tasks.json --prepare
 
 # 让 Codex/DSH 按 prompts/extract.md 读 tasks.json，写 extractions.json
+# 每日自动任务默认用规则抽取；更复杂的公司/岗位判断再走这一步
 python run.py extract --import-file extractions.json --details details
 
 # 导出
@@ -194,4 +195,4 @@ GitHub-hosted Actions 不能登录小红书；Cookie 不要进 Secrets。
 
 ## License
 
-MIT。依赖 [`xiaohongshu-mcp`](https://github.com/xpzouying/xiaohongshu-mcp)（Apache-2.0），本项目不包含其代码。
+**PolyForm Noncommercial 1.0.0**：仅允许非商业用途；禁止将本项目用于商业销售、付费岗位表或托管服务。依赖 [`xiaohongshu-mcp`](https://github.com/xpzouying/xiaohongshu-mcp)（Apache-2.0），本项目不包含其代码。
