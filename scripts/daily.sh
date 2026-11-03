@@ -13,6 +13,7 @@ TARGET="${DAILY_TARGET:-60}"
 OUT="data/daily/$DAY"
 mkdir -p "$OUT"
 
+# 19:00 跑采集
 python3 scripts/collect_seed.py --mode daily --target "$TARGET" --out "$OUT/candidates.json"
 FETCH_LOG="$(mktemp)"
 python3 scripts/fetch_parallel.py "$OUT/candidates.json" "$OUT/details" "$TARGET" 2 | tee "$FETCH_LOG"
@@ -23,13 +24,28 @@ python3 scripts/ocr_covers.py --details "$OUT/details" --out "$OUT/ocr" --covers
 OCR_DIR="$OUT/ocr" python3 scripts/heuristic_extract.py "$OUT/details" "$OUT/extractions.json"
 python3 scripts/build_seed_report.py --details "$OUT/details" --extractions "$OUT/extractions.json" --out "$OUT/jobs.json" --covers "$OUT/covers"
 
+# 等到 20:00 再发布（README 表格 + 邮件 + push）
+python3 - <<'PY'
+from datetime import datetime
+import time
+now = datetime.now()
+target = now.replace(hour=20, minute=0, second=0, microsecond=0)
+if target > now:
+    time.sleep((target - now).total_seconds())
+PY
+
 python3 scripts/merge_jobs.py --base data/jobs.json --new "$OUT/jobs.json" --out data/jobs.json
 python3 scripts/build_site.py data/jobs.json docs/index.html --images-dir "$OUT/covers" --site-url "http://127.0.0.1:8000/"
 python3 scripts/generate_readme.py data/jobs.json docs/JOBS.md
 python3 scripts/build_feed.py data/jobs.json docs/feed.xml "http://127.0.0.1:8000/"
 python3 scripts/update_readme_table.py --jobs data/jobs.json --readme README.md
 
-# 只提交真实精选数据与站点；原始详情仍留在本地 data/daily
+# 发送今日邮件（Buttondown）
+if [ -f .secrets/buttondown.key ]; then
+  export BUTTONDOWN_API_KEY="$(cat .secrets/buttondown.key)"
+  python3 scripts/send_digest.py --jobs data/jobs.json --since 1d --provider buttondown || true
+fi
+
 if [ "${DAILY_PUSH:-1}" = "1" ]; then
   $GIT add README.md data/jobs.json docs
   $GIT commit -m "chore: daily ${DAY}" || true

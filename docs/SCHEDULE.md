@@ -10,7 +10,7 @@ GitHub 的 runner 没有你的 Cookie，也不应该把 Cookie 放进 Secrets；
 ## 推荐架构
 
 ```text
-每天 09:00（本地 launchd / cron / VPS）
+每天 19:00 采集、20:00 发布（本地 launchd / cron / VPS）
   ├─ 3 个关键词，只搜“一天内”
   ├─ 40–60 条详情，2 并发，3–8 秒 jitter
   ├─ OCR → 抽取 → 过滤 → 去重 → 合并 jobs.json
@@ -62,7 +62,7 @@ git push
   <key>Label</key><string>com.product-intern-daily</string>
   <key>ProgramArguments</key>
   <array><string>/bin/bash</string><string>/path/to/product-intern-daily/scripts/daily.sh</string></array>
-  <key>StartCalendarInterval</key><dict><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+  <key>StartCalendarInterval</key><dict><key>Hour</key><integer>19</integer><key>Minute</key><integer>0</integer></dict>
   <key>StandardOutPath</key><string>/tmp/product-intern-daily.log</string>
   <key>StandardErrorPath</key><string>/tmp/product-intern-daily.err</string>
 </dict></plist>

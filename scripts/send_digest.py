@@ -82,7 +82,7 @@ def main():
     ap.add_argument("--jobs", default="data/jobs.json")
     ap.add_argument("--since", default="1d", help="1d/7d or ISO date")
     ap.add_argument("--limit", type=int, default=30)
-    ap.add_argument("--provider", choices=["resend", "webhook"], default="")
+    ap.add_argument("--provider", choices=["resend", "webhook", "buttondown"], default="")
     ap.add_argument("--to", default="", help="test recipient for Resend")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
@@ -101,6 +101,16 @@ def main():
             sys.exit("DIGEST_WEBHOOK_URL is required for --provider webhook")
         status, body = post_json(url, {"subject": subject, "html": doc, "text": text})
         print(json.dumps({"provider": "webhook", "status": status, "body": body}, ensure_ascii=False))
+    elif args.provider == "buttondown":
+        key = os.environ.get("BUTTONDOWN_API_KEY")
+        if not key:
+            sys.exit("BUTTONDOWN_API_KEY is required for --provider buttondown")
+        status, body = post_json(
+            "https://api.buttondown.com/v1/emails",
+            {"subject": subject, "body": doc, "status": "about_to_send"},
+            headers={"Authorization": "Token " + key},
+        )
+        print(json.dumps({"provider": "buttondown", "status": status, "body": body}, ensure_ascii=False))
     elif args.provider == "resend":
         key = os.environ.get("RESEND_API_KEY")
         frm = os.environ.get("DIGEST_FROM")
