@@ -17,7 +17,9 @@ body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.7 ui-monospace,SF
 .prompt{color:var(--green);margin-bottom:6px}
 .cmd{color:var(--fg)}
 .dim{color:var(--muted)}
-.step{margin:22px 0 0}
+.step{margin:22px 0 0;opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease}
+.step.show{opacity:1;transform:none}
+.prompt::after{content:"▋";color:var(--green);animation:blink 1s steps(1) infinite;margin-left:2px}@keyframes blink{50%{opacity:0}}
 .label{color:var(--blue);margin-bottom:6px}
 input[type=email]{width:100%;background:#0d1117;border:1px solid var(--line);border-radius:6px;padding:11px 12px;color:var(--fg);font:inherit;outline:none}
 input[type=email]:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(88,166,255,.15)}
@@ -56,16 +58,9 @@ a{color:var(--blue)}
         </div>
       </div>
 
-      <div class="step">
-        <div class="label">? 关注方向</div>
-        <div class="choice">
-          <label><input type="radio" name="direction" value="all-product" checked> 产品实习</label>
-          <label><input type="radio" name="direction" value="ai-product"> AI 产品</label>
-          <label><input type="radio" name="direction" value="all"> 全部</label>
-        </div>
+      <div class="step submit-step">
+        <button type="submit">⏎ 订阅</button>
       </div>
-
-      <button type="submit">⏎ 订阅</button>
     </form>
 
     <div class="note">
@@ -75,14 +70,21 @@ a{color:var(--blue)}
   </div>
 </main>
 <script>
+const steps = Array.from(document.querySelectorAll('.step'));
+let step = 0;
+function next() {
+  if (step >= steps.length) return;
+  const el = steps[step++];
+  el.classList.add('show');
+  if (el.querySelector('input[type=email]')) el.querySelector('input[type=email]').focus();
+  setTimeout(next, 420);
+}
+setTimeout(next, 350);
 document.getElementById('subscribe-form').addEventListener('submit', function () {
   const freq = this.querySelector('input[name="frequency"]:checked')?.value || 'daily';
-  const dir = this.querySelector('input[name="direction"]:checked')?.value || 'all-product';
-  for (const value of [freq, dir]) {
-    const input = document.createElement('input');
-    input.type = 'hidden'; input.name = 'tag'; input.value = value;
-    this.appendChild(input);
-  }
+  const input = document.createElement('input');
+  input.type = 'hidden'; input.name = 'tag'; input.value = freq;
+  this.appendChild(input);
 });
 </script>
 </body>
