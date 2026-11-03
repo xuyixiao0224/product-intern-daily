@@ -14,7 +14,11 @@ OUT="data/daily/$DAY"
 mkdir -p "$OUT"
 
 python3 scripts/collect_seed.py --mode daily --target "$TARGET" --out "$OUT/candidates.json"
-python3 scripts/fetch_parallel.py "$OUT/candidates.json" "$OUT/details" "$TARGET" 2
+FETCH_LOG="$(mktemp)"
+python3 scripts/fetch_parallel.py "$OUT/candidates.json" "$OUT/details" "$TARGET" 2 | tee "$FETCH_LOG"
+LAST="$(tail -1 "$FETCH_LOG")"
+python3 -c 'import json,sys; d=json.loads(sys.argv[1]); print("fetch ok=%s err=%s" % (d.get("ok"), d.get("err"))); sys.exit(1 if d.get("err") else 0)' "$LAST"
+rm -f "$FETCH_LOG"
 python3 scripts/ocr_covers.py --details "$OUT/details" --out "$OUT/ocr" --covers "$OUT/covers_raw"
 OCR_DIR="$OUT/ocr" python3 scripts/heuristic_extract.py "$OUT/details" "$OUT/extractions.json"
 python3 scripts/build_seed_report.py --details "$OUT/details" --extractions "$OUT/extractions.json" --out "$OUT/jobs.json" --covers "$OUT/covers"
