@@ -16,7 +16,7 @@ product-intern-daily CLI
 
 - **采集层**：`xiaohongshu-mcp` 负责浏览器、登录、反爬；本项目不碰 Cookie。
 - **数据层**：`store.py` SQLite；`jobs.json` 是公开数据源。
-- **抽取层**：`extract.py` 准备任务；Codex/Claude Code 输出严格 JSON；`--import` 校验入库。
+- **抽取层**：`extract.py` 准备任务；Claude Code / DSH / Codex 输出严格 JSON；`--import` 校验入库。
 - **展示层**：`export.py` / `build_site.py` / `generate_readme.py`。
 
 ## 为什么不做全自动 LLM API
