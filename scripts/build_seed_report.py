@@ -95,6 +95,11 @@ def main():
         a = ai.get(ex["post_id"]) or {}
         if a and (a.get("verdict") != "通过" or not a.get("is_product")):
             continue
+        # AI 通过但没有任何投递方式：不进入日报（避免“只发岗位不留入口”）
+        if a and not a.get("email") and not flat(ex.get("contact")) and not any(
+            k in (ex.get("description") or "") for k in ("投递", "私信", "简历", "联系", "邮箱", "扫码")
+        ):
+            continue
         pos = str(a.get("position") or ex.get("position") or "")
         detail = load_detail(details_dir / f"{ex['post_id']}.json")
         note = (detail.get("data") or {}).get("note") or {}
