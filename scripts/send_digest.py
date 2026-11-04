@@ -129,7 +129,7 @@ def main():
         status, resp = post_json(
             "https://api.buttondown.com/v1/emails",
             {"subject": subject, "body": body, "status": "about_to_send"},
-            headers={"Authorization": "Token " + key},
+            headers={"Authorization": "Token " + key, "X-Buttondown-Live-Dangerously": "true"},
         )
         print(json.dumps({"provider": "buttondown", "status": status, "body": resp}, ensure_ascii=False))
     elif args.provider == "resend":

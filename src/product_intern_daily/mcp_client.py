@@ -94,7 +94,7 @@ class MCPClient:
         *,
         limit: int = 20,
         sort_by: str = "最新",
-        publish_time: str = "一周内",
+        publish_time: str = "一天内",
         note_type: str = "图文",
         timeout: int = 120,
     ) -> list[Candidate]:
@@ -103,7 +103,10 @@ class MCPClient:
             "publish_time": publish_time,
             "note_type": note_type,
         }
-        text = self.call("search_feeds", {"keyword": keyword, "filters": filters}, timeout=timeout)
+        if limit < 1:
+            raise ValueError("limit must be positive")
+        limit = min(limit, 100)
+        text = self.call("search_feeds", {"keyword": keyword, "filters": filters, "limit": limit}, timeout=timeout)
         return parse_search_response(text, keyword=keyword, limit=limit)
 
     def detail(self, post_id: str, token: str, *, all_comments: bool = False, timeout: int = 120) -> dict:

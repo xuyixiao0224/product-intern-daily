@@ -28,19 +28,26 @@ for p in sorted(details.glob("*.json")):
 def work(item):
     pid, urls = item
     texts=[]
+    ok=True
     for i,url in enumerate(urls):
         raw=covers/f"{pid}_{i}.raw"; jpg=covers/f"{pid}_{i}.jpg"
         if not jpg.exists():
-            if not _download(url, raw): continue
-            if not _to_jpeg(raw, jpg): continue
+            if not _download(url, raw):
+                ok=False; continue
+            if not _to_jpeg(raw, jpg):
+                ok=False; continue
             raw.unlink(missing_ok=True)
         t=ocr_file(jpg)
         if t: texts.append(t)
     (out/f"{pid}.txt").write_text("\n".join(texts), encoding="utf-8")
-    return pid, True
+    return pid, ok
 
+okn=errn=0
 with ThreadPoolExecutor(max_workers=3) as ex:
     for i,f in enumerate(as_completed([ex.submit(work,x) for x in todo]),1):
-        try: f.result(); print(f"[{i}/{len(todo)}] ok", flush=True)
-        except Exception as e: print(f"[{i}/{len(todo)}] err {e}", flush=True)
-print(json.dumps({"notes": len(todo), "out": str(out)}, ensure_ascii=False))
+        try:
+            _, ok=f.result(); okn+=1 if ok else 0; errn+=0 if ok else 1
+            print(f"[{i}/{len(todo)}] {'ok' if ok else 'err'}", flush=True)
+        except Exception as e:
+            errn+=1; print(f"[{i}/{len(todo)}] err {e}", flush=True)
+print(json.dumps({"ok": okn, "err": errn, "out": str(out)}, ensure_ascii=False))

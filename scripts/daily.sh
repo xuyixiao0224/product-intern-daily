@@ -41,7 +41,7 @@ rm -f "$FETCH_LOG"
 OCR_PY=".venv-ocr/bin/python"
 [ -x "$OCR_PY" ] || OCR_PY="python3"
 OCR_LOG="$(mktemp)"
-"$OCR_PY" scripts/ocr_covers.py --details "$OUT/details" --out "$OUT/ocr" --covers "$OUT/covers_raw" | tee "$OCR_LOG"
+"$OCR_PY" scripts/ocr_all.py --details "$OUT/details" --out "$OUT/ocr" --covers "$OUT/covers_raw" | tee "$OCR_LOG"
 OCR_LAST="$(tail -1 "$OCR_LOG")"
 python3 -c 'import json,sys; d=json.loads(sys.argv[1]); print("ocr ok=%s err=%s" % (d.get("ok"), d.get("err"))); sys.exit(1 if d.get("err") else 0)' "$OCR_LAST"
 rm -f "$OCR_LOG"
@@ -60,15 +60,18 @@ if target > now:
 PY
 
 python3 scripts/merge_jobs.py --base data/jobs.json --new "$OUT/jobs.json" --out data/jobs.json
-python3 scripts/build_site.py data/jobs.json docs/index.html --images-dir "$OUT/covers" --site-url "http://127.0.0.1:8000/"
+python3 scripts/build_site.py "$OUT/jobs.json" docs/index.html --images-dir "$OUT/covers" --site-url "http://127.0.0.1:8000/"
 python3 scripts/generate_readme.py data/jobs.json docs/JOBS.md
 python3 scripts/build_feed.py data/jobs.json docs/feed.xml "http://127.0.0.1:8000/"
-python3 scripts/update_readme_table.py --jobs data/jobs.json --readme README.md
+python3 scripts/update_readme_table.py --jobs "$OUT/jobs.json" --readme README.md
+python3 scripts/build_stats.py --jobs data/jobs.json --out data/stats.json
+python3 scripts/build_dashboard.py --stats data/stats.json --out docs/dashboard.html
+python3 scripts/update_readme_dashboard.py --stats data/stats.json --readme README.md
 
 # 发送今日邮件（Buttondown）
 if [ -f .secrets/buttondown.key ]; then
   export BUTTONDOWN_API_KEY="$(cat .secrets/buttondown.key)"
-  python3 scripts/send_digest.py --jobs data/jobs.json --since 1d --provider buttondown
+  python3 scripts/send_digest.py --jobs "$OUT/jobs.json" --since 1d --provider buttondown
 fi
 
 if [ "${DAILY_PUSH:-1}" = "1" ]; then

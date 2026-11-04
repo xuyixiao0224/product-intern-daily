@@ -26,6 +26,28 @@ class MCPClientTest(unittest.TestCase):
         with self.assertRaises(MCPError):
             parse_search_response("not json")
 
+class SearchLimitForwardingTest(unittest.TestCase):
+    def test_server_limit_and_filters(self):
+        from unittest.mock import patch
+        from product_intern_daily.mcp_client import MCPClient
+        client = MCPClient()
+        with patch.object(client, "call", return_value='{"feeds":[]}') as call:
+            client.search("产品实习", limit=100)
+        call.assert_called_once_with("search_feeds", {
+            "keyword": "产品实习", "limit": 100,
+            "filters": {"sort_by": "最新", "publish_time": "一天内", "note_type": "图文"},
+        }, timeout=120)
+
+    def test_limit_cap(self):
+        from unittest.mock import patch
+        from product_intern_daily.mcp_client import MCPClient
+        client = MCPClient()
+        with patch.object(client, "call", return_value='{"feeds":[]}') as call:
+            client.search("产品实习", limit=200)
+            self.assertEqual(call.call_args.args[1]["limit"], 100)
+        with self.assertRaises(ValueError):
+            client.search("产品实习", limit=0)
+
 
 if __name__ == "__main__":
     unittest.main()
