@@ -61,31 +61,12 @@
 | 帆软软件 | [产品经理实习生](https://www.xiaohongshu.com/explore/6aeae053000000001a015232?xsec_token=ABhfNWAHz2AdVoRaMEOAny8TNXbfpsQdRbQsCv2hHXmQY=&xsec_source=pc_search) | 无锡 | [rwm95p@163.com](mailto:rwm95p@163.com) | 在招 | 日常实习 |
 | 阿里巴巴 | [AI产品实习生](https://www.xiaohongshu.com/explore/6aeaea5e000000000301528d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z6Vr69UwIozL_6dStpy8FI=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6aeaea5e000000000301528d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z6Vr69UwIozL_6dStpy8FI=&xsec_source=pc_search) | 在招 | 日常实习 |
 
-<details>
-<summary>往期岗位（最近 10 / 共 16）</summary>
-
-| 公司 | 岗位 | Base | 投递 | 状态 | 转正 | 首次记录 |
-|---|---|---|---|---|---|---|
-| 快手 | [AI产品实习生](https://www.xiaohongshu.com/explore/6aeb0765000000001500aa6f?xsec_token=AButwP1qAvWuP5KFGRMiedlDw3VplYxAMDh3SA8GbIfVs=&xsec_source=pc_search) | 北京 | [zhanjinjin05@kuaishou.com](mailto:zhanjinjin05@kuaishou.com) | 在招 | 日常实习 | 2026-11-02 |
-| 快手 | [策略产品](https://www.xiaohongshu.com/explore/6ae9b790000000001e0171f2?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso1PnZ3FDBeHfq3agR3e2zhA=&xsec_source=pc_search) | 北京 | [yuanzheng03@kuaishou.com](mailto:yuanzheng03@kuaishou.com) | 待确认 | 日常实习 | 2026-11-03 |
-| 快手 | [AI产品实习生](https://www.xiaohongshu.com/explore/6ae9a7f10000000015020253?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso5jnN6x0ifit8RAyNxDkShE=&xsec_source=pc_search) | 北京 | [wujingyi10@kuaishou.com](mailto:wujingyi10@kuaishou.com) | 待确认 | 日常实习 | 2026-11-03 |
-| 爱奇艺 | [爱奇艺会员产品实习生](https://www.xiaohongshu.com/explore/6ae99e57000000000e00d732?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso4Q74XNF-gp6VVXIebnfiOY=&xsec_source=pc_search) | 待确认 | [liqinyuan@qiyi.com](mailto:liqinyuan@qiyi.com) | 待确认 | 日常实习 | 2026-11-03 |
-| 公司未注明 | [agent 产品实习生](https://www.xiaohongshu.com/explore/6ae9c1d3000000001401eb9d?xsec_token=ABzWbnm3n7ma9LlmX9s8Vsoxf3BLM-EcSl1gCAagUfJJE=&xsec_source=pc_search) | 远程 | [见原帖](https://www.xiaohongshu.com/explore/6ae9c1d3000000001401eb9d?xsec_token=ABzWbnm3n7ma9LlmX9s8Vsoxf3BLM-EcSl1gCAagUfJJE=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-03 |
-| 公司未注明 | [AI 产品实习生招聘（金融 AI](https://www.xiaohongshu.com/explore/6ae9ba16000000001402903d?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso0OIwx7bi2seg4X_A99wWcM=&xsec_source=pc_search) | 深圳 | [见原帖](https://www.xiaohongshu.com/explore/6ae9ba16000000001402903d?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso0OIwx7bi2seg4X_A99wWcM=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-03 |
-| 百度 | [产品运营岗找实习](https://www.xiaohongshu.com/explore/6ae9b559000000000e035c6a?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso6SG8AeyQfzLtjwEw3po_H0=&xsec_source=pc_search) | 北京 / 深圳 | [见原帖](https://www.xiaohongshu.com/explore/6ae9b559000000000e035c6a?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso6SG8AeyQfzLtjwEw3po_H0=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-03 |
-| 快手 | [直播流量策略产品](https://www.xiaohongshu.com/explore/6ae99d060000000003022139?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso4-oTjVu3YLEeiW4nV7wEeU=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6ae99d060000000003022139?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso4-oTjVu3YLEeiW4nV7wEeU=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-03 |
-| 小米 | [可穿戴部门软件产品实习生](https://www.xiaohongshu.com/explore/6ae9837a000000000602c0e4?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso6Jp8wQse2t8oco-98yUaVM=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6ae9837a000000000602c0e4?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso6Jp8wQse2t8oco-98yUaVM=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-03 |
-| 快手 | [直播流量策略产品找实习生](https://www.xiaohongshu.com/explore/6ae977d700000000030074d8?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso6dtzEvc2UtrpG6LaOJrppw=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6ae977d700000000030074d8?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso6dtzEvc2UtrpG6LaOJrppw=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-03 |
-
-[查看全部 16 条（分页） →](https://xuyixiao0224.github.io/product-intern-daily/history.html)
-
-</details>
+[查看全部 16 条 →](https://xuyixiao0224.github.io/product-intern-daily/history.html)
 <!-- JOBS:END -->
 
 <!-- DASHBOARD:START -->
-### 收录趋势
+### 岗位趋势
 
-绿色柱看新增，折线看积累。按日、周、月展开查看；周从周一开始。
 
 <details open>
 <summary>按日 · 最近 30 个记录日</summary>
