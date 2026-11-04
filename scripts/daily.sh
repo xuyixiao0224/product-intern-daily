@@ -46,7 +46,8 @@ OCR_LAST="$(tail -1 "$OCR_LOG")"
 python3 -c 'import json,sys; d=json.loads(sys.argv[1]); print("ocr ok=%s err=%s" % (d.get("ok"), d.get("err"))); sys.exit(1 if d.get("err") else 0)' "$OCR_LAST"
 rm -f "$OCR_LOG"
 OCR_DIR="$OUT/ocr" python3 scripts/heuristic_extract.py "$OUT/details" "$OUT/extractions.json"
-python3 scripts/build_seed_report.py --details "$OUT/details" --extractions "$OUT/extractions.json" --out "$OUT/jobs.json" --covers "$OUT/covers"
+python3 scripts/ai_review.py --details "$OUT/details" --extractions "$OUT/extractions.json" --ocr "$OUT/ocr" --out "$OUT/ai_review.json"
+python3 scripts/build_seed_report.py --details "$OUT/details" --extractions "$OUT/extractions.json" --out "$OUT/jobs.json" --covers "$OUT/covers" --ai "$OUT/ai_review.json"
 
 # 等到 20:00 再发布（README 表格 + 邮件 + push）
 python3 - <<'PY'

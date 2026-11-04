@@ -108,7 +108,7 @@ python run.py fetch candidates.json --out details --ocr
 python run.py extract --details details --out tasks.json --prepare
 
 # 让 Codex/DSH 按 prompts/extract.md 读 tasks.json，写 extractions.json
-# 每日自动任务默认用规则抽取；更复杂的公司/岗位判断再走这一步
+# 每日自动任务：规则初筛 + DeepSeek API 复核；Codex/DSH 可跑同一 prompt
 python run.py extract --import-file extractions.json --details details
 
 # 导出
@@ -124,6 +124,7 @@ python run.py export --format csv,html,json --out exports
 - **每日 3 个关键词**：产品实习、产品继任、互联网产品；不做 Base × 时间矩阵。
 - **投递方式**：邮箱、内推码、评论/图片/置顶评论里的邮箱，一键复制纯邮箱。
 - **状态与转正**：在招/无法确认、已截止；可转正/日常实习，带原话证据。
+- **AI 复核**：规则先筛邮箱/去重/硬过滤，AI 复核公司、岗位、产品岗、状态和转正。
 - **输出**：CSV、HTML、每日邮件；邮箱优先去重。
 
 ---
@@ -135,10 +136,14 @@ python run.py export --format csv,html,json --out exports
 `sort_by=最新` 会牺牲相关性；用 `publish_time=一天内/一周内/半年内` 先筛，再用 `note.time` 精确排序。  
 一次搜索约 20 条，没有 page/cursor，所以用少量关键词轮换，不堆同义词。
 
-### Agent 抽取
+### 规则 + AI 复核
 
-`extract --prepare` 生成 `tasks.json`，包含标题、正文、评论、OCR、图片和 schema。  
-Codex/DSH 按 [prompts/extract.md](prompts/extract.md) 输出严格 JSON；**不需要额外 LLM API Key**。
+规则层负责确定性工作：邮箱正则/清洗、去重、购买表格/面经/引流过滤、硬状态判断。  
+AI 层只复核规则不确定或所有“通过”的帖子：公司名、岗位清洗、是否产品岗、在招/转正；输出 JSON 后再由规则校验。
+
+- 自动任务用 DeepSeek API（`scripts/ai_review.py`）；
+- 也可以把同样的输入交给 Codex/DSH，按 [prompts/extract.md](prompts/extract.md) 输出；
+- 两者都走同一套 schema 和规则复核，AI 不能覆盖硬性否定（如“无转正”）。
 
 ### 去重与状态
 

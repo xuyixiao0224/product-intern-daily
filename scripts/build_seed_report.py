@@ -41,7 +41,7 @@ def image_list(detail):
 def is_product(pos, desc, title=""):
     low_title = (title or "").lower()
     low_pos = (pos or "").lower()
-    strong = ["产品经理", "产品实习", "产品运营", "产品策划", "策略产品", "ai产品", "产品助理", "产品岗", "产品实习生", "产运"]
+    strong = ["产品经理", "产品实习", "产品运营", "产品策划", "产品设计", "产品体验设计", "策略产品", "ai产品", "产品助理", "产品岗", "产品实习生", "产运"]
     if any(k in low_pos for k in strong):
         return True
     # 标题必须出现“产品”，否则大概率是泛招聘/无关帖
@@ -78,20 +78,28 @@ def main():
     ap.add_argument("--extractions", default="data/seed/extractions.json")
     ap.add_argument("--out", default="data/seed/jobs.json")
     ap.add_argument("--covers", default="data/seed/covers")
+    ap.add_argument("--ai", default="", help="AI review JSON; overrides rule verdict/fields")
     args = ap.parse_args()
     details_dir = Path(args.details); covers_dir = Path(args.covers); covers_dir.mkdir(parents=True, exist_ok=True)
     exs = json.loads(Path(args.extractions).read_text(encoding="utf-8"))
     if isinstance(exs, dict):
         exs = exs.get("extractions", [])
+    ai = {}
+    if args.ai and Path(args.ai).exists():
+        raw = json.loads(Path(args.ai).read_text(encoding="utf-8"))
+        ai = {x.get("post_id"): x for x in raw if isinstance(x, dict)}
     jobs = []
     for ex in exs:
         if not ex.get("is_job_post") or ex.get("closed") or not ex.get("post_id"):
             continue
-        pos = str(ex.get("position") or "")
+        a = ai.get(ex["post_id"]) or {}
+        if a and (a.get("verdict") != "通过" or not a.get("is_product")):
+            continue
+        pos = str(a.get("position") or ex.get("position") or "")
         detail = load_detail(details_dir / f"{ex['post_id']}.json")
         note = (detail.get("data") or {}).get("note") or {}
         desc = note.get("desc") or ex.get("description") or ""
-        if not is_product(pos, desc, note.get("title", "")):
+        if not a and not is_product(pos, desc, note.get("title", "")):
             continue
         urls = image_list(detail)
         ts = note.get("time")
@@ -105,22 +113,22 @@ def main():
             "first_seen_at": published,
             "title": note.get("title", ""),
             "description": desc,
-            "company": ex.get("company", ""),
+            "company": a.get("company") or ex.get("company", ""),
             "position": pos,
             "base_location": ex.get("base_location") or ex.get("location", ""),
             "location": ex.get("location", ""),
             "employment_type": ex.get("employment_type", ""),
             "salary": ex.get("salary", ""),
-            "email": emails(ex.get("email")),
-            "email_source": ex.get("email_source", ""),
+            "email": emails(a.get("email") or ex.get("email")),
+            "email_source": "AI复核" if a.get("email") else ex.get("email_source", ""),
             "comment_email": flat(ex.get("comment_email")),
             "contact": flat(ex.get("contact")),
             "referral_code": flat(ex.get("referral_code")),
-            "still_hiring": ex.get("still_hiring", "无法确认"),
-            "status_evidence": ex.get("status_evidence", ""),
+            "still_hiring": a.get("still_hiring") or ex.get("still_hiring", "无法确认"),
+            "status_evidence": a.get("reason") or ex.get("status_evidence", ""),
             "closed": bool(ex.get("closed")),
-            "convertible": bool(ex.get("convertible")),
-            "conversion_evidence": ex.get("conversion_evidence", ""),
+            "convertible": bool(a.get("convertible")) if a else bool(ex.get("convertible")),
+            "conversion_evidence": a.get("reason") if a else ex.get("conversion_evidence", ""),
             "excluded_reason": ex.get("excluded_reason", ""),
             "confidence": ex.get("confidence", 0),
             "dedup_key": "email:" + flat(ex.get("email")).split(";")[0].strip() if ex.get("email") else "note:" + ex["post_id"],

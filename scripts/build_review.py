@@ -4,7 +4,7 @@ import argparse, csv, html, json, re, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-STRONG = ["产品经理", "产品实习", "产品运营", "产品策划", "策略产品", "ai产品", "产品助理", "产品岗", "产品实习生", "产运"]
+STRONG = ["产品经理", "产品实习", "产品运营", "产品策划", "产品设计", "产品体验设计", "策略产品", "ai产品", "产品助理", "产品岗", "产品实习生", "产运"]
 
 
 def esc(s):
