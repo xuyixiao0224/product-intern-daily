@@ -41,7 +41,7 @@ def image_list(detail):
 def is_product(pos, desc, title=""):
     low_title = (title or "").lower()
     low_pos = (pos or "").lower()
-    strong = ["产品经理", "产品实习", "产品运营", "产品策划", "产品设计", "产品体验设计", "策略产品", "ai产品", "产品助理", "产品岗", "产品实习生", "产运"]
+    strong = ["产品经理", "产品实习", "产品运营", "产品策划", "产品设计", "产品体验设计", "策略产品", "ai产品", "产品助理", "产品岗", "产品实习生", "产运", "商品企划", "商品策略", "merchandising", "vm", "陈列"]
     if any(k in low_pos for k in strong):
         return True
     # 标题必须出现“产品”，否则大概率是泛招聘/无关帖
