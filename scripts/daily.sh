@@ -22,7 +22,7 @@ GIT="${GIT:-git}"
 ROOT="$(cd ../.. && pwd)"
 MCP_BIN="$ROOT/work/xhs-mcp-src/xiaohongshu-mcp-patched"
 if ! lsof -nP -iTCP:18060 -sTCP:LISTEN >/dev/null 2>&1; then
-  (HOME="$ROOT/.xhs-home" nohup "$MCP_BIN" > /tmp/xhs-mcp-daily.log 2>&1 &)
+  (HOME="$ROOT/.xhs-home" nohup "$MCP_BIN" -headless > /tmp/xhs-mcp-daily.log 2>&1 &)
   sleep 6
 fi
 DAY="$(date +%F)"
