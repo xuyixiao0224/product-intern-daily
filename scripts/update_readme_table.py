@@ -80,8 +80,13 @@ def render_jobs_block(jobs, report_date=None):
     lines = [START, "## 岗位追踪", "", f"**最新一期 · {day}**　按首次记录分期，旧岗位更新不重复计入新增。", "",
              f"### 本期新增 · {len(current)}", ""]
     lines.append(render_table(current) if current else "本期暂无未截止的新增岗位。")
-    lines += ["", "<details>", "<summary>往期岗位</summary>", "",
-              render_table(previous, include_date=True) if previous else "暂无往期岗位。", "", "</details>"]
+    preview = previous[:10]
+    summary = f"往期岗位（最近 {len(preview)} / 共 {len(previous)}）" if previous else "往期岗位"
+    lines += ["", "<details>", f"<summary>{summary}</summary>", "",
+              render_table(preview, include_date=True) if preview else "暂无往期岗位。", ""]
+    if len(previous) > len(preview):
+        lines += [f"[查看全部 {len(previous)} 条（分页） →](https://xuyixiao0224.github.io/product-intern-daily/history.html)", ""]
+    lines += ["</details>"]
     if closed:
         lines += ["", "<details>", f"<summary>已截止归档 · {len(closed)} 条</summary>", "", render_table(closed, include_date=True), "", "</details>"]
     current_closed = sum(recorded_date(j) == day for j in closed)
