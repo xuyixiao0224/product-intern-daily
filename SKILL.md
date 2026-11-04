@@ -1,9 +1,9 @@
 ---
 name: product-intern-daily
-description: 用本地 xiaohongshu-mcp 搜索小红书招聘帖，拉正文/全部图片/评论/置顶评论，由当前 Agent 自己抽取公司、岗位、Base、邮箱、内推码、发布时间和在招状态，并按邮箱去重导出 CSV/HTML。不调用额外大模型 API Key，不使用收费 OCR。
+description: 用本地 xiaohongshu-mcp 搜索小红书招聘帖，拉正文/全部图片/评论/置顶评论，由当前 Agent 自己抽取公司、岗位、Base、邮箱、内推码、发布时间和在招状态，并按邮箱去重导出 CSV/HTML。手动模式由当前 Agent 抽取，不强制 API Key；自动任务可走 CLI + OpenAI-compatible API。
 ---
 
-# product-intern-daily（DSH / Codex）
+# product-intern-daily（Codex / Claude Code / API）
 
 ## 前置
 

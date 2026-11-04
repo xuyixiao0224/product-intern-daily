@@ -21,7 +21,7 @@ product-intern-daily CLI
 
 ## 为什么不做全自动 LLM API
 
-- 默认让当前 Agent 抽取，避免 API Key 和费用；
+- 默认让当前 Agent 通过 CLI 抽取；自动任务可改用 OpenAI-compatible API（DeepSeek/本地模型）。
 - 需要批量时，用户可自己接 API，但项目不绑定供应商。
 
 ## 评论图片

@@ -2,7 +2,7 @@
 
 > **找产品实习，只用看这个。**
 >
-> **每日更新，免费邮箱订阅。** 可作为 Codex/Claude Code 的本地工具（CLI）调用，也可自部署、自行修改搜索逻辑。岗位来源：小红书。
+> **每日更新，免费邮箱订阅。** 本地自部署走 **CLI 或 API**；可用 Codex/Claude Code 通过 CLI 调用。岗位来源：小红书。
 
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-PolyForm%20Noncommercial-orange)](LICENSE)
@@ -70,6 +70,15 @@
 <!-- JOBS:END -->
 
 ## 快速开始
+
+### 本地自部署：CLI 或 API
+
+本地自部署只有两种方式，不要混：
+
+1. **CLI**：`python run.py search / fetch / extract / export`，由你或本地 Agent（Codex/Claude Code）执行；
+2. **API**：`scripts/ai_review.py` 调用 OpenAI-compatible endpoint（DeepSeek、本地 Ollama 等）。
+
+这不是 MCP 服务，也不依赖 DSH。Codex/Claude Code 的作用是通过 shell 调 CLI，不是另一种部署方式。
 
 这个项目做三件事：
 
