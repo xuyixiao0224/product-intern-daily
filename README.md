@@ -62,9 +62,7 @@
 | 阿里巴巴 | [AI产品实习生](https://www.xiaohongshu.com/explore/6aeaea5e000000000301528d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z6Vr69UwIozL_6dStpy8FI=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6aeaea5e000000000301528d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z6Vr69UwIozL_6dStpy8FI=&xsec_source=pc_search) | 在招 | 日常实习 |
 
 <details>
-<summary>往期岗位 · 16 条未标记截止，展开继续找</summary>
-
-此前收录、尚未标记截止的岗位。状态为「待确认」时，请先向招聘方核实。
+<summary>往期岗位</summary>
 
 | 公司 | 岗位 | Base | 投递 | 状态 | 转正 | 首次记录 |
 |---|---|---|---|---|---|---|

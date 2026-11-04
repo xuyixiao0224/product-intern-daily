@@ -69,7 +69,7 @@ python3 scripts/update_readme_table.py --jobs data/jobs.json --report-date "$REP
 python3 scripts/build_stats.py --jobs data/jobs.json --report-date "$REPORT_DAY" --out data/stats.json
 python3 scripts/build_readme_charts.py --stats data/stats.json --out docs/assets
 python3 scripts/build_dashboard.py --stats data/stats.json --out docs/dashboard.html
-python3 scripts/build_history.py --jobs data/jobs.json --out docs/HISTORY.md
+python3 scripts/build_history.py --jobs data/jobs.json --out docs/HISTORY.md --html docs/history.html
 python3 scripts/update_readme_dashboard.py --stats data/stats.json --readme README.md
 
 # 发送今日邮件（Buttondown）

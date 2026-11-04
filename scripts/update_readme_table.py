@@ -80,8 +80,7 @@ def render_jobs_block(jobs, report_date=None):
     lines = [START, "## 岗位追踪", "", f"**最新一期 · {day}**　按首次记录分期，旧岗位更新不重复计入新增。", "",
              f"### 本期新增 · {len(current)}", ""]
     lines.append(render_table(current) if current else "本期暂无未截止的新增岗位。")
-    lines += ["", "<details>", f"<summary>往期岗位 · {len(previous)} 条未标记截止，展开继续找</summary>", "",
-              "此前收录、尚未标记截止的岗位。状态为「待确认」时，请先向招聘方核实。", "",
+    lines += ["", "<details>", "<summary>往期岗位</summary>", "",
               render_table(previous, include_date=True) if previous else "暂无往期岗位。", "", "</details>"]
     if closed:
         lines += ["", "<details>", f"<summary>已截止归档 · {len(closed)} 条</summary>", "", render_table(closed, include_date=True), "", "</details>"]
