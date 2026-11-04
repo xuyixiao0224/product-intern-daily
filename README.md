@@ -75,7 +75,7 @@
 
 本地自部署两种方式：
 
-1. **CLI**：`python run.py search / fetch / extract / export`，由你或本地 Agent（Codex/Claude Code）执行；
+1. **CLI**：`python run.py search / fetch / extract / export`，由你或本地 Agent（Claude Code/DSH/Codex）执行；
 2. **API**：`scripts/ai_review.py` 调用 OpenAI-compatible endpoint（DeepSeek、本地 Ollama 等）。
 
 CLI 可由 Claude Code / DSH / Codex 通过 shell 调用；也可以直接用 API。
@@ -116,8 +116,8 @@ python run.py search --keyword "产品实习" --keyword "产品继任" --keyword
 python run.py fetch candidates.json --out details --ocr
 python run.py extract --details details --out tasks.json --prepare
 
-# 让 Codex/Claude Code 按 prompts/extract.md 读 tasks.json，写 extractions.json
-# 每日自动任务：规则初筛 + DeepSeek API 复核；Codex/Claude Code 可跑同一 prompt
+# 让 Claude Code/DSH/Codex 按 prompts/extract.md 读 tasks.json，写 extractions.json
+# 每日自动任务：规则初筛 + DeepSeek API 复核；Claude Code/DSH/Codex 可跑同一 prompt
 python run.py extract --import-file extractions.json --details details
 
 # 导出
@@ -151,7 +151,7 @@ python run.py export --format csv,html,json --out exports
 AI 层只复核规则不确定或所有“通过”的帖子：公司名、岗位清洗、是否产品岗、在招/转正；输出 JSON 后再由规则校验。
 
 - 自动任务用 DeepSeek API（`scripts/ai_review.py`）；
-- 也可以把同样的输入交给 Codex/Claude Code，按 [prompts/extract.md](prompts/extract.md) 输出；
+- 也可以把同样的输入交给 Claude Code/DSH/Codex，按 [prompts/extract.md](prompts/extract.md) 输出；
 - 两者都走同一套 schema 和规则复核，AI 不能覆盖硬性否定（如“无转正”）。
 
 ### 去重与状态
