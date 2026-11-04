@@ -55,7 +55,7 @@ def select(jobs, since, limit):
             cutoff = (datetime.now().astimezone() - timedelta(days=int(since[:-1]))).isoformat()
         jobs = [j for j in jobs if str(j.get("published_at", "")) >= cutoff]
     jobs = [j for j in jobs if not j.get("closed")]
-    jobs.sort(key=lambda j: str(j.get("published_at", "")), reverse=True)
+    jobs.sort(key=lambda j: (bool(emails(j.get("email")) or str(j.get("contact") or "").strip()), str(j.get("published_at", ""))), reverse=True)
     return jobs[:limit]
 
 

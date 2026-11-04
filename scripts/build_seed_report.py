@@ -96,18 +96,18 @@ def main():
             canonical[ai_key(x)] = x
     jobs = []
     for ex in exs:
-        if not ex.get("is_job_post") or ex.get("closed") or not ex.get("post_id"):
+        if not ex.get("post_id"):
             continue
         a = ai.get(ex["post_id"]) or {}
         if a and a.get("verdict") != "通过":
             a = canonical.get(ai_key(a)) or a
-        if a and (a.get("verdict") != "通过" or not a.get("is_product")):
+        if a:
+            if a.get("verdict") != "通过" or not a.get("is_product"):
+                continue
+        elif not ex.get("is_job_post") or ex.get("closed"):
             continue
-        # AI 通过但没有任何投递方式：不进入日报（避免“只发岗位不留入口”）
-        if a and not a.get("email") and not flat(ex.get("contact")) and not any(
-            k in (ex.get("description") or "") for k in ("私信", "扫码", "简历发", "发简历", "联系", "邮箱")
-        ):
-            continue
+        # 注意：无投递方式本身不排除；只有“无投递方式 + 作者其他笔记大量不同公司”才排除。
+        # 作者主页数据目前不在本地 53 条里，因此这里不做硬排除。
         pos = str(a.get("position") or ex.get("position") or "")
         detail = load_detail(details_dir / f"{ex['post_id']}.json")
         note = (detail.get("data") or {}).get("note") or {}
@@ -139,7 +139,7 @@ def main():
             "referral_code": flat(ex.get("referral_code")),
             "still_hiring": a.get("still_hiring") or ex.get("still_hiring", "无法确认"),
             "status_evidence": a.get("reason") or ex.get("status_evidence", ""),
-            "closed": bool(ex.get("closed")),
+            "closed": False if a else bool(ex.get("closed")),
             "convertible": bool(a.get("convertible")) if a else bool(ex.get("convertible")),
             "conversion_evidence": a.get("reason") if a else ex.get("conversion_evidence", ""),
             "excluded_reason": ex.get("excluded_reason", ""),
@@ -149,6 +149,7 @@ def main():
             "cover": cover(ex["post_id"], urls, covers_dir),
             "comments": flatten_comments(detail),
         })
+    jobs.sort(key=lambda x: (bool(x.get("email") or x.get("contact")), str(x.get("published_at") or "")), reverse=True)
     Path(args.out).write_text(json.dumps({"count": len(jobs), "jobs": jobs}, ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps({"jobs": len(jobs), "with_email": sum(1 for j in jobs if j.get("email")), "active": sum(1 for j in jobs if j.get("still_hiring") == "在招"), "out": args.out}, ensure_ascii=False))
 
