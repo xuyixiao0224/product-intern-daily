@@ -88,11 +88,19 @@ def main():
     if args.ai and Path(args.ai).exists():
         raw = json.loads(Path(args.ai).read_text(encoding="utf-8"))
         ai = {x.get("post_id"): x for x in raw if isinstance(x, dict)}
+    def ai_key(x):
+        return (str(x.get("company") or "").strip().lower(), str(x.get("position") or "").strip().lower())
+    canonical = {}
+    for x in ai.values():
+        if x.get("verdict") == "通过" and all(ai_key(x)):
+            canonical[ai_key(x)] = x
     jobs = []
     for ex in exs:
         if not ex.get("is_job_post") or ex.get("closed") or not ex.get("post_id"):
             continue
         a = ai.get(ex["post_id"]) or {}
+        if a and a.get("verdict") != "通过":
+            a = canonical.get(ai_key(a)) or a
         if a and (a.get("verdict") != "通过" or not a.get("is_product")):
             continue
         # AI 通过但没有任何投递方式：不进入日报（避免“只发岗位不留入口”）
