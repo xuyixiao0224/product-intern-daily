@@ -47,7 +47,7 @@
 ---
 
 <!-- JOBS:START -->
-## 在招岗位（16）
+## 在招岗位（14）
 
 | 公司 | 岗位 | Base | 投递 | 转正 | 发布 |
 |---|---|---|---|---|---|
@@ -59,8 +59,6 @@
 | 帆软软件 | [产品经理实习生](https://www.xiaohongshu.com/explore/6aeae053000000001a015232?xsec_token=ABhfNWAHz2AdVoRaMEOAny8TNXbfpsQdRbQsCv2hHXmQY=&xsec_source=pc_search) | 无锡 | [rwm95p@163.com](mailto:rwm95p@163.com) · [见原帖](https://www.xiaohongshu.com/explore/6aeae053000000001a015232?xsec_token=ABhfNWAHz2AdVoRaMEOAny8TNXbfpsQdRbQsCv2hHXmQY=&xsec_source=pc_search) | 日常实习 | 2026-11-04 |
 | 乐高(LEGO) | [产品设计实习生](https://www.xiaohongshu.com/explore/6aeb1e5b0000000015008433?xsec_token=AButwP1qAvWuP5KFGRMiedlC2nmmxseFAzTSur-1fBgVQ=&xsec_source=pc_search) | 深圳 | [见原帖](https://www.xiaohongshu.com/explore/6aeb1e5b0000000015008433?xsec_token=AButwP1qAvWuP5KFGRMiedlC2nmmxseFAzTSur-1fBgVQ=&xsec_source=pc_search) | 日常实习 | 2026-11-04 |
 | 腾讯 | [产品设计实习生](https://www.xiaohongshu.com/explore/6aeb1e4c000000000e00d9e6?xsec_token=AButwP1qAvWuP5KFGRMiedlMBC0_kqdqP3e21T8Dtlwlw=&xsec_source=pc_search) | 深圳 | [见原帖](https://www.xiaohongshu.com/explore/6aeb1e4c000000000e00d9e6?xsec_token=AButwP1qAvWuP5KFGRMiedlMBC0_kqdqP3e21T8Dtlwlw=&xsec_source=pc_search) | 日常实习 | 2026-11-04 |
-| 特斯拉 | [产品运营实习生](https://www.xiaohongshu.com/explore/6aeb18360000000019003b57?xsec_token=AButwP1qAvWuP5KFGRMiedlIZIZ6DT8QygPTxWlPBk-q0=&xsec_source=pc_search) | 北京、上海、广州、深圳、南京、武汉、郑州、西安、成都、重庆、昆明、贵阳、南宁、海口、三亚、佛山、东莞、南昌、长沙、福州、厦门、泉州、杭州、宁波、温州、无锡、苏州、济南、青岛、大连、合肥、哈尔滨、沈阳、长春、西宁、烟台等多城 | [见原帖](https://www.xiaohongshu.com/explore/6aeb18360000000019003b57?xsec_token=AButwP1qAvWuP5KFGRMiedlIZIZ6DT8QygPTxWlPBk-q0=&xsec_source=pc_search) | 可转正 | 2026-11-04 |
-| 字节跳动 | [产品经理实习生](https://www.xiaohongshu.com/explore/6aeaf9db0000000003017def?xsec_token=ABhfNWAHz2AdVoRaMEOAny8SY6nf_jo7f1q0NZUmk6tbk=&xsec_source=pc_search) | 北京、上海、杭州、广州、深圳、成都、南京 | [见原帖](https://www.xiaohongshu.com/explore/6aeaf9db0000000003017def?xsec_token=ABhfNWAHz2AdVoRaMEOAny8SY6nf_jo7f1q0NZUmk6tbk=&xsec_source=pc_search) | 日常实习 | 2026-11-04 |
 | 绿联科技 | [产品经理](https://www.xiaohongshu.com/explore/6aeae42300000000150229d5?xsec_token=ABhfNWAHz2AdVoRaMEOAny8SavAp9wUUOoUglzIfzhGaI=&xsec_source=pc_search) | 深圳 | [见原帖](https://www.xiaohongshu.com/explore/6aeae42300000000150229d5?xsec_token=ABhfNWAHz2AdVoRaMEOAny8SavAp9wUUOoUglzIfzhGaI=&xsec_source=pc_search) | 可转正 | 2026-11-04 |
 | 泡泡玛特 | [产品运营实习](https://www.xiaohongshu.com/explore/6aeaf2bd000000001a015b1f?xsec_token=ABhfNWAHz2AdVoRaMEOAny8S2ZHfESKIbWrap2tl2LEps=&xsec_source=pc_search) | 全国多城 | [见原帖](https://www.xiaohongshu.com/explore/6aeaf2bd000000001a015b1f?xsec_token=ABhfNWAHz2AdVoRaMEOAny8S2ZHfESKIbWrap2tl2LEps=&xsec_source=pc_search) | 可转正 | 2026-11-04 |
 | 洋葱学园 | [课程交付实习生（动画刷古文项目）](https://www.xiaohongshu.com/explore/6aeaee84000000000300ad8d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z3iRmOQAWAhVn7s4YV2QJE=&xsec_source=pc_search) | 北京 / 深圳 | [见原帖](https://www.xiaohongshu.com/explore/6aeaee84000000000300ad8d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z3iRmOQAWAhVn7s4YV2QJE=&xsec_source=pc_search) | 日常实习 | 2026-11-04 |
@@ -74,10 +72,10 @@
 
 | 指标 | 数值 |
 |---|---:|
-| 今日新增 | 16 |
-| 历史累计 | 31 |
+| 今日新增 | 14 |
+| 历史累计 | 30 |
 | 当前在招 | 11 |
-| 可转正 | 6 |
+| 可转正 | 5 |
 | 有邮箱 | 9 |
 
 [打开交互看板（日/周/月） →](https://xuyixiao0224.github.io/product-intern-daily/dashboard.html) · [查看历史池](docs/HISTORY.md)
