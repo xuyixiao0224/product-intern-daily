@@ -97,7 +97,7 @@ def main():
             continue
         # AI 通过但没有任何投递方式：不进入日报（避免“只发岗位不留入口”）
         if a and not a.get("email") and not flat(ex.get("contact")) and not any(
-            k in (ex.get("description") or "") for k in ("投递", "私信", "简历", "联系", "邮箱", "扫码")
+            k in (ex.get("description") or "") for k in ("私信", "扫码", "简历发", "发简历", "联系", "邮箱")
         ):
             continue
         pos = str(a.get("position") or ex.get("position") or "")
