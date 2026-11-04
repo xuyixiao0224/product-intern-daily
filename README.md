@@ -2,7 +2,7 @@
 
 > **找产品实习，只用看这个。**
 >
-> **每日更新，免费邮箱订阅。** 可作为 Codex/DSH 的本地工具（CLI）调用，也可自部署、自行修改搜索逻辑。岗位来源：小红书。
+> **每日更新，免费邮箱订阅。** 可作为 Codex/Claude Code 的本地工具（CLI）调用，也可自部署、自行修改搜索逻辑。岗位来源：小红书。
 
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-PolyForm%20Noncommercial-orange)](LICENSE)
@@ -107,8 +107,8 @@ python run.py search --keyword "产品实习" --keyword "产品继任" --keyword
 python run.py fetch candidates.json --out details --ocr
 python run.py extract --details details --out tasks.json --prepare
 
-# 让 Codex/DSH 按 prompts/extract.md 读 tasks.json，写 extractions.json
-# 每日自动任务：规则初筛 + DeepSeek API 复核；Codex/DSH 可跑同一 prompt
+# 让 Codex/Claude Code 按 prompts/extract.md 读 tasks.json，写 extractions.json
+# 每日自动任务：规则初筛 + DeepSeek API 复核；Codex/Claude Code 可跑同一 prompt
 python run.py extract --import-file extractions.json --details details
 
 # 导出
@@ -142,7 +142,7 @@ python run.py export --format csv,html,json --out exports
 AI 层只复核规则不确定或所有“通过”的帖子：公司名、岗位清洗、是否产品岗、在招/转正；输出 JSON 后再由规则校验。
 
 - 自动任务用 DeepSeek API（`scripts/ai_review.py`）；
-- 也可以把同样的输入交给 Codex/DSH，按 [prompts/extract.md](prompts/extract.md) 输出；
+- 也可以把同样的输入交给 Codex/Claude Code，按 [prompts/extract.md](prompts/extract.md) 输出；
 - 两者都走同一套 schema 和规则复核，AI 不能覆盖硬性否定（如“无转正”）。
 
 ### 去重与状态
