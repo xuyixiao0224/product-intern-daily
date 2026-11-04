@@ -15,6 +15,7 @@ for i,r in enumerate(rows,1):
         'ai_company': a.get('company') or '',
         'ai_position': a.get('position') or '',
         'ai_email': a.get('email') or '',
+        'ai_base': a.get('base') or '',
         'ai_hiring': a.get('still_hiring') or '',
         'ai_reason': a.get('reason') or '',
         'ai_confidence': a.get('confidence',''),
@@ -24,7 +25,7 @@ with (BASE/'2026-11-04-ai.csv').open('w',newline='',encoding='utf-8-sig') as f:
     w=csv.DictWriter(f,fieldnames=list(out[0])); w.writeheader(); w.writerows(out)
 trs='\n'.join(
     f"<tr class='{e(r['ai_verdict'])}'><td>{i}</td><td><b>{e(r['ai_company'] or r['company'] or '公司未注明')}</b><br>{e(r['ai_position'] or r['position'] or r['title'])}</td>"
-    f"<td>{e(r['base'])}<br><small>{e(r['ai_hiring'])} · {e(r['convertible'])}</small></td>"
+    f"<td>{e(r['ai_base'] or r['base'])}<br><small>{e(r['ai_hiring'])} · {e(r['convertible'])}</small></td>"
     f"<td>{e(r['ai_email'] or r['email'] or '—')}</td><td>{e(r['ocr'])}</td>"
     f"<td><b>规则：{e(r['verdict'])}</b><br><small>{e(r['reason'])}</small><hr><b>AI：{e(r['ai_verdict'])}</b><br><small>{e(r['ai_reason'])}</small></td>"
     f"<td><a href='{e(r['url'])}' target='_blank'>原帖</a><br><small>{e(r['desc'])}</small></td></tr>"
