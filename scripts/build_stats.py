@@ -9,6 +9,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--jobs", default="data/jobs.json")
     ap.add_argument("--out", default="data/stats.json")
+    ap.add_argument("--today-jobs", default="")
     args = ap.parse_args()
     data = json.loads(Path(args.jobs).read_text(encoding="utf-8"))
     jobs = data.get("jobs", []) if isinstance(data, dict) else data
@@ -30,6 +31,9 @@ def main():
             "convertible": sum(1 for x in items if x.get("convertible")),
             "email": sum(1 for x in items if x.get("email")),
         })
+    if args.today_jobs and Path(args.today_jobs).exists():
+        t=json.loads(Path(args.today_jobs).read_text(encoding='utf-8')).get('jobs',[])
+        if rows: rows[-1]['new']=len(t)
     out = {
         "generated_at": datetime.now().astimezone().isoformat(timespec="seconds"),
         "total": len(jobs),

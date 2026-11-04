@@ -64,8 +64,9 @@ python3 scripts/build_site.py "$OUT/jobs.json" docs/index.html --images-dir "$OU
 python3 scripts/generate_readme.py data/jobs.json docs/JOBS.md
 python3 scripts/build_feed.py data/jobs.json docs/feed.xml "http://127.0.0.1:8000/"
 python3 scripts/update_readme_table.py --jobs "$OUT/jobs.json" --readme README.md
-python3 scripts/build_stats.py --jobs data/jobs.json --out data/stats.json
+python3 scripts/build_stats.py --jobs data/jobs.json --today-jobs "$OUT/jobs.json" --out data/stats.json
 python3 scripts/build_dashboard.py --stats data/stats.json --out docs/dashboard.html
+python3 scripts/build_history.py --jobs data/jobs.json --out docs/HISTORY.md
 python3 scripts/update_readme_dashboard.py --stats data/stats.json --readme README.md
 
 # 发送今日邮件（Buttondown）

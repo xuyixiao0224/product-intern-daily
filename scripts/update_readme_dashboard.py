@@ -16,7 +16,7 @@ def main():
 | 可转正 | {s.get('convertible',0)} |
 | 有邮箱 | {s.get('with_email',0)} |
 
-[打开交互看板（日/周/月） →](https://xuyixiao0224.github.io/product-intern-daily/dashboard.html)
+[打开交互看板（日/周/月） →](https://xuyixiao0224.github.io/product-intern-daily/dashboard.html) · [查看历史池](docs/HISTORY.md)
 
 **历史池 vs 今日新增**：GitHub 表格只列今日新增；`data/jobs.json` 是历史池，已截止会保留但不再出现在今日表；看板展示历史趋势。
 {END}'''

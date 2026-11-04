@@ -35,7 +35,7 @@ header{{background:#fff;border-bottom:1px solid var(--line)}}.wrap{{max-width:11
 <div class="tabs"><button data-mode="day" class="on">每日</button><button data-mode="week">每周</button><button data-mode="month">每月</button></div>
 <div class="panel"><div class="bars" id="bars"></div></div>
 <div class="panel"><table><thead><tr><th>日期</th><th>新增</th><th>累计</th><th>在招</th><th>可转正</th><th>有邮箱</th></tr></thead><tbody id="rows"></tbody></table></div>
-<p><a href="https://github.com/xuyixiao0224/product-intern-daily">返回 GitHub</a> · <a href="subscribe.html">订阅每日邮件</a></p>
+<p><a href="https://github.com/xuyixiao0224/product-intern-daily/blob/main/docs/HISTORY.md">历史池</a> · <a href="https://github.com/xuyixiao0224/product-intern-daily">返回 GitHub</a> · <a href="subscribe.html">订阅每日邮件</a></p>
 </main><script>
 const DATA={data};
 const $=id=>document.getElementById(id);

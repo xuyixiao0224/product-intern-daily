@@ -20,9 +20,9 @@ header{background:#fff;border-bottom:1px solid var(--line)}.wrap{max-width:1100p
 <div class="tabs"><button data-mode="day" class="on">每日</button><button data-mode="week">每周</button><button data-mode="month">每月</button></div>
 <div class="panel"><div class="bars" id="bars"></div></div>
 <div class="panel"><table><thead><tr><th>日期</th><th>新增</th><th>累计</th><th>在招</th><th>可转正</th><th>有邮箱</th></tr></thead><tbody id="rows"></tbody></table></div>
-<p><a href="https://github.com/xuyixiao0224/product-intern-daily">返回 GitHub</a> · <a href="subscribe.html">订阅每日邮件</a></p>
+<p><a href="https://github.com/xuyixiao0224/product-intern-daily/blob/main/docs/HISTORY.md">历史池</a> · <a href="https://github.com/xuyixiao0224/product-intern-daily">返回 GitHub</a> · <a href="subscribe.html">订阅每日邮件</a></p>
 </main><script>
-const DATA={"generated_at": "2026-11-04T21:31:23+08:00", "total": 31, "active": 11, "closed": 0, "convertible": 6, "with_email": 9, "by_date": [{"date": "2026-11-02", "new": 3, "total": 3, "active": 1, "convertible": 0, "email": 1}, {"date": "2026-11-03", "new": 13, "total": 16, "active": 1, "convertible": 1, "email": 4}, {"date": "2026-11-04", "new": 15, "total": 31, "active": 9, "convertible": 5, "email": 4}]};
+const DATA={"generated_at": "2026-11-04T21:48:35+08:00", "total": 31, "active": 11, "closed": 0, "convertible": 6, "with_email": 9, "by_date": [{"date": "2026-11-02", "new": 3, "total": 3, "active": 1, "convertible": 0, "email": 1}, {"date": "2026-11-03", "new": 13, "total": 16, "active": 1, "convertible": 1, "email": 4}, {"date": "2026-11-04", "new": 16, "total": 31, "active": 9, "convertible": 5, "email": 4}]};
 const $=id=>document.getElementById(id);
 $('total').textContent=DATA.total;$('active').textContent=DATA.active;$('conv').textContent=DATA.convertible;
 $('new').textContent=(DATA.by_date.at(-1)||{}).new||0;
