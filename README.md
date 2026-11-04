@@ -143,7 +143,7 @@ python run.py export --format csv,html,json --out exports
 ### 搜索与时间
 
 `sort_by=最新` 会牺牲相关性；用 `publish_time=一天内/一周内/半年内` 先筛，再用 `note.time` 精确排序。  
-一次搜索约 20 条，没有 page/cursor，所以用少量关键词轮换，不堆同义词。
+搜索接口按 `page=1…N`、`page_size=20` 返回；patched MCP 会滚动等待 `/api/sns/web/v2/search/notes` 响应并合并多页，单关键词最多 100 条。
 
 ### 规则 + AI 复核
 

@@ -1,0 +1,965 @@
+--- a/mcp_server.go
++++ b/mcp_server.go
+@@ -42,8 +42,10 @@
+ 
+ // SearchFeedsArgs 搜索内容的参数
+ type SearchFeedsArgs struct {
+-	Keyword string       `json:"keyword" jsonschema:"搜索关键词"`
+-	Filters FilterOption `json:"filters,omitempty" jsonschema:"筛选选项"`
++	Keyword  string       `json:"keyword" jsonschema:"搜索关键词"`
++	Limit    int          `json:"limit,omitempty" jsonschema:"最多返回的唯一笔记数，默认20，最大100"`
++	MaxPages int          `json:"max_pages,omitempty" jsonschema:"最多加载的结果页数（含第一页），默认8，最大10"`
++	Filters  FilterOption `json:"filters,omitempty" jsonschema:"筛选选项"`
+ }
+ 
+ // FilterOption 筛选选项结构体
+--- a/mcp_handlers.go
++++ b/mcp_handlers.go
+@@ -317,7 +317,7 @@
+ 		Location:    args.Filters.Location,
+ 	}
+ 
+-	result, err := s.xiaohongshuService.SearchFeeds(ctx, args.Keyword, filter)
++	result, err := s.xiaohongshuService.SearchFeeds(ctx, args.Keyword, xiaohongshu.SearchOptions{Limit: args.Limit, MaxPages: args.MaxPages}, filter)
+ 	if err != nil {
+ 		return &MCPToolResult{
+ 			Content: []MCPContent{{
+--- a/service.go
++++ b/service.go
+@@ -391,7 +391,7 @@
+ 	return response, nil
+ }
+ 
+-func (s *XiaohongshuService) SearchFeeds(ctx context.Context, keyword string, filters ...xiaohongshu.FilterOption) (*FeedsListResponse, error) {
++func (s *XiaohongshuService) SearchFeeds(ctx context.Context, keyword string, options xiaohongshu.SearchOptions, filters ...xiaohongshu.FilterOption) (*FeedsListResponse, error) {
+ 	b := newBrowser()
+ 	defer b.Close()
+ 
+@@ -400,7 +400,7 @@
+ 
+ 	action := xiaohongshu.NewSearchAction(page)
+ 
+-	feeds, err := action.Search(ctx, keyword, filters...)
++	feeds, err := action.Search(ctx, keyword, options, filters...)
+ 	if err != nil {
+ 		return nil, err
+ 	}
+--- a/handlers_api.go
++++ b/handlers_api.go
+@@ -138,6 +138,7 @@
+ func (s *AppServer) searchFeedsHandler(c *gin.Context) {
+ 	var keyword string
+ 	var filters xiaohongshu.FilterOption
++	var options xiaohongshu.SearchOptions
+ 
+ 	switch c.Request.Method {
+ 	case http.MethodPost:
+@@ -150,8 +151,13 @@
+ 		}
+ 		keyword = searchReq.Keyword
+ 		filters = searchReq.Filters
++		options = xiaohongshu.SearchOptions{Limit: searchReq.Limit, MaxPages: searchReq.MaxPages}
+ 	default:
+ 		keyword = c.Query("keyword")
++		if err := c.ShouldBindQuery(&options); err != nil {
++			respondError(c, http.StatusBadRequest, "INVALID_REQUEST", "请求参数错误", err.Error())
++			return
++		}
+ 	}
+ 
+ 	if keyword == "" {
+@@ -160,7 +166,7 @@
+ 		return
+ 	}
+ 
+-	result, err := s.xiaohongshuService.SearchFeeds(c.Request.Context(), keyword, filters)
++	result, err := s.xiaohongshuService.SearchFeeds(c.Request.Context(), keyword, options, filters)
+ 	if err != nil {
+ 		respondError(c, http.StatusInternalServerError, "SEARCH_FEEDS_FAILED",
+ 			"搜索Feeds失败", err.Error())
+--- a/types.go
++++ b/types.go
+@@ -55,8 +55,10 @@
+ }
+ 
+ type SearchFeedsRequest struct {
+-	Keyword string                   `json:"keyword" binding:"required"`
+-	Filters xiaohongshu.FilterOption `json:"filters,omitempty"`
++	Limit    int                      `json:"limit,omitempty"`
++	MaxPages int                      `json:"max_pages,omitempty"`
++	Keyword  string                   `json:"keyword" binding:"required"`
++	Filters  xiaohongshu.FilterOption `json:"filters,omitempty"`
+ }
+ 
+ // FeedDetailResponse Feed详情响应
+--- a/xiaohongshu/search.go
++++ b/xiaohongshu/search.go
+@@ -2,7 +2,6 @@
+ 
+ import (
+ 	"context"
+-	"encoding/json"
+ 	"fmt"
+ 	"net/url"
+ 	"slices"
+@@ -10,8 +9,6 @@
+ 	"time"
+ 
+ 	"github.com/go-rod/rod"
+-	"github.com/sirupsen/logrus"
+-	"github.com/xpzouying/xiaohongshu-mcp/errors"
+ 	"github.com/xpzouying/xiaohongshu-mcp/humanize"
+ )
+ 
+@@ -103,7 +100,11 @@
+ 	return &SearchAction{page: pp}
+ }
+ 
+-func (s *SearchAction) Search(ctx context.Context, keyword string, filters ...FilterOption) ([]Feed, error) {
++func (s *SearchAction) Search(ctx context.Context, keyword string, options SearchOptions, filters ...FilterOption) ([]Feed, error) {
++	options, err := options.normalized()
++	if err != nil {
++		return nil, err
++	}
+ 	// 先校验筛选取值，必须在导航之前——写错的值不该先向平台发一次请求再报错。
+ 	pending, err := collectFilters(filters)
+ 	if err != nil {
+@@ -112,14 +113,18 @@
+ 
+ 	// 注意 .Context(ctx) 会替换掉 NewSearchAction 里设的 60s deadline，必须在其后重新 Timeout，
+ 	// 否则页面等待没有 deadline 可依赖，异常时会永久挂起。
+-	page := s.page.Context(ctx).Timeout(60 * time.Second)
++	page := s.page.Context(ctx).Timeout(time.Duration(options.MaxPages)*25*time.Second + 90*time.Second)
++	traffic, stopTraffic := watchSearchTraffic(page, keyword)
++	defer stopTraffic()
+ 
+ 	// 导航前订阅，避免漏掉很快完成的首屏搜索响应。
+ 	responses, stop := watchSearchResponses(page, keyword)
+ 	defer stop()
+ 	searchURL := makeSearchURL(keyword)
+-	page.MustNavigate(searchURL)
+-	if err := waitSearchReady(page, keyword, responses); err != nil {
++	if err := page.Navigate(searchURL); err != nil {
++		return nil, err
++	}
++	if err := waitSearchReady(page, keyword, responses, func() error { _, _, _, err := traffic.snapshot(); return err }); err != nil {
+ 		return nil, fmt.Errorf("等待搜索结果失败: %w", err)
+ 	}
+ 	stop()
+@@ -127,152 +132,71 @@
+ 
+ 	if len(pending) > 0 {
+ 		// 悬停在筛选按钮上展开面板
+-		filterButton := page.MustElement(`div.filter`)
++		filterButton, err := page.Element(`div.filter`)
++		if err != nil {
++			return nil, err
++		}
+ 		if err := humanize.Hover(filterButton); err != nil {
+ 			return nil, fmt.Errorf("悬停筛选按钮失败: %w", err)
+ 		}
+ 		humanize.Delay(ctx, humanize.BeforeClick)
+ 
+ 		// 等待筛选面板出现
+-		page.MustWait(`() => document.querySelector('div.filter-panel') !== null`)
+-
+-		// 记下筛选前的结果，用来判断筛选后的数据什么时候到位
+-		before := readFeedIDs(page)
+-
+-		// 指针先进面板，之后的移动都限制在面板内。
+-		// 从按钮直接拉到选项的话，路径会有一段既不在按钮上、也还没进面板。
+-		bounds, err := panelBounds(page)
+-		if err != nil {
+-			return nil, err
+-		}
+-		if err := humanize.MoveInto(page, bounds); err != nil {
+-			return nil, fmt.Errorf("移入筛选面板失败: %w", err)
+-		}
+-
+-		// 用 ClickNoWait：筛选面板是 hover 浮层，rod 的 WaitInteractable 会误判被遮挡而死等。
++		if err := page.Wait(rod.Eval(`() => document.querySelector('div.filter-panel') !== null`)); err != nil {
++			return nil, err
++		}
++
++		// 直接调用选项的 click handler，避免 hover 浮层重排造成坐标误点。
+ 		for _, pf := range pending {
++			if err := checkSearchAccess(page); err != nil {
++				return nil, err
++			}
++			if _, _, _, err := traffic.snapshot(); err != nil {
++				return nil, err
++			}
+ 			option, err := findFilterOption(page, pf)
+ 			if err != nil {
+ 				return nil, err
+ 			}
+-			// 每轮重取：点完一项后面板可能重排。
+-			if b, err := panelBounds(page); err == nil {
+-				bounds = b
+-			}
+ 			humanize.Delay(ctx, humanize.BeforeClick)
+-			if err := humanize.ClickNoWaitInside(option, bounds); err != nil {
++			if _, err := option.Eval(`() => this.click()`); err != nil {
+ 				return nil, fmt.Errorf("点击筛选选项「%s」失败: %w", pf.option, err)
+ 			}
+ 		}
+-
+-		waitFeedsChanged(page, before, 15*time.Second)
+-	}
+-
+-	readFeeds := func() ([]Feed, string) {
+-		result := page.MustEval(`() => {
+-			if (window.__INITIAL_STATE__ &&
+-			    window.__INITIAL_STATE__.search &&
+-			    window.__INITIAL_STATE__.search.feeds) {
+-				const feeds = window.__INITIAL_STATE__.search.feeds;
+-				const feedsData = feeds.value !== undefined ? feeds.value : feeds._value;
+-				if (feedsData) {
+-					return JSON.stringify(feedsData);
+-				}
+-			}
+-			return "";
+-		}`).String()
+-		if result == "" {
+-			return nil, ""
+-		}
+-		var fs []Feed
+-		if err := json.Unmarshal([]byte(result), &fs); err != nil {
+-			return nil, ""
+-		}
+-		return fs, result
+-	}
+-
+-	// 首屏只有约 20 条；继续滚动加载后续结果，最多 8 次。
+-	// 用 id 集合判断是否真的有新内容，避免页面没有更多时白等。
++	}
++
++	result, err := waitSearchPage(page, traffic, pending, 1)
++	if err != nil {
++		return nil, err
++	}
+ 	seen := make(map[string]bool)
+-	var merged []Feed
+-	lastIDs := ""
+-	for i := 0; i < 8; i++ {
+-		fs, raw := readFeeds()
+-		if raw == "" {
++	merged := make([]Feed, 0, options.Limit)
++	for {
++		feeds, err := readSearchFeeds(page)
++		if err != nil {
++			return nil, err
++		}
++		before := len(merged)
++		merged = mergeSearchNotes(merged, seen, feeds, options.Limit)
++		if len(merged) >= options.Limit || result.request.Page >= options.MaxPages || (result.hasMore != nil && !*result.hasMore) {
+ 			break
+ 		}
+-		for _, f := range fs {
+-			if !seen[f.ID] {
+-				seen[f.ID] = true
+-				merged = append(merged, f)
+-			}
+-		}
+-		ids := readFeedIDs(page)
+-		if i > 0 && ids == lastIDs {
++		if result.request.Page > 1 && len(merged) == before {
+ 			break
+ 		}
+-		lastIDs = ids
+-		if len(merged) >= 100 {
+-			break
+-		}
+-		page.MustEval(`() => { window.scrollTo(0, document.body.scrollHeight); }`)
+-		humanize.Delay(ctx, humanize.AfterNavigate)
+-	}
+-	if len(merged) == 0 {
+-		return nil, errors.ErrNoFeeds
+-	}
+-	return onlyNotes(merged), nil
+-}
+-
+-// feedIDsJS 读当前结果集的 id 列表，用来判断数据有没有换一批。
+-const feedIDsJS = `() => {
+-	const f = window.__INITIAL_STATE__?.search?.feeds;
+-	const v = f ? (f.value !== undefined ? f.value : f._value) : null;
+-	return v ? v.map(x => x.id).join(",") : "";
+-}`
+-
+-func readFeedIDs(page *rod.Page) string {
+-	res, err := page.Eval(feedIDsJS)
+-	if err != nil {
+-		return ""
+-	}
+-	return res.Value.Str()
+-}
+-
+-// waitFeedsChanged 等筛选后的数据到位。
+-//
+-// 点完筛选项之后不能立刻读结果：站点是先把 feeds 清空、再灌入新数据，
+-// 中间这段时间读到的要么是空，要么还是筛选前那一批。原先用
+-// MustWait(__INITIAL_STATE__ !== undefined) 等，而这个条件从首屏起就为真、
+-// 立即返回，等于没等——多个筛选项一起用时表现为只有一部分生效。
+-//
+-// 超时不报错：筛选已经点上了，宁可返回可能偏旧的数据，也不要整个搜索失败。
+-func waitFeedsChanged(page *rod.Page, before string, timeout time.Duration) {
+-	deadline := time.Now().Add(timeout)
+-	for time.Now().Before(deadline) {
+-		if now := readFeedIDs(page); now != "" && now != before {
+-			return
+-		}
+-		time.Sleep(300 * time.Millisecond)
+-	}
+-	logrus.Warnf("筛选后等待结果刷新超时（%s），返回的可能是筛选前的数据", timeout)
+-}
+-
+-// panelBounds 取筛选面板当前占据的矩形。
+-func panelBounds(page *rod.Page) (humanize.Rect, error) {
+-	panel, err := page.Element("div.filter-panel")
+-	if err != nil {
+-		return humanize.Rect{}, fmt.Errorf("读取筛选面板失败: %w", err)
+-	}
+-	shape, err := panel.Shape()
+-	if err != nil {
+-		return humanize.Rect{}, fmt.Errorf("读取筛选面板失败: %w", err)
+-	}
+-	if len(shape.Quads) == 0 {
+-		return humanize.Rect{}, fmt.Errorf("筛选面板没有可用区域")
+-	}
+-	q := shape.Quads[0]
+-	return humanize.Rect{Left: q[0], Top: q[1], Right: q[4], Bottom: q[5]}, nil
++		if err := pauseSearchPage(page, traffic); err != nil {
++			return nil, err
++		}
++		nextPage := result.request.Page + 1
++		if err := scrollSearchResults(page); err != nil {
++			return nil, fmt.Errorf("滚动搜索结果失败: %w", err)
++		}
++		result, err = waitSearchPage(page, traffic, pending, nextPage)
++		if err != nil {
++			return nil, err
++		}
++	}
++	return merged, nil
+ }
+ 
+ // findFilterOption 在筛选面板里定位一个选项：按标签找到组，再在组内按文本找选项。
+--- a/xiaohongshu/search_ready.go
++++ b/xiaohongshu/search_ready.go
+@@ -150,11 +150,19 @@
+ 	};
+ }`
+ 
+-func waitSearchReady(page *rod.Page, keyword string, responses <-chan searchResponse) error {
++func waitSearchReady(page *rod.Page, keyword string, responses <-chan searchResponse, guards ...func() error) error {
+ 	ticker := time.NewTicker(100 * time.Millisecond)
+ 	defer ticker.Stop()
+ 	var response searchResponse
+ 	for {
++		for _, guard := range guards {
++			if err := guard(); err != nil {
++				return err
++			}
++		}
++		if err := checkSearchAccess(page); err != nil {
++			return err
++		}
+ 		state, err := page.Eval(searchReadinessJS, keyword)
+ 		if err != nil {
+ 			return err
+@@ -168,6 +176,9 @@
+ 		if state.Value.Get("ready").Bool() || (state.Value.Get("empty").Bool() && response.empty) {
+ 			return nil
+ 		}
++		if response.err != nil && (strings.Contains(response.err.Error(), "HTTP 461") || strings.Contains(response.err.Error(), "HTTP 471") || strings.Contains(response.err.Error(), "HTTP 401") || strings.Contains(response.err.Error(), "HTTP 403")) {
++			return fmt.Errorf("搜索已停止：风控/验证码或登录失效: %w", response.err)
++		}
+ 		// 空结果和接口异常都会被站点标为 error，必须结合对应请求的响应区分。
+ 		if state.Value.Get("failed").Bool() && response.err != nil {
+ 			return response.err
+--- /dev/null
++++ b/xiaohongshu/search_paging.go
+@@ -0,0 +1,325 @@
++package xiaohongshu
++
++import (
++	"context"
++	"encoding/base64"
++	"encoding/json"
++	"fmt"
++	"math/rand/v2"
++	"strings"
++	"sync"
++	"time"
++
++	"github.com/go-rod/rod"
++	"github.com/go-rod/rod/lib/proto"
++	"github.com/sirupsen/logrus"
++)
++
++// SearchOptions bounds both the returned notes and the number of result pages.
++// Zero values select 20 notes and 8 pages. The first result page counts as a page.
++type SearchOptions struct {
++	Limit    int `json:"limit,omitempty" form:"limit"`
++	MaxPages int `json:"max_pages,omitempty" form:"max_pages"`
++}
++
++func (o SearchOptions) normalized() (SearchOptions, error) {
++	if o.Limit < 0 || o.MaxPages < 0 {
++		return o, fmt.Errorf("limit 和 max_pages 不能为负数")
++	}
++	if o.Limit == 0 {
++		o.Limit = 20
++	}
++	if o.Limit > 100 {
++		o.Limit = 100
++	}
++	if o.MaxPages == 0 {
++		o.MaxPages = 8
++	}
++	if o.MaxPages > 10 {
++		o.MaxPages = 10
++	}
++	return o, nil
++}
++
++type searchRequest struct {
++	Keyword string `json:"keyword"`
++	Page    int    `json:"page"`
++	Filters []struct {
++		Type string   `json:"type"`
++		Tags []string `json:"tags"`
++	} `json:"filters"`
++}
++
++func (r searchRequest) matches(filters []pendingFilter) bool {
++	types := map[string]string{"排序依据": "sort_type", "笔记类型": "filter_note_type", "发布时间": "filter_note_time", "搜索范围": "filter_note_range", "位置距离": "filter_pos_distance"}
++	sortTags := map[string]string{"最新": "time_descending", "最多点赞": "popularity_descending", "最多评论": "comment_descending", "最多收藏": "collect_descending"}
++	for _, f := range filters {
++		want := f.option
++		if f.group == "排序依据" {
++			want = sortTags[f.option]
++		}
++		if f.group == "笔记类型" {
++			want = map[string]string{"图文": "普通笔记", "视频": "视频笔记"}[f.option]
++		}
++		found := false
++		for _, actual := range r.Filters {
++			if actual.Type == types[f.group] && len(actual.Tags) == 1 && actual.Tags[0] == want {
++				found = true
++			}
++		}
++		if !found {
++			return false
++		}
++	}
++	return true
++}
++
++type searchPageResult struct {
++	request searchRequest
++	hasMore *bool
++	err     error
++}
++
++type searchTraffic struct {
++	mu        sync.Mutex
++	requests  map[proto.NetworkRequestID]searchRequest
++	known     map[proto.NetworkRequestID]bool
++	latest    searchRequest
++	completed searchPageResult
++	fatal     error
++}
++
++// Observe the site's signed requests. No request is replayed and no signature is copied.
++func watchSearchTraffic(page *rod.Page, keyword string) (*searchTraffic, func()) {
++	p, cancel := page.WithCancel()
++	t := &searchTraffic{requests: make(map[proto.NetworkRequestID]searchRequest), known: make(map[proto.NetworkRequestID]bool)}
++	wait := p.EachEvent(func(e *proto.NetworkRequestWillBeSent) {
++		if !isSearchNotesURL(e.Request.URL) || e.Request.Method != "POST" {
++			return
++		}
++		body := e.Request.PostData
++		if body == "" && e.Request.HasPostData {
++			if d, err := (proto.NetworkGetRequestPostData{RequestID: e.RequestID}).Call(p); err == nil {
++				body = d.PostData
++			}
++		}
++		var req searchRequest
++		if json.Unmarshal([]byte(body), &req) != nil || req.Keyword != keyword {
++			return
++		}
++		t.mu.Lock()
++		defer t.mu.Unlock()
++		// Each filter change starts a new result set. Ignore late completions from the old set.
++		if req.Page == 1 {
++			clear(t.requests)
++			t.completed = searchPageResult{}
++		}
++		t.requests[e.RequestID] = req
++		t.known[e.RequestID] = true
++		t.latest = req
++		logrus.Infof("search pagination: keyword=%q page=%d filters=%v", keyword, req.Page, req.Filters)
++	}, func(e *proto.NetworkResponseReceived) {
++		t.recordStatus(e.RequestID, e.Response.Status)
++	}, func(e *proto.NetworkResponseReceivedExtraInfo) {
++		// A CORS-blocked 461 may have no ResponseReceived event.
++		t.recordStatus(e.RequestID, e.StatusCode)
++	}, func(e *proto.NetworkLoadingFinished) {
++		t.mu.Lock()
++		req, ok := t.requests[e.RequestID]
++		t.mu.Unlock()
++		if !ok {
++			return
++		}
++		result := searchPageResult{request: req}
++		raw, err := (proto.NetworkGetResponseBody{RequestID: e.RequestID}).Call(p)
++		if err != nil {
++			result.err = fmt.Errorf("读取第 %d 页搜索响应失败: %w", req.Page, err)
++		} else {
++			body := []byte(raw.Body)
++			if raw.Base64Encoded {
++				body, err = base64.StdEncoding.DecodeString(raw.Body)
++			}
++			if err != nil {
++				result.err = err
++			} else {
++				parsed := parseSearchResponse(body)
++				result.err = parsed.err
++				var envelope struct {
++					Code    int    `json:"code"`
++					Msg     string `json:"msg"`
++					Message string `json:"message"`
++					Data    struct {
++						HasMore *bool `json:"has_more"`
++					} `json:"data"`
++				}
++				_ = json.Unmarshal(body, &envelope)
++				result.hasMore = envelope.Data.HasMore
++				if envelope.Code == -100 {
++					result.err = fmt.Errorf("搜索已停止：登录失效（code=-100），请重新登录")
++				}
++				if result.err != nil {
++					result.err = fmt.Errorf("第 %d 页: %w（%s%s）", req.Page, result.err, envelope.Msg, envelope.Message)
++				}
++			}
++		}
++		t.mu.Lock()
++		defer t.mu.Unlock()
++		if _, ok := t.requests[e.RequestID]; !ok {
++			return
++		}
++		delete(t.requests, e.RequestID)
++		t.completed = result
++	}, func(e *proto.NetworkLoadingFailed) {
++		t.mu.Lock()
++		defer t.mu.Unlock()
++		if req, ok := t.requests[e.RequestID]; ok {
++			delete(t.requests, e.RequestID)
++			t.completed = searchPageResult{request: req, err: fmt.Errorf("第 %d 页搜索请求未完成: %s", req.Page, e.ErrorText)}
++		}
++	})
++	done := make(chan struct{})
++	go func() { defer close(done); wait() }()
++	return t, func() { cancel(); <-done }
++}
++
++func (t *searchTraffic) recordStatus(id proto.NetworkRequestID, status int) {
++	t.mu.Lock()
++	defer t.mu.Unlock()
++	if !t.known[id] {
++		return
++	}
++	switch status {
++	case 461, 471:
++		t.fatal = fmt.Errorf("搜索已停止：风控/验证码（HTTP %d），请在浏览器处理后再试", status)
++	case 401, 403:
++		t.fatal = fmt.Errorf("搜索已停止：登录失效或访问被拒绝（HTTP %d），请重新登录检查", status)
++	default:
++		if status < 200 || status >= 300 {
++			t.fatal = fmt.Errorf("搜索请求失败（HTTP %d）", status)
++		}
++	}
++}
++
++func (t *searchTraffic) snapshot() (searchRequest, searchPageResult, bool, error) {
++	t.mu.Lock()
++	defer t.mu.Unlock()
++	return t.latest, t.completed, len(t.requests) > 0, t.fatal
++}
++
++// Login/captcha overlays can appear without a failing search API response.
++func checkSearchAccess(page *rod.Page) error {
++	r, err := page.Eval(`() => {
++  const visible = e => e && e.getBoundingClientRect().width > 0 && e.getBoundingClientRect().height > 0 && getComputedStyle(e).visibility !== 'hidden';
++  if (/\/login|\/website-login|\/captcha/.test(location.pathname)) return '登录失效或验证码页面';
++  for (const s of ['.captcha-container','.verify-modal','.reds-captcha','.login-container','.login-modal']) {
++   if ([...document.querySelectorAll(s)].some(visible)) return s.includes('login') ? '登录失效，请重新登录' : '触发验证码，请在浏览器处理';
++  }
++  const text = [...document.querySelectorAll('[role=dialog], .error-page, .error-container, .verify-container, .login-container, .reds-message')].filter(visible).map(e => e.innerText).join(' ');
++  if (/访问频繁|访问异常|安全验证|请完成验证|请先登录|登录已过期/.test(text)) return '触发风控/验证码或登录失效';
++  return '';
++ }`)
++	if err != nil {
++		return err
++	}
++	if reason := r.Value.Str(); reason != "" {
++		return fmt.Errorf("搜索已停止：%s", reason)
++	}
++	return nil
++}
++
++func waitSearchPage(page *rod.Page, traffic *searchTraffic, filters []pendingFilter, minPage int) (searchPageResult, error) {
++	ctx, cancel := context.WithTimeout(page.GetContext(), 20*time.Second)
++	defer cancel()
++	ticker := time.NewTicker(150 * time.Millisecond)
++	defer ticker.Stop()
++	for {
++		if err := checkSearchAccess(page); err != nil {
++			return searchPageResult{}, err
++		}
++		latest, result, busy, fatal := traffic.snapshot()
++		if fatal != nil {
++			return result, fatal
++		}
++		if latest.Page >= minPage && latest.matches(filters) && !busy && result.request.Page == latest.Page && result.request.matches(filters) {
++			if result.err != nil {
++				return result, result.err
++			}
++			r, err := page.Eval(`() => {const v=window.__INITIAL_STATE__?.search?.state;return v?.value ?? v?._value ?? v;}`)
++			if err != nil {
++				return result, err
++			}
++			if r.Value.Str() != "loading" {
++				return result, nil
++			}
++		}
++		select {
++		case <-ctx.Done():
++			return result, fmt.Errorf("第 %d 页等待失败（筛选尚未生效或未触发翻页请求）: %w", minPage, ctx.Err())
++		case <-ticker.C:
++		}
++	}
++}
++
++func pauseSearchPage(page *rod.Page, traffic *searchTraffic) error {
++	timer := time.NewTimer(2*time.Second + time.Duration(rand.IntN(2001))*time.Millisecond)
++	defer timer.Stop()
++	tick := time.NewTicker(200 * time.Millisecond)
++	defer tick.Stop()
++	for {
++		select {
++		case <-page.GetContext().Done():
++			return page.GetContext().Err()
++		case <-timer.C:
++			return checkSearchAccess(page)
++		case <-tick.C:
++			_, _, _, err := traffic.snapshot()
++			if err != nil {
++				return err
++			}
++			if err := checkSearchAccess(page); err != nil {
++				return err
++			}
++		}
++	}
++}
++
++// Find the scrollable ancestor of the feed grid, falling back to the document.
++// The verified desktop layout uses HTML; other viewport layouts may use a div.
++func scrollSearchResults(page *rod.Page) error {
++	_, err := page.Eval(`() => {
++  let e=document.querySelector('.note-item') || document.querySelector('.feeds-container') || document.querySelector('.search-result');
++  let container=document.scrollingElement;
++  for (;e;e=e.parentElement) {
++   if (e.clientHeight>100 && e.scrollHeight>e.clientHeight && /auto|scroll/.test(getComputedStyle(e).overflowY)) {container=e;break;}
++  }
++  if (!container) throw new Error('找不到搜索滚动容器');
++  container.scrollTo({top:container.scrollHeight,behavior:'instant'});
++ }`)
++	return err
++}
++
++func readSearchFeeds(page *rod.Page) ([]Feed, error) {
++	r, err := page.Eval(`() => {const f=window.__INITIAL_STATE__?.search?.feeds;return JSON.stringify(f?.value ?? f?._value ?? f ?? []);}`)
++	if err != nil {
++		return nil, err
++	}
++	var feeds []Feed
++	if err := json.Unmarshal([]byte(r.Value.Str()), &feeds); err != nil {
++		return nil, fmt.Errorf("解析页面搜索结果失败: %w", err)
++	}
++	return feeds, nil
++}
++
++func mergeSearchNotes(merged []Feed, seen map[string]bool, feeds []Feed, limit int) []Feed {
++	for _, f := range feeds {
++		if f.ModelType != modelTypeNote || strings.TrimSpace(f.ID) == "" || seen[f.ID] {
++			continue
++		}
++		if len(merged) >= limit {
++			break
++		}
++		seen[f.ID] = true
++		merged = append(merged, f)
++	}
++	return merged
++}
+--- /dev/null
++++ b/xiaohongshu/search_paging_test.go
+@@ -0,0 +1,43 @@
++package xiaohongshu
++
++import (
++	"encoding/json"
++	"github.com/go-rod/rod/lib/proto"
++	"github.com/stretchr/testify/require"
++	"testing"
++)
++
++func TestSearchLimitsAndDeduplication(t *testing.T) {
++	opts, err := (SearchOptions{}).normalized()
++	require.NoError(t, err)
++	require.Equal(t, 20, opts.Limit)
++	require.Equal(t, 8, opts.MaxPages)
++	opts, err = (SearchOptions{Limit: 999, MaxPages: 999}).normalized()
++	require.NoError(t, err)
++	require.Equal(t, 100, opts.Limit)
++	require.Equal(t, 10, opts.MaxPages)
++	_, err = (SearchOptions{Limit: -1}).normalized()
++	require.Error(t, err)
++	seen := map[string]bool{}
++	merged := mergeSearchNotes(nil, seen, []Feed{{ID: "a", ModelType: "note"}, {ID: "live", ModelType: "live_v2"}, {ID: "", ModelType: "note"}, {ID: "a", ModelType: "note"}}, 3)
++	merged = mergeSearchNotes(merged, seen, []Feed{{ID: "b", ModelType: "note"}, {ID: "a", ModelType: "note"}, {ID: "c", ModelType: "note"}, {ID: "d", ModelType: "note"}}, 3)
++	require.Equal(t, []string{"a", "b", "c"}, []string{merged[0].ID, merged[1].ID, merged[2].ID})
++}
++
++func TestSearchRequestFilterTags(t *testing.T) {
++	var request searchRequest
++	require.NoError(t, json.Unmarshal([]byte(`{"keyword":"test","page":2,"filters":[{"type":"sort_type","tags":["time_descending"]},{"type":"filter_note_type","tags":["普通笔记"]},{"type":"filter_note_time","tags":["一天内"]}]}`), &request))
++	pending, err := collectFilters([]FilterOption{{SortBy: "最新", NoteType: "图文", PublishTime: "一天内"}})
++	require.NoError(t, err)
++	require.True(t, request.matches(pending))
++	request.Filters[1].Tags = []string{"不限"}
++	require.False(t, request.matches(pending))
++}
++
++func TestRiskStatusSurvivesFilterReset(t *testing.T) {
++	id := proto.NetworkRequestID("previous-filter-request")
++	traffic := &searchTraffic{requests: map[proto.NetworkRequestID]searchRequest{}, known: map[proto.NetworkRequestID]bool{id: true}}
++	traffic.recordStatus(id, 461)
++	_, _, _, err := traffic.snapshot()
++	require.ErrorContains(t, err, "HTTP 461")
++}
+--- /dev/null
++++ b/xiaohongshu/search_paging_integration_test.go
+@@ -0,0 +1,124 @@
++//go:build integration
++
++package xiaohongshu
++
++import (
++	"context"
++	"encoding/json"
++	"fmt"
++	"strings"
++	"sync"
++	"testing"
++	"time"
++
++	"github.com/go-rod/rod"
++	"github.com/stretchr/testify/require"
++	"github.com/xpzouying/xiaohongshu-mcp/humanize"
++)
++
++// All URLs are intercepted. These fixture notes are only test data, never live evidence.
++func TestSearchPaginationLocal(t *testing.T) {
++	b := newSearchFixtureBrowser(t)
++	humanize.SetProvider(searchFixtureTiming{})
++	t.Cleanup(func() { humanize.SetProvider(humanize.DefaultProvider{}) })
++	for _, tc := range []struct {
++		name                      string
++		limit, pages, want, calls int
++		wantErr                   string
++	}{
++		{"document", 35, 8, 35, 2, ""},
++		{"nested", 35, 8, 35, 2, ""},
++		{"max_pages", 100, 1, 20, 1, ""},
++		{"duplicates", 100, 8, 20, 2, ""},
++		{"exhausted", 100, 8, 20, 1, ""},
++		{"risk", 100, 8, 0, 2, "HTTP 461"},
++		{"login", 100, 8, 0, 2, "登录"},
++		{"captcha", 100, 8, 0, 1, "验证码"},
++	} {
++		t.Run(tc.name, func(t *testing.T) {
++			page := b.MustPage()
++			defer page.Close()
++			var mu sync.Mutex
++			var requests []time.Time
++			router := page.HijackRequests()
++			router.MustAdd("*", func(h *rod.Hijack) {
++				h.OnError = func(err error) { t.Errorf("fixture response failed: %v", err) }
++				switch {
++				case strings.Contains(h.Request.URL().Path, "/search_result"):
++					h.Response.SetHeader("Content-Type", "text/html; charset=utf-8").SetBody(pagingFixtureHTML(tc.name))
++				case strings.Contains(h.Request.URL().Path, "/search/notes"):
++					var req searchRequest
++					require.NoError(t, json.Unmarshal([]byte(h.Request.Body()), &req))
++					mu.Lock()
++					requests = append(requests, time.Now())
++					mu.Unlock()
++					h.Response.SetHeader("Content-Type", "application/json")
++					if tc.name == "risk" && req.Page == 2 {
++						h.Response.Payload().ResponseCode = 461
++						h.Response.Payload().ResponsePhrase = "Risk Control"
++						h.Response.SetBody(`{"code":-1,"success":false,"msg":"验证码"}`)
++						return
++					}
++					if tc.name == "login" && req.Page == 2 {
++						h.Response.Payload().ResponseCode = 401
++						h.Response.SetBody(`{"code":-100,"success":false}`)
++						return
++					}
++					var items []map[string]string
++					for i := 0; i < 20; i++ {
++						n := (req.Page-1)*20 + i
++						if tc.name == "duplicates" {
++							n = i
++						}
++						if req.Page == 2 && i == 0 {
++							n = 19
++						}
++						items = append(items, map[string]string{"id": fmt.Sprint(n), "modelType": "note", "model_type": "note"})
++					}
++					payload, _ := json.Marshal(map[string]any{"code": 0, "success": true, "data": map[string]any{"items": items, "has_more": tc.name != "exhausted"}})
++					h.Response.SetBody(string(payload))
++				default:
++					h.Response.SetBody("")
++				}
++			})
++			go router.Run()
++			defer router.Stop()
++			ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
++			defer cancel()
++			feeds, err := NewSearchAction(page).Search(ctx, tc.name, SearchOptions{Limit: tc.limit, MaxPages: tc.pages})
++			if tc.wantErr != "" {
++				require.ErrorContains(t, err, tc.wantErr)
++				require.Empty(t, feeds)
++			} else {
++				require.NoError(t, err)
++				require.Len(t, feeds, tc.want)
++			}
++			mu.Lock()
++			defer mu.Unlock()
++			require.Len(t, requests, tc.calls)
++			if len(requests) > 1 {
++				require.GreaterOrEqual(t, requests[1].Sub(requests[0]), 2*time.Second)
++			}
++		})
++	}
++}
++
++func pagingFixtureHTML(mode string) string {
++	return fmt.Sprintf(`<!doctype html><meta charset="utf-8"><style>
++ body{margin:0} #scroller{height:%s;overflow-y:%s} .note-item{height:130px}
++ </style><div id="scroller"><div id="feeds"></div></div><script>
++ const mode=%q;
++ const s=window.__INITIAL_STATE__={search:{feeds:{_value:[]},state:{_value:'loading'},searchContext:{keyword:mode}}};
++ const scroller=mode==='nested'?document.getElementById('scroller'):window;
++ let page=0,busy=false;
++ async function load(){if(busy)return;busy=true;s.search.state._value='loading';
++ const r=await fetch('/api/sns/web/v2/search/notes',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({keyword:mode,page:++page})});
++ const data=await r.json();if(!r.ok||!data.success){s.search.state._value='error';return}
++ s.search.feeds._value.push(...data.data.items);
++ document.getElementById('feeds').innerHTML=s.search.feeds._value.map(x=>'<div class="note-item">'+x.id+'</div>').join('');
++ s.search.state._value='success';busy=false;
++ if(mode==='captcha'){document.body.insertAdjacentHTML('beforeend','<div class="captcha-container" style="width:200px;height:200px">验证码</div>')}
++ }
++ scroller.addEventListener('scroll',()=>{const e=mode==='nested'?scroller:document.scrollingElement;if(e.scrollTop+e.clientHeight>=e.scrollHeight-10)load()});load();
++ </script>`, map[bool]string{true: "400px", false: "auto"}[mode == "nested"], map[bool]string{true: "auto", false: "visible"}[mode == "nested"], mode)
++}
+--- a/xiaohongshu/search_integration_test.go
++++ b/xiaohongshu/search_integration_test.go
+@@ -24,7 +24,7 @@
+ 
+ 	action := NewSearchAction(page)
+ 
+-	feeds, err := action.Search(context.Background(), "Kimi")
++	feeds, err := action.Search(context.Background(), "Kimi", SearchOptions{})
+ 	require.NoError(t, err)
+ 	require.NotEmpty(t, feeds, "feeds should not be empty")
+ 
+@@ -55,7 +55,7 @@
+ 		Location:    "不限",
+ 	}
+ 
+-	feeds, err := action.Search(context.Background(), "无锡 夏天 遛娃 凉快 户外", filter)
++	feeds, err := action.Search(context.Background(), "无锡 夏天 遛娃 凉快 户外", SearchOptions{}, filter)
+ 	require.NoError(t, err)
+ 	require.NotEmpty(t, feeds, "feeds should not be empty")
+ 
+--- a/xiaohongshu/search_ready_integration_test.go
++++ b/xiaohongshu/search_ready_integration_test.go
+@@ -153,7 +153,7 @@
+ 			defer cancel()
+ 			var feeds []Feed
+ 			var err error
+-			require.NotPanics(t, func() { feeds, err = NewSearchAction(page).Search(ctx, tc.name) })
++			require.NotPanics(t, func() { feeds, err = NewSearchAction(page).Search(ctx, tc.name, SearchOptions{}) })
+ 			if tc.wantErr != "" {
+ 				require.ErrorContains(t, err, tc.wantErr)
+ 				return
+--- a/product-intern-daily/src/product_intern_daily/mcp_client.py
++++ b/product-intern-daily/src/product_intern_daily/mcp_client.py
+@@ -94,7 +94,7 @@
+         *,
+         limit: int = 20,
+         sort_by: str = "最新",
+-        publish_time: str = "一周内",
++        publish_time: str = "一天内",
+         note_type: str = "图文",
+         timeout: int = 120,
+     ) -> list[Candidate]:
+@@ -103,7 +103,10 @@
+             "publish_time": publish_time,
+             "note_type": note_type,
+         }
+-        text = self.call("search_feeds", {"keyword": keyword, "filters": filters}, timeout=timeout)
++        if limit < 1:
++            raise ValueError("limit must be positive")
++        limit = min(limit, 100)
++        text = self.call("search_feeds", {"keyword": keyword, "filters": filters, "limit": limit}, timeout=timeout)
+         return parse_search_response(text, keyword=keyword, limit=limit)
+ 
+     def detail(self, post_id: str, token: str, *, all_comments: bool = False, timeout: int = 120) -> dict:
+--- a/product-intern-daily/tests/test_mcp_client.py
++++ b/product-intern-daily/tests/test_mcp_client.py
+@@ -26,6 +26,28 @@
+         with self.assertRaises(MCPError):
+             parse_search_response("not json")
+ 
++class SearchLimitForwardingTest(unittest.TestCase):
++    def test_server_limit_and_filters(self):
++        from unittest.mock import patch
++        from product_intern_daily.mcp_client import MCPClient
++        client = MCPClient()
++        with patch.object(client, "call", return_value='{"feeds":[]}') as call:
++            client.search("产品实习", limit=100)
++        call.assert_called_once_with("search_feeds", {
++            "keyword": "产品实习", "limit": 100,
++            "filters": {"sort_by": "最新", "publish_time": "一天内", "note_type": "图文"},
++        }, timeout=120)
++
++    def test_limit_cap(self):
++        from unittest.mock import patch
++        from product_intern_daily.mcp_client import MCPClient
++        client = MCPClient()
++        with patch.object(client, "call", return_value='{"feeds":[]}') as call:
++            client.search("产品实习", limit=200)
++            self.assertEqual(call.call_args.args[1]["limit"], 100)
++        with self.assertRaises(ValueError):
++            client.search("产品实习", limit=0)
++
+ 
+ if __name__ == "__main__":
+     unittest.main()

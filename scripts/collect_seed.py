@@ -43,7 +43,7 @@ def main():
         # 只按“最新 + 一天内”抓；每个关键词单独计数，最多 100 条
         for kw in KEYWORDS:
             try:
-                items = client.search(kw, limit=20, sort_by="最新", publish_time="一天内", note_type="图文")
+                items = client.search(kw, limit=args.per_keyword, sort_by="最新", publish_time="一天内", note_type="图文")
             except Exception as exc:
                 print(f"[err] {kw}: {exc}", file=sys.stderr)
                 continue
@@ -52,7 +52,7 @@ def main():
             got = len(out) - before
             print(f"[ok] {kw}: +{got} -> {len(out)} (per-keyword cap {args.per_keyword})", file=sys.stderr)
             if got < args.per_keyword:
-                print(f"[cap] {kw}: only {got}/{args.per_keyword}; xhs search returns first page only", file=sys.stderr)
+                print(f"[cap] {kw}: got {got}/{args.per_keyword}; no more pages in the current time window", file=sys.stderr)
             if len(out) >= args.target:
                 break
             time.sleep(args.sleep)
@@ -64,7 +64,7 @@ def main():
                 for kw in KEYWORDS:
                     q = f"{kw} {base}".strip()
                     try:
-                        items = client.search(q, limit=20, sort_by="最新", publish_time=when, note_type="图文")
+                        items = client.search(q, limit=min(args.per_keyword, 100), sort_by="最新", publish_time=when, note_type="图文")
                     except Exception as exc:
                         print(f"[err] {q} / {when}: {exc}", file=sys.stderr)
                         continue

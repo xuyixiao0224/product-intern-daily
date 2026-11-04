@@ -56,3 +56,39 @@ hr@example.com
 ## 建议
 
 这个改动很小，建议给上游提 PR。注意评论图片可能是长图/翻转图/带贴纸，OCR 必须多方向跑。
+
+
+---
+
+# 搜索分页：从 20 条到最多 100 条
+
+## 问题
+
+`search_feeds` 原来只读第一页 `__INITIAL_STATE__.search.feeds`，约 20 条；没有 page/cursor 参数。
+
+## 实现
+
+- 监听 CDP `NetworkRequestWillBeSent` 的 `/api/sns/web/v2/search/notes`；
+- 请求体里 `page=1…6`、`page_size=20`；
+- 滚动搜索结果根节点，等待对应页响应完成；
+- 合并多页、按 note id 去重；
+- `limit` 默认 20、最大 100；`max_pages` 默认 8、最大 10；
+- 页间随机延迟；遇到 461/471/401/403 停止。
+
+补丁：`patches/xiaohongshu-mcp-search-pagination.patch`
+
+## 构建
+
+```bash
+git apply patches/xiaohongshu-mcp-search-pagination.patch
+GOCACHE=/tmp/gocache GOMODCACHE=/tmp/gomodcache go build -o xiaohongshu-mcp .
+```
+
+## 验证
+
+```bash
+# 客户端必须把 limit 传给 MCP，而不是只做本地截断
+python scripts/collect_seed.py --mode daily --target 300 --per-keyword 100
+```
+
+实测（2026-11-04）：产品实习 100、产品继任 86、互联网产品 74；未遇到 461/验证码。
