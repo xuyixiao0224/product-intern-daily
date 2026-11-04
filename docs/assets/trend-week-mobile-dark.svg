@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="492" viewBox="0 0 480 492" role="img" aria-labelledby="title desc">
+<title id="title">岗位收录趋势 · 按周</title>
+<desc id="desc">本期 5，往期 16，累计 21。绿色柱为新增，折线为累计。[{&quot;date&quot;: &quot;2026-11-02&quot;, &quot;label&quot;: &quot;11/02–11/08&quot;, &quot;new&quot;: 21, &quot;total&quot;: 21}]</desc>
+<rect x=".5" y=".5" width="479" height="491" rx="12" fill="#0d1117" stroke="#29352e"/>
+<g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Microsoft YaHei,sans-serif">
+<text x="24" y="33" fill="#e6ede8" font-size="16" font-weight="600" text-anchor="start">岗位收录趋势</text>
+<text x="456" y="33" fill="#98a89e" font-size="16" font-weight="400" text-anchor="end">按周 · 截至 2026-11-04</text>
+<text x="24" y="66" fill="#98a89e" font-size="16" font-weight="400" text-anchor="start">往期已收录</text>
+<text x="24" y="108" fill="#e6ede8" font-size="36" font-weight="600" text-anchor="start">16</text>
+<text x="78" y="106" fill="#98a89e" font-size="16" font-weight="400" text-anchor="start">条</text>
+<text x="190" y="66" fill="#98a89e" font-size="16" font-weight="400" text-anchor="start">11/04 新增</text>
+<text x="190" y="108" fill="#6dcba0" font-size="36" font-weight="600" text-anchor="start">5</text>
+<text x="221" y="106" fill="#98a89e" font-size="16" font-weight="400" text-anchor="start">条</text>
+<text x="352" y="66" fill="#98a89e" font-size="16" font-weight="400" text-anchor="start">历史累计</text>
+<text x="352" y="108" fill="#e6ede8" font-size="36" font-weight="600" text-anchor="start">21</text>
+<text x="406" y="106" fill="#98a89e" font-size="16" font-weight="400" text-anchor="start">条</text>
+<text x="148" y="96" fill="#98a89e" font-size="24" font-weight="400" text-anchor="start">+</text>
+<text x="314" y="96" fill="#98a89e" font-size="24" font-weight="400" text-anchor="start">=</text>
+<rect x="24" y="130" width="432" height="5" rx="2.5" fill="#25322a"/>
+<rect x="353.14" y="130" width="102.86" height="5" rx="2.5" fill="#6dcba0"/>
+<text x="24" y="167" fill="#98a89e" font-size="16" font-weight="400" text-anchor="start">新增与累计</text>
+<rect x="258" y="158" width="10" height="10" rx="2" fill="#375e49"/>
+<text x="276" y="167" fill="#98a89e" font-size="16" font-weight="400" text-anchor="start">新增</text>
+<line x1="342" y1="163" x2="362" y2="163" stroke="#a0b7a8" stroke-width="2"/>
+<text x="369" y="167" fill="#98a89e" font-size="16" font-weight="400" text-anchor="start">累计</text>
+<line x1="52" y1="352.0" x2="444" y2="352.0" stroke="#29352e" stroke-dasharray="3 5"/>
+<text x="40" y="356.0" fill="#98a89e" font-size="16" font-weight="400" text-anchor="end">0</text>
+<line x1="52" y1="314.5" x2="444" y2="314.5" stroke="#29352e" stroke-dasharray="3 5"/>
+<text x="40" y="318.5" fill="#98a89e" font-size="16" font-weight="400" text-anchor="end">10</text>
+<line x1="52" y1="277.0" x2="444" y2="277.0" stroke="#29352e" stroke-dasharray="3 5"/>
+<text x="40" y="281.0" fill="#98a89e" font-size="16" font-weight="400" text-anchor="end">20</text>
+<line x1="52" y1="239.5" x2="444" y2="239.5" stroke="#29352e" stroke-dasharray="3 5"/>
+<text x="40" y="243.5" fill="#98a89e" font-size="16" font-weight="400" text-anchor="end">30</text>
+<line x1="52" y1="202.0" x2="444" y2="202.0" stroke="#29352e" stroke-dasharray="3 5"/>
+<text x="40" y="206.0" fill="#98a89e" font-size="16" font-weight="400" text-anchor="end">40</text>
+<rect x="219.00" y="273.25" width="58.00" height="78.75" rx="3" fill="#6dcba0"><title>11/02–11/08 新增 21 条</title></rect>
+<text x="248.0" y="293.25" fill="#0d1117" font-size="16" font-weight="600" text-anchor="middle">21</text>
+<text x="248.0" y="377" fill="#98a89e" font-size="16" font-weight="400" text-anchor="middle">11/02–11/08</text>
+<polyline points="248.00,273.25" fill="none" stroke="#a0b7a8" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="248.00" cy="273.25" r="3.5" fill="#0d1117" stroke="#a0b7a8" stroke-width="2"/>
+<line x1="24" y1="402" x2="456" y2="402" stroke="#29352e" />
+<text x="24" y="435" fill="#98a89e" font-size="16" font-weight="400" text-anchor="start">明确在招 7   ·   待确认 14   ·   已截止 0</text>
+<text x="456" y="471" fill="#98a89e" font-size="16" font-weight="400" text-anchor="end">仅记录 3 个日期 · 不补造历史数据</text>
+</g></svg>

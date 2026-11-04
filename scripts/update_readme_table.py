@@ -3,6 +3,7 @@
 import argparse, json, re
 from datetime import datetime
 from pathlib import Path
+from dashboard_data import hiring_status, recorded_date, reporting_date
 
 START = "<!-- JOBS:START -->"
 END = "<!-- JOBS:END -->"
@@ -44,36 +45,70 @@ def position_of(j):
     return pos.strip() or "岗位未注明"
 
 
+def compact_base(job):
+    value = cell(job.get("base_location") or job.get("location") or "待确认")
+    if len(value) > 30:
+        cities = [x.strip() for x in re.split(r"[、，,/／]", value) if x.strip()]
+        return " / ".join(cities[:2]) + "等多地"
+    return value
+
+
+def render_table(jobs, include_date=False):
+    ordered = sorted(jobs, key=lambda j: (bool(emails(j.get("email"))), str(j.get("published_at") or "")), reverse=True)
+    headers = ["公司", "岗位", "Base", "投递", "状态", "转正"]
+    if include_date:
+        headers.append("首次记录")
+    lines = ["| " + " | ".join(headers) + " |", "|" + "|".join(["---"] * len(headers)) + "|"]
+    for job in ordered:
+        email = emails(job.get("email"))
+        source = job.get("source_url", "")
+        apply_cell = f"[{email}](mailto:{email})" if email else f"[见原帖]({source})"
+        row = [company_of(job), f"[{position_of(job)}]({source})", compact_base(job), apply_cell,
+               hiring_status(job), "可转正" if job.get("convertible") else "日常实习"]
+        if include_date:
+            row.append(recorded_date(job) or "未记录")
+        lines.append("| " + " | ".join(row) + " |")
+    return "\n".join(lines)
+
+
+def render_jobs_block(jobs, report_date=None):
+    day = report_date or reporting_date(jobs)
+    jobs = [j for j in jobs if not recorded_date(j) or recorded_date(j) <= day]
+    current = [j for j in jobs if recorded_date(j) == day and not j.get("closed")]
+    previous = [j for j in jobs if recorded_date(j) != day and not j.get("closed")]
+    closed = [j for j in jobs if j.get("closed")]
+    lines = [START, "## 岗位追踪", "", f"**最新一期 · {day}**　按首次记录分期，旧岗位更新不重复计入新增。", "",
+             f"### 本期新增 · {len(current)}", ""]
+    lines.append(render_table(current) if current else "本期暂无未截止的新增岗位。")
+    lines += ["", "<details>", f"<summary>往期岗位 · {len(previous)} 条未标记截止，展开继续找</summary>", "",
+              "此前收录、尚未标记截止的岗位。状态为「待确认」时，请先向招聘方核实。", "",
+              render_table(previous, include_date=True) if previous else "暂无往期岗位。", "", "</details>"]
+    if closed:
+        lines += ["", "<details>", f"<summary>已截止归档 · {len(closed)} 条</summary>", "", render_table(closed, include_date=True), "", "</details>"]
+    current_closed = sum(recorded_date(j) == day for j in closed)
+    if current_closed:
+        lines += ["", f"本期另有 {current_closed} 条已截止，保留在归档与收录统计中。"]
+    lines += [END]
+    return "\n".join(lines)
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--jobs", default="data/jobs.json")
+    ap.add_argument("--jobs", default="data/jobs.json", help="The full historical pool, not a daily batch")
     ap.add_argument("--readme", default="README.md")
+    ap.add_argument("--report-date", default=None)
     args = ap.parse_args()
-    jobs = json.loads(Path(args.jobs).read_text(encoding="utf-8"))["jobs"]
-    jobs = [j for j in jobs if not j.get("closed")]
-    jobs.sort(key=lambda j: (bool(emails(j.get("email")) or str(j.get("contact") or "").strip()), str(j.get("published_at") or "")), reverse=True)
-    lines = [START, f"## 在招岗位（{len(jobs)}）", "", "| 公司 | 岗位 | Base | 投递 | 转正 | 发布 |", "|---|---|---|---|---|---|"]
-    for j in jobs:
-        email = emails(j.get("email"))
-        source = j.get('source_url','')
-        apply_cell = f"[{email}](mailto:{email}) · [见原帖]({source})" if email else f"[见原帖]({source})"
-        pos = j.get("position") or j.get("title") or "未识别"
-        lines.append("| " + " | ".join([
-            company_of(j),
-            f"[{cell(position_of(j))}]({j.get('source_url','')})",
-            cell(j.get("base_location") or j.get("location") or "待确认"),
-            apply_cell,
-            "可转正" if j.get("convertible") else "日常实习",
-            cell(str(j.get("published_at") or "")[:10]),
-        ]) + " |")
-    lines += [END]
-    block = "\n".join(lines)
+    data = json.loads(Path(args.jobs).read_text(encoding="utf-8"))
+    jobs = data.get("jobs", []) if isinstance(data, dict) else data
+    block = render_jobs_block(jobs, args.report_date)
     readme = Path(args.readme)
     text = readme.read_text(encoding="utf-8")
     if START in text and END in text:
-        text = re.sub(re.escape(START) + r".*?" + re.escape(END), block, text, flags=re.S)
+        text = re.sub(re.escape(START) + r".*?" + re.escape(END), lambda _: block, text, flags=re.S)
     else:
         text = text.replace("## 快速开始", block + "\n\n## 快速开始", 1)
+    # Keep the jump link stable when daily counts change.
+    text = re.sub(r"#在招岗位[0-9]*", "#岗位追踪", text)
     readme.write_text(text, encoding="utf-8")
     print(json.dumps({"jobs": len(jobs), "readme": str(readme)}, ensure_ascii=False))
 
