@@ -16,7 +16,7 @@
 
 **每天 20:00 前，把还在招的产品实习发到你的邮箱。**
 
-[**免费订阅每日邮件 →**](https://xuyixiao0224.github.io/product-intern-daily/subscribe.html)　[查看今日岗位 ↓](#在招岗位17)
+[**免费订阅每日邮件 →**](https://xuyixiao0224.github.io/product-intern-daily/subscribe.html)　[查看今日岗位 ↓](#岗位追踪)
 
 - 免费，不卖邮箱，不卖岗位表
 - Double opt-in，随时退订
@@ -47,40 +47,101 @@
 ---
 
 <!-- JOBS:START -->
-## 在招岗位（14）
+## 岗位追踪
 
-| 公司 | 岗位 | Base | 投递 | 转正 | 发布 |
+**最新一期 · 2026-11-04**　按首次记录分期，旧岗位更新不重复计入新增。
+
+### 本期新增 · 5
+
+| 公司 | 岗位 | Base | 投递 | 状态 | 转正 |
 |---|---|---|---|---|---|
-| 快手 | [AI产品实习生](https://www.xiaohongshu.com/explore/6aeb0765000000001500aa6f?xsec_token=AButwP1qAvWuP5KFGRMiedlDw3VplYxAMDh3SA8GbIfVs=&xsec_source=pc_search) | 北京 | [zhanjinjin05@kuaishou.com](mailto:zhanjinjin05@kuaishou.com) · [见原帖](https://www.xiaohongshu.com/explore/6aeb0765000000001500aa6f?xsec_token=AButwP1qAvWuP5KFGRMiedlDw3VplYxAMDh3SA8GbIfVs=&xsec_source=pc_search) | 日常实习 | 2026-11-04 |
-| 一念千身（上海）科技有限公司 | [AI产品经理实习](https://www.xiaohongshu.com/explore/6aeafb6d00000000030042b0?xsec_token=ABhfNWAHz2AdVoRaMEOAny8U0STHq4VQ6tgrBoiQm05Uo=&xsec_source=pc_search) | 上海徐汇滨江 | [careers@soloco.cloud](mailto:careers@soloco.cloud) · [见原帖](https://www.xiaohongshu.com/explore/6aeafb6d00000000030042b0?xsec_token=ABhfNWAHz2AdVoRaMEOAny8U0STHq4VQ6tgrBoiQm05Uo=&xsec_source=pc_search) | 可转正 | 2026-11-04 |
-| INNVOX | [产品共创实习生](https://www.xiaohongshu.com/explore/6aeae939000000000f01feee?xsec_token=ABhfNWAHz2AdVoRaMEOAny8bSElDip0rJdceaH8irVz0I=&xsec_source=pc_search) | 待确认 | [见原帖](https://www.xiaohongshu.com/explore/6aeae939000000000f01feee?xsec_token=ABhfNWAHz2AdVoRaMEOAny8bSElDip0rJdceaH8irVz0I=&xsec_source=pc_search) | 日常实习 | 2026-11-04 |
-| 百度 | [运营平台产品实习生](https://www.xiaohongshu.com/explore/6aeae7b100000000180389b8?xsec_token=ABhfNWAHz2AdVoRaMEOAny8UvcWewrlNMeWPrOqvg32IA=&xsec_source=pc_search) | 待确认 | [sunyupeng01@baidu.com](mailto:sunyupeng01@baidu.com) · [见原帖](https://www.xiaohongshu.com/explore/6aeae7b100000000180389b8?xsec_token=ABhfNWAHz2AdVoRaMEOAny8UvcWewrlNMeWPrOqvg32IA=&xsec_source=pc_search) | 日常实习 | 2026-11-04 |
-| 小红书 | [AI开放生态产品策划实习生（游戏方向）](https://www.xiaohongshu.com/explore/6aeae6f80000000019000a4e?xsec_token=ABhfNWAHz2AdVoRaMEOAny8e-EZ6Iz7r1W_fnBLD5UsVA=&xsec_source=pc_search) | 深圳 | [xiaohongshu.qiuxiaoping@outlook.com](mailto:xiaohongshu.qiuxiaoping@outlook.com) · [见原帖](https://www.xiaohongshu.com/explore/6aeae6f80000000019000a4e?xsec_token=ABhfNWAHz2AdVoRaMEOAny8e-EZ6Iz7r1W_fnBLD5UsVA=&xsec_source=pc_search) | 日常实习 | 2026-11-04 |
-| 帆软软件 | [产品经理实习生](https://www.xiaohongshu.com/explore/6aeae053000000001a015232?xsec_token=ABhfNWAHz2AdVoRaMEOAny8TNXbfpsQdRbQsCv2hHXmQY=&xsec_source=pc_search) | 无锡 | [rwm95p@163.com](mailto:rwm95p@163.com) · [见原帖](https://www.xiaohongshu.com/explore/6aeae053000000001a015232?xsec_token=ABhfNWAHz2AdVoRaMEOAny8TNXbfpsQdRbQsCv2hHXmQY=&xsec_source=pc_search) | 日常实习 | 2026-11-04 |
-| 乐高(LEGO) | [产品设计实习生](https://www.xiaohongshu.com/explore/6aeb1e5b0000000015008433?xsec_token=AButwP1qAvWuP5KFGRMiedlC2nmmxseFAzTSur-1fBgVQ=&xsec_source=pc_search) | 深圳 | [见原帖](https://www.xiaohongshu.com/explore/6aeb1e5b0000000015008433?xsec_token=AButwP1qAvWuP5KFGRMiedlC2nmmxseFAzTSur-1fBgVQ=&xsec_source=pc_search) | 日常实习 | 2026-11-04 |
-| 腾讯 | [产品设计实习生](https://www.xiaohongshu.com/explore/6aeb1e4c000000000e00d9e6?xsec_token=AButwP1qAvWuP5KFGRMiedlMBC0_kqdqP3e21T8Dtlwlw=&xsec_source=pc_search) | 深圳 | [见原帖](https://www.xiaohongshu.com/explore/6aeb1e4c000000000e00d9e6?xsec_token=AButwP1qAvWuP5KFGRMiedlMBC0_kqdqP3e21T8Dtlwlw=&xsec_source=pc_search) | 日常实习 | 2026-11-04 |
-| 绿联科技 | [产品经理](https://www.xiaohongshu.com/explore/6aeae42300000000150229d5?xsec_token=ABhfNWAHz2AdVoRaMEOAny8SavAp9wUUOoUglzIfzhGaI=&xsec_source=pc_search) | 深圳 | [见原帖](https://www.xiaohongshu.com/explore/6aeae42300000000150229d5?xsec_token=ABhfNWAHz2AdVoRaMEOAny8SavAp9wUUOoUglzIfzhGaI=&xsec_source=pc_search) | 可转正 | 2026-11-04 |
-| 泡泡玛特 | [产品运营实习](https://www.xiaohongshu.com/explore/6aeaf2bd000000001a015b1f?xsec_token=ABhfNWAHz2AdVoRaMEOAny8S2ZHfESKIbWrap2tl2LEps=&xsec_source=pc_search) | 全国多城 | [见原帖](https://www.xiaohongshu.com/explore/6aeaf2bd000000001a015b1f?xsec_token=ABhfNWAHz2AdVoRaMEOAny8S2ZHfESKIbWrap2tl2LEps=&xsec_source=pc_search) | 可转正 | 2026-11-04 |
-| 洋葱学园 | [课程交付实习生（动画刷古文项目）](https://www.xiaohongshu.com/explore/6aeaee84000000000300ad8d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z3iRmOQAWAhVn7s4YV2QJE=&xsec_source=pc_search) | 北京 / 深圳 | [见原帖](https://www.xiaohongshu.com/explore/6aeaee84000000000300ad8d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z3iRmOQAWAhVn7s4YV2QJE=&xsec_source=pc_search) | 日常实习 | 2026-11-04 |
-| 阿里巴巴 | [AI产品实习生](https://www.xiaohongshu.com/explore/6aeaea5e000000000301528d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z6Vr69UwIozL_6dStpy8FI=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6aeaea5e000000000301528d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z6Vr69UwIozL_6dStpy8FI=&xsec_source=pc_search) | 日常实习 | 2026-11-04 |
-| 芒果TV | [产品运营实习生](https://www.xiaohongshu.com/explore/6aeae84f000000001503ff93?xsec_token=ABhfNWAHz2AdVoRaMEOAny8TjsbwyakI0GSLb6CK3FO0s=&xsec_source=pc_search) | 长沙 | [见原帖](https://www.xiaohongshu.com/explore/6aeae84f000000001503ff93?xsec_token=ABhfNWAHz2AdVoRaMEOAny8TjsbwyakI0GSLb6CK3FO0s=&xsec_source=pc_search) | 可转正 | 2026-11-04 |
-| Cloudflare | [产品经理实习](https://www.xiaohongshu.com/explore/6ae42ba90000000003015bfc?xsec_token=AB4Be60LebwhJTGUeNlCBg1h4SCYa2nm7aZF1CrZoz9BA=&xsec_source=pc_search) | 奥斯汀/伦敦/里斯本 | [见原帖](https://www.xiaohongshu.com/explore/6ae42ba90000000003015bfc?xsec_token=AB4Be60LebwhJTGUeNlCBg1h4SCYa2nm7aZF1CrZoz9BA=&xsec_source=pc_search) | 日常实习 | 2026-11-04 |
+| 一念千身（上海）科技有限公司（Soloco） | [AI产品经理实习](https://www.xiaohongshu.com/explore/6aeafb6d00000000030042b0?xsec_token=ABhfNWAHz2AdVoRaMEOAny8U0STHq4VQ6tgrBoiQm05Uo=&xsec_source=pc_search) | 上海徐汇滨江 | [careers@soloco.cloud](mailto:careers@soloco.cloud) | 在招 | 可转正 |
+| 百度 | [运营平台产品实习生](https://www.xiaohongshu.com/explore/6aeae7b100000000180389b8?xsec_token=ABhfNWAHz2AdVoRaMEOAny8UvcWewrlNMeWPrOqvg32IA=&xsec_source=pc_search) | 待确认 | [sunyupeng01@baidu.com](mailto:sunyupeng01@baidu.com) | 在招 | 日常实习 |
+| 小红书 | [AI开放生态产品策划实习生（游戏方向）](https://www.xiaohongshu.com/explore/6aeae6f80000000019000a4e?xsec_token=ABhfNWAHz2AdVoRaMEOAny8e-EZ6Iz7r1W_fnBLD5UsVA=&xsec_source=pc_search) | 深圳 | [xiaohongshu.qiuxiaoping@outlook.com](mailto:xiaohongshu.qiuxiaoping@outlook.com) | 在招 | 日常实习 |
+| 帆软软件 | [产品经理实习生](https://www.xiaohongshu.com/explore/6aeae053000000001a015232?xsec_token=ABhfNWAHz2AdVoRaMEOAny8TNXbfpsQdRbQsCv2hHXmQY=&xsec_source=pc_search) | 无锡 | [rwm95p@163.com](mailto:rwm95p@163.com) | 在招 | 日常实习 |
+| 阿里巴巴 | [AI产品实习生](https://www.xiaohongshu.com/explore/6aeaea5e000000000301528d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z6Vr69UwIozL_6dStpy8FI=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6aeaea5e000000000301528d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z6Vr69UwIozL_6dStpy8FI=&xsec_source=pc_search) | 在招 | 日常实习 |
+
+<details>
+<summary>往期岗位 · 16 条未标记截止，展开继续找</summary>
+
+此前收录、尚未标记截止的岗位。状态为「待确认」时，请先向招聘方核实。
+
+| 公司 | 岗位 | Base | 投递 | 状态 | 转正 | 首次记录 |
+|---|---|---|---|---|---|---|
+| 快手 | [AI产品实习生](https://www.xiaohongshu.com/explore/6aeb0765000000001500aa6f?xsec_token=AButwP1qAvWuP5KFGRMiedlDw3VplYxAMDh3SA8GbIfVs=&xsec_source=pc_search) | 北京 | [zhanjinjin05@kuaishou.com](mailto:zhanjinjin05@kuaishou.com) | 在招 | 日常实习 | 2026-11-02 |
+| 快手 | [策略产品](https://www.xiaohongshu.com/explore/6ae9b790000000001e0171f2?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso1PnZ3FDBeHfq3agR3e2zhA=&xsec_source=pc_search) | 北京 | [yuanzheng03@kuaishou.com](mailto:yuanzheng03@kuaishou.com) | 待确认 | 日常实习 | 2026-11-03 |
+| 快手 | [AI产品实习生](https://www.xiaohongshu.com/explore/6ae9a7f10000000015020253?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso5jnN6x0ifit8RAyNxDkShE=&xsec_source=pc_search) | 北京 | [wujingyi10@kuaishou.com](mailto:wujingyi10@kuaishou.com) | 待确认 | 日常实习 | 2026-11-03 |
+| 爱奇艺 | [爱奇艺会员产品实习生](https://www.xiaohongshu.com/explore/6ae99e57000000000e00d732?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso4Q74XNF-gp6VVXIebnfiOY=&xsec_source=pc_search) | 待确认 | [liqinyuan@qiyi.com](mailto:liqinyuan@qiyi.com) | 待确认 | 日常实习 | 2026-11-03 |
+| 快手 | [策略产品实习生 招非应届](https://www.xiaohongshu.com/explore/6ae96737000000001a016af5?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso2reoVBLM8nVgJO-XC-ySmo=&xsec_source=pc_search) | 北京 | [weijuanxia@kuaishou.com](mailto:weijuanxia@kuaishou.com) | 待确认 | 日常实习 | 2026-11-03 |
+| 公司未注明 | [agent 产品实习生](https://www.xiaohongshu.com/explore/6ae9c1d3000000001401eb9d?xsec_token=ABzWbnm3n7ma9LlmX9s8Vsoxf3BLM-EcSl1gCAagUfJJE=&xsec_source=pc_search) | 远程 | [见原帖](https://www.xiaohongshu.com/explore/6ae9c1d3000000001401eb9d?xsec_token=ABzWbnm3n7ma9LlmX9s8Vsoxf3BLM-EcSl1gCAagUfJJE=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-03 |
+| 公司未注明 | [AI 产品实习生招聘（金融 AI](https://www.xiaohongshu.com/explore/6ae9ba16000000001402903d?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso0OIwx7bi2seg4X_A99wWcM=&xsec_source=pc_search) | 深圳 | [见原帖](https://www.xiaohongshu.com/explore/6ae9ba16000000001402903d?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso0OIwx7bi2seg4X_A99wWcM=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-03 |
+| 百度 | [产品运营岗找实习](https://www.xiaohongshu.com/explore/6ae9b559000000000e035c6a?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso6SG8AeyQfzLtjwEw3po_H0=&xsec_source=pc_search) | 北京 / 深圳 | [见原帖](https://www.xiaohongshu.com/explore/6ae9b559000000000e035c6a?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso6SG8AeyQfzLtjwEw3po_H0=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-03 |
+| 快手 | [直播流量策略产品](https://www.xiaohongshu.com/explore/6ae99d060000000003022139?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso4-oTjVu3YLEeiW4nV7wEeU=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6ae99d060000000003022139?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso4-oTjVu3YLEeiW4nV7wEeU=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-03 |
+| 小米 | [可穿戴部门软件产品实习生](https://www.xiaohongshu.com/explore/6ae9837a000000000602c0e4?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso6Jp8wQse2t8oco-98yUaVM=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6ae9837a000000000602c0e4?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso6Jp8wQse2t8oco-98yUaVM=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-03 |
+| 快手 | [直播流量策略产品找实习生](https://www.xiaohongshu.com/explore/6ae977d700000000030074d8?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso6dtzEvc2UtrpG6LaOJrppw=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6ae977d700000000030074d8?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso6dtzEvc2UtrpG6LaOJrppw=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-03 |
+| 腾讯 | [AI搜索产品经理实习](https://www.xiaohongshu.com/explore/6ae95bac0000000007000482?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso1GqbpkabCxFUnxUN490L-4=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6ae95bac0000000007000482?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso1GqbpkabCxFUnxUN490L-4=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-03 |
+| 中银基金 | [中银基金产品实习](https://www.xiaohongshu.com/explore/6ae93c38000000000e00e3b0?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso3oH1oFQGelxouurc4u8wTA=&xsec_source=pc_search) | 上海 | [见原帖](https://www.xiaohongshu.com/explore/6ae93c38000000000e00e3b0?xsec_token=ABzWbnm3n7ma9LlmX9s8Vso3oH1oFQGelxouurc4u8wTA=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-03 |
+| 航旅纵横 | [航旅纵横 产品经理实习生](https://www.xiaohongshu.com/explore/6ae8bc0e0000000037038aa4?xsec_token=ABgmRiJtot2F9S8Co72Ad2o_tuxhBbCJBiv9as68shU_g=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6ae8bc0e0000000037038aa4?xsec_token=ABgmRiJtot2F9S8Co72Ad2o_tuxhBbCJBiv9as68shU_g=&xsec_source=pc_search) | 在招 | 可转正 | 2026-11-03 |
+| 腾讯 | [AI Infra 产品实习生](https://www.xiaohongshu.com/explore/6ae878a9000000003303b080?xsec_token=ABgmRiJtot2F9S8Co72Ad2o1TWofIkkhDM0BtVExtKh2k=&xsec_source=pc_search) | 深圳 | [见原帖](https://www.xiaohongshu.com/explore/6ae878a9000000003303b080?xsec_token=ABgmRiJtot2F9S8Co72Ad2o1TWofIkkhDM0BtVExtKh2k=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-02 |
+| 百度 | [AI搜索产品实习大模型](https://www.xiaohongshu.com/explore/6ae87478000000003602b9b7?xsec_token=ABgmRiJtot2F9S8Co72Ad2o6TCaEI-Fj7WhGKwxzxy168=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6ae87478000000003602b9b7?xsec_token=ABgmRiJtot2F9S8Co72Ad2o6TCaEI-Fj7WhGKwxzxy168=&xsec_source=pc_search) | 待确认 | 日常实习 | 2026-11-02 |
+
+</details>
 <!-- JOBS:END -->
 
 <!-- DASHBOARD:START -->
-## 数据看板
+### 收录趋势
 
-| 指标 | 数值 |
-|---|---:|
-| 今日新增 | 14 |
-| 历史累计 | 30 |
-| 当前在招 | 11 |
-| 可转正 | 5 |
-| 有邮箱 | 9 |
+绿色柱看新增，折线看积累。按日、周、月展开查看；周从周一开始。
 
-[打开交互看板（日/周/月） →](https://xuyixiao0224.github.io/product-intern-daily/dashboard.html) · [查看历史池](docs/HISTORY.md)
+<details open>
+<summary>按日 · 最近 30 个记录日</summary>
 
-**历史池 vs 今日新增**：GitHub 表格只列今日新增；`data/jobs.json` 是历史池，已截止会保留但不再出现在今日表；看板展示历史趋势。
+<picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="docs/assets/trend-day-mobile-dark.svg">
+  <source media="(max-width: 600px)" srcset="docs/assets/trend-day-mobile.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/trend-day-dark.svg">
+  <img src="docs/assets/trend-day.svg" alt="按日：柱形为新增岗位，折线为累计收录" width="900">
+</picture>
+
+</details>
+
+<details>
+<summary>按周 · 最近 12 个记录周</summary>
+
+<picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="docs/assets/trend-week-mobile-dark.svg">
+  <source media="(max-width: 600px)" srcset="docs/assets/trend-week-mobile.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/trend-week-dark.svg">
+  <img src="docs/assets/trend-week.svg" alt="按周：柱形为新增岗位，折线为累计收录" width="900">
+</picture>
+
+</details>
+
+<details>
+<summary>按月 · 最近 12 个记录月</summary>
+
+<picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="docs/assets/trend-month-mobile-dark.svg">
+  <source media="(max-width: 600px)" srcset="docs/assets/trend-month-mobile.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/trend-month-dark.svg">
+  <img src="docs/assets/trend-month.svg" alt="按月：柱形为新增岗位，折线为累计收录" width="900">
+</picture>
+
+</details>
+
+<details>
+<summary>统计口径与更新说明</summary>
+
+截至 **2026-11-04**：往期 **16** ＋ 本期新增 **5** ＋ 日期未记录 **0** ＝ 历史累计 **21**。本期以日期为准，不把最近一期自动称为「昨日」。
+
+- 新增按首次记录日期去重计算；旧岗位更新不再次计数，已截止岗位保留在累计中。
+- 本期日期可配置；严格 T-1 时按昨日截止日期生成，新旧分组与图表使用同一个截止日期，后续日期的记录不混入本期。
+- 早期导入的记录日期由原帖日期回填，后续按首次收录时间记录。曲线反映本项目收录，不代表平台全量岗位。
+- 明确在招与待确认分开统计，未标记截止不等于已确认在招。这里展示的是当前核实状态，非历史每日在招快照。
+- 只画已有记录，未记录的日期不补零；当前周、月尚未结束，不能直接与完整周期比较。
+- README 不运行 JavaScript；此处为每日自动更新的图形，折叠区无需跳转即可切换统计粒度。
+
+</details>
 <!-- DASHBOARD:END -->
 
 ## 快速开始

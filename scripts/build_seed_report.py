@@ -112,11 +112,6 @@ def main():
         detail = load_detail(details_dir / f"{ex['post_id']}.json")
         note = (detail.get("data") or {}).get("note") or {}
         desc = note.get("desc") or ex.get("description") or ""
-        # 多岗位汇总/集团岗位表 + 无邮箱/联系方式：不作为单一产品实习发布
-        if a and not a.get("email") and not flat(ex.get("contact")):
-            marker = any(k in desc for k in ("在招岗位", "岗位列表", "多岗位", "招聘岗位"))
-            if marker and desc.count("、") >= 5:
-                continue
         if not a and not is_product(pos, desc, note.get("title", "")):
             continue
         urls = image_list(detail)

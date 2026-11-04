@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
+export TZ=Asia/Shanghai
 cd "$(dirname "$0")/.."
 
 on_error() {
@@ -26,6 +27,7 @@ if ! lsof -nP -iTCP:18060 -sTCP:LISTEN >/dev/null 2>&1; then
   sleep 6
 fi
 DAY="$(date +%F)"
+REPORT_DAY="${DAILY_REPORT_DATE:-$DAY}"
 TARGET="${DAILY_TARGET:-300}"
 PER_KEYWORD="${DAILY_PER_KEYWORD:-100}"
 OUT="data/daily/$DAY"
@@ -63,8 +65,9 @@ python3 scripts/merge_jobs.py --base data/jobs.json --new "$OUT/jobs.json" --out
 python3 scripts/build_site.py "$OUT/jobs.json" docs/index.html --images-dir "$OUT/covers" --site-url "http://127.0.0.1:8000/"
 python3 scripts/generate_readme.py data/jobs.json docs/JOBS.md
 python3 scripts/build_feed.py data/jobs.json docs/feed.xml "http://127.0.0.1:8000/"
-python3 scripts/update_readme_table.py --jobs "$OUT/jobs.json" --readme README.md
-python3 scripts/build_stats.py --jobs data/jobs.json --today-jobs "$OUT/jobs.json" --out data/stats.json
+python3 scripts/update_readme_table.py --jobs data/jobs.json --report-date "$REPORT_DAY" --readme README.md
+python3 scripts/build_stats.py --jobs data/jobs.json --report-date "$REPORT_DAY" --out data/stats.json
+python3 scripts/build_readme_charts.py --stats data/stats.json --out docs/assets
 python3 scripts/build_dashboard.py --stats data/stats.json --out docs/dashboard.html
 python3 scripts/build_history.py --jobs data/jobs.json --out docs/HISTORY.md
 python3 scripts/update_readme_dashboard.py --stats data/stats.json --readme README.md

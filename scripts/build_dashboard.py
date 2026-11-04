@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-"""Build a static, dependency-free daily/weekly/monthly dashboard."""
-import argparse, html, json
+"""Optional standalone export of the same README charts; no separate metrics."""
+import argparse
+import json
 from pathlib import Path
+from build_readme_charts import render_svg
 
 
 def main():
@@ -9,44 +11,19 @@ def main():
     ap.add_argument("--stats", default="data/stats.json")
     ap.add_argument("--out", default="docs/dashboard.html")
     args = ap.parse_args()
-    d = json.loads(Path(args.stats).read_text(encoding="utf-8"))
-    data = json.dumps(d, ensure_ascii=False).replace("</", "<\\/")
-    out = Path(args.out)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>产品实习日报 · 数据看板</title>
-<style>
-:root{{--bg:#f6f8fa;--fg:#1f2328;--muted:#656d76;--line:#d0d7de;--accent:#0969da}}
-*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--fg);font:15px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}}
-header{{background:#fff;border-bottom:1px solid var(--line)}}.wrap{{max-width:1100px;margin:0 auto;padding:0 24px}}
-.hero{{padding:36px 0 22px}}h1{{margin:0 0 8px;font-size:30px}}.sub{{color:var(--muted);margin:0}}
-.cards{{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0}}
-.card{{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}}.card b{{display:block;font-size:26px}}.card span{{color:var(--muted);font-size:12px}}
-.tabs{{display:flex;gap:8px;margin:18px 0}}button{{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 14px;cursor:pointer}}button.on{{background:var(--accent);color:#fff;border-color:var(--accent)}}
-.panel{{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:20px}}
-.bars{{display:flex;align-items:flex-end;gap:8px;height:240px;overflow-x:auto;padding-top:10px}}
-.bar{{min-width:38px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;color:var(--muted);font-size:11px}}
-.bar i{{display:block;width:100%;background:linear-gradient(#58a6ff,#0969da);border-radius:6px 6px 0 0;min-height:2px}}
-.bar b{{color:var(--fg);font-size:12px}}table{{width:100%;border-collapse:collapse;font-size:13px}}th,td{{border-bottom:1px solid var(--line);padding:7px;text-align:left}}th{{color:var(--muted);font-weight:500}}a{{color:var(--accent)}}
-@media(max-width:700px){{.cards{{grid-template-columns:repeat(2,1fr)}}.hero{{padding:24px 0}}.wrap{{padding:0 16px}}}}
-</style></head><body><header><div class="wrap"><div class="hero"><h1>产品实习日报 · 数据看板</h1><p class="sub">每日新增 / 累计 / 在招 / 可转正。数据来自 jobs.json 历史池；GitHub 表格只展示今日新增。</p></div></div></header>
-<main class="wrap">
-<div class="cards"><div class="card"><b id="total">-</b><span>累计岗位</span></div><div class="card"><b id="active">-</b><span>当前在招</span></div><div class="card"><b id="new">-</b><span>今日新增</span></div><div class="card"><b id="conv">-</b><span>可转正</span></div></div>
-<div class="tabs"><button data-mode="day" class="on">每日</button><button data-mode="week">每周</button><button data-mode="month">每月</button></div>
-<div class="panel"><div class="bars" id="bars"></div></div>
-<div class="panel"><table><thead><tr><th>日期</th><th>新增</th><th>累计</th><th>在招</th><th>可转正</th><th>有邮箱</th></tr></thead><tbody id="rows"></tbody></table></div>
-<p><a href="https://github.com/xuyixiao0224/product-intern-daily/blob/main/docs/HISTORY.md">历史池</a> · <a href="https://github.com/xuyixiao0224/product-intern-daily">返回 GitHub</a> · <a href="subscribe.html">订阅每日邮件</a></p>
-</main><script>
-const DATA={data};
-const $=id=>document.getElementById(id);
-$('total').textContent=DATA.total;$('active').textContent=DATA.active;$('conv').textContent=DATA.convertible;
-$('new').textContent=(DATA.by_date.at(-1)||{{}}).new||0;
-let mode='day';
-function agg(mode){{const rows=DATA.by_date||[];if(mode==='day')return rows;const map={{}};for(const r of rows){{const d=new Date(r.date+'T00:00:00');const k=mode==='week'?`${{d.getFullYear()}}-W${{Math.ceil((((d-d.getFullYear()/1)/86400000)+1)/7)}}`:r.date.slice(0,7);if(!map[k])map[k]={{date:k,new:0,total:r.total,active:r.active,convertible:r.convertible,email:r.email}};map[k].new+=r.new;map[k].total=r.total;}}return Object.values(map);}}
-function render(){{const rows=agg(mode);const max=Math.max(1,...rows.map(r=>r.new));$('bars').innerHTML=rows.map(r=>`<div class="bar"><b>${{r.new}}</b><i style="height:${{Math.max(3,r.new/max*190)}}px"></i><span>${{r.date}}</span></div>`).join('');$('rows').innerHTML=rows.slice().reverse().map(r=>`<tr><td>${{r.date}}</td><td>${{r.new}}</td><td>${{r.total}}</td><td>${{r.active}}</td><td>${{r.convertible}}</td><td>${{r.email}}</td></tr>`).join('');}}
-document.querySelectorAll('button[data-mode]').forEach(b=>b.onclick=()=>{{mode=b.dataset.mode;document.querySelectorAll('button[data-mode]').forEach(x=>x.classList.toggle('on',x===b));render();}});render();
-</script></body></html>''', encoding="utf-8")
-    print(out)
+    stats = json.loads(Path(args.stats).read_text(encoding="utf-8"))
+    panels = "".join(f'<section id="{mode}" {"" if mode == "day" else "hidden"}>{render_svg(stats, mode)}</section>' for mode in ("day", "week", "month"))
+    doc = '''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>岗位收录趋势 · 产品实习日报</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f6f8fa;color:#1f2925;font:15px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif}main{max-width:948px;margin:48px auto;padding:0 24px}h1{font-size:26px;margin:0 0 8px}p{color:#66736c;margin:0 0 24px}nav{display:flex;gap:8px;margin-bottom:16px}button{padding:7px 20px;border:1px solid #d1d9e0;border-radius:20px;background:white;color:#66736c;cursor:pointer}button[aria-pressed=true]{background:#258564;color:white;border-color:#258564}svg{display:block;width:100%;height:auto}a{color:#258564}
+</style><main><h1>岗位收录趋势</h1><p>最新新增是历史池的一部分；旧岗位更新不重复计数。</p><nav aria-label="统计粒度"><button data-mode="day" aria-pressed="true">按日</button><button data-mode="week" aria-pressed="false">按周</button><button data-mode="month" aria-pressed="false">按月</button></nav>'''
+    doc += panels + '''<p>只展示本项目已记录的数据。当前周、月尚未结束；未记录日期不补零。</p></main><script>
+document.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));document.querySelectorAll('section').forEach(s=>s.hidden=s.id!==button.dataset.mode)}));
+</script></html>'''
+    path = Path(args.out)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(doc, encoding="utf-8")
+    print(path)
 
 
 if __name__ == "__main__":

@@ -3,6 +3,8 @@
 import argparse, json, os, re, sys, time, urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from product_intern_daily.mcp_client import MCPClient
 
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
 PROMPT = """你是产品实习招聘信息审核员。根据帖子标题、正文、评论、OCR，输出严格 JSON（不要 markdown）。
@@ -16,6 +18,7 @@ PROMPT = """你是产品实习招聘信息审核员。根据帖子标题、正�
 7. verdict：通过/不通过；不通过要写原因（非产品岗/非招聘/已截止/引流/无有效信息）。疑问句/求建议/“能去吗”“怎么样”“求经验”“面经/复盘”属于经验分享，不是招聘帖，判不通过。
 8. 投递方式：必须存在真实邮箱，或明确“私信/扫码/简历发我/联系我”；只有“投递”两个字不算有效投递方式。
 9. 多岗位汇总/集团岗位表（一个帖子列多个岗位、多个城市）且没有明确邮箱/联系方式：判不通过，不要把它当成单一产品实习。
+10. 作者主页：如果本帖没有邮箱/联系方式，且作者其他笔记标题涉及 >=3 个不同公司，判不通过（说明是岗位汇总/多公司引流）。
 
 输出：
 {"is_product":true,"verdict":"通过","company":"...","position":"...","base":"...","email":"...","still_hiring":"在招","convertible":false,"reason":"...","confidence":0.0}
@@ -50,6 +53,8 @@ def main():
     ap.add_argument("--out", default="data/review/ai_2026-11-04.json")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--profiles", default="data/review/author_profiles.json")
+    ap.add_argument("--no-profiles", action="store_true")
     args = ap.parse_args()
     key = load_key()
     if not key:
@@ -59,6 +64,29 @@ def main():
     exs = json.loads(Path(args.extractions).read_text(encoding="utf-8"))
     if args.limit: exs = exs[:args.limit]
     details = Path(args.details); ocr = Path(args.ocr)
+    profiles = {}
+    pp = Path(args.profiles)
+    if pp.exists():
+        try: profiles = json.loads(pp.read_text())
+        except Exception: profiles = {}
+    if not args.no_profiles:
+        client = MCPClient()
+        for e in exs:
+            if e.get('email') or (e.get('contact') or '').strip():
+                continue
+            d = json.loads((details / f"{e['post_id']}.json").read_text(encoding="utf-8"))
+            n = (d.get('data') or {}).get('note') or {}
+            u = n.get('user') or {}
+            uid, tok = u.get('userId'), n.get('xsecToken')
+            if not uid or not tok or uid in profiles:
+                continue
+            try:
+                notes = client.user_profile(uid, tok, limit=20)
+                profiles[uid] = [x.get('title','') for x in notes]
+            except Exception:
+                profiles[uid] = []
+        pp.parent.mkdir(parents=True, exist_ok=True)
+        pp.write_text(json.dumps(profiles, ensure_ascii=False, indent=1))
     tasks = []
     for e in exs:
         d = json.loads((details / f"{e['post_id']}.json").read_text(encoding="utf-8"))
@@ -66,7 +94,9 @@ def main():
         comments = "\n".join(str(c.get("content") or "") for c in (e.get("comments") or [])[:8])
         ot = (ocr / f"{e['post_id']}.txt")
         ocr_text = ot.read_text(errors="ignore") if ot.exists() else ""
-        prompt = PROMPT + f"\n\n标题：{n.get('title','')}\n正文：{(n.get('desc') or '')[:2000]}\n评论：{comments[:1500]}\nOCR：{ocr_text[:1500]}\n已知候选公司：{', '.join(KNOWN)}"
+        u = n.get('user') or {}
+        author_titles = profiles.get(u.get('userId'), [])
+        prompt = PROMPT + f"\n\n标题：{n.get('title','')}\n正文：{(n.get('desc') or '')[:2000]}\n评论：{comments[:1500]}\nOCR：{ocr_text[:1500]}\n作者其他笔记标题：{'; '.join(author_titles[:20])}\n已知候选公司：{', '.join(KNOWN)}"
         tasks.append((e["post_id"], prompt))
     out = []
     def work(item):
