@@ -45,7 +45,8 @@ def work(item):
         raw.unlink(missing_ok=True)
     text = ocr_file(jpg)
     (out / f"{pid}.txt").write_text(text, encoding="utf-8")
-    return pid, bool(text), ""
+    # 空文本不是失败：封面可能只是照片/纯视觉海报
+    return pid, True, "empty" if not text else ""
 
 with ThreadPoolExecutor(max_workers=3) as ex:
     futs = [ex.submit(work, x) for x in todo]
