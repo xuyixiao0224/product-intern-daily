@@ -19,7 +19,7 @@ def picture(mode, label):
 
 
 def render_dashboard(stats):
-    lines = [START, "### 收录趋势", "", "绿色柱看新增，折线看积累。按日、周、月展开查看；周从周一开始。", ""]
+    lines = [START, "### 岗位趋势", "", ""]
     for mode, label, scope in [("day", "按日", "最近 30 个记录日"), ("week", "按周", "最近 12 个记录周"), ("month", "按月", "最近 12 个记录月")]:
         lines += ["<details open>" if mode == "day" else "<details>", f"<summary>{label} · {scope}</summary>", "", picture(mode, label), "", "</details>", ""]
     lines += ["<details>", "<summary>统计口径与更新说明</summary>", "",

@@ -1,9 +1,16 @@
 # 历史岗位池
 
-累计 **21** 条；首页按「本期新增 / 往期岗位」分组；这里保留完整收录记录（含已截止），未标记截止不等于已确认在招。
+累计 **28** 条；首页按「本期新增 / 往期岗位」分组；这里保留完整收录记录（含已截止），未标记截止不等于已确认在招。
 
 | 首次收录 | 公司 | 岗位 | Base | 投递 | 状态 | 转正 |
 |---|---|---|---|---|---|---|
+| 2026-11-05 | 科大讯飞 | [产品经理实习生](https://www.xiaohongshu.com/explore/6aec5500000000001803ba7f?xsec_token=AB-qI5NlhvcznM2DBNkAMZ68Bcy9uBpdmpLRz2UoI8W0Q=&xsec_source=pc_search) | 合肥 | [见原帖](https://www.xiaohongshu.com/explore/6aec5500000000001803ba7f?xsec_token=AB-qI5NlhvcznM2DBNkAMZ68Bcy9uBpdmpLRz2UoI8W0Q=&xsec_source=pc_search) | 在招 | 日常实习 |
+| 2026-11-05 | 百度 | [产品实习生](https://www.xiaohongshu.com/explore/6aec2eb30000000003006560?xsec_token=AB-qI5NlhvcznM2DBNkAMZ62qW1hyEbU7BRRRPiof12JE=&xsec_source=pc_search) | 待确认 | [见原帖](https://www.xiaohongshu.com/explore/6aec2eb30000000003006560?xsec_token=AB-qI5NlhvcznM2DBNkAMZ62qW1hyEbU7BRRRPiof12JE=&xsec_source=pc_search) | 无法确认 | 日常实习 |
+| 2026-11-05 | 帆软软件 | [产品经理实习](https://www.xiaohongshu.com/explore/6aec5943000000000b020e1a?xsec_token=AB-qI5NlhvcznM2DBNkAMZ66hcllYDifIBSMNdsjtervA=&xsec_source=pc_search) | 无锡 | [见原帖](https://www.xiaohongshu.com/explore/6aec5943000000000b020e1a?xsec_token=AB-qI5NlhvcznM2DBNkAMZ66hcllYDifIBSMNdsjtervA=&xsec_source=pc_search) | 无法确认 | 日常实习 |
+| 2026-11-05 | 字节跳动 | [AI产品运营](https://www.xiaohongshu.com/explore/6aec35d4000000000602da64?xsec_token=AB-qI5NlhvcznM2DBNkAMZ6_RJZAPk50XcQalThoyN3Pc=&xsec_source=pc_search) | 上海/北京 | [见原帖](https://www.xiaohongshu.com/explore/6aec35d4000000000602da64?xsec_token=AB-qI5NlhvcznM2DBNkAMZ6_RJZAPk50XcQalThoyN3Pc=&xsec_source=pc_search) | 在招 | 日常实习 |
+| 2026-11-05 | 字节跳动 | [抖音直播AI产品实习生](https://www.xiaohongshu.com/explore/6aec2ae600000000100125cf?xsec_token=AB-qI5NlhvcznM2DBNkAMZ63RJCvnB0XfsfGHTrhzFHsI=&xsec_source=pc_search) | 深圳/北京 | [sunxu.0312@bytedance.com](mailto:sunxu.0312@bytedance.com) | 在招 | 日常实习 |
+| 2026-11-05 | Ratus | [Channel内容产品运营](https://www.xiaohongshu.com/explore/6aec0a1c000000000b021b54?xsec_token=AB-qI5NlhvcznM2DBNkAMZ69rACfTo7ZnefGa-FxErpPk=&xsec_source=pc_search) | 上海 | [jobs@ratus.ai](mailto:jobs@ratus.ai) | 无法确认 | 日常实习 |
+| 2026-11-05 | JOY GROUP | [产品策划实习生](https://www.xiaohongshu.com/explore/6aec4d1b000000000300b5ea?xsec_token=AB-qI5NlhvcznM2DBNkAMZ69WID_ZCjEqkW9lzbLM92o8=&xsec_source=pc_search) | 上海 | [yuhong.wang@joy-group.com](mailto:yuhong.wang@joy-group.com) | 无法确认 | 日常实习 |
 | 2026-11-04 | 阿里巴巴 | [AI产品实习生](https://www.xiaohongshu.com/explore/6aeaea5e000000000301528d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z6Vr69UwIozL_6dStpy8FI=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6aeaea5e000000000301528d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z6Vr69UwIozL_6dStpy8FI=&xsec_source=pc_search) | 在招 | 日常实习 |
 | 2026-11-04 | 百度 | [运营平台产品实习生](https://www.xiaohongshu.com/explore/6aeae7b100000000180389b8?xsec_token=ABhfNWAHz2AdVoRaMEOAny8UvcWewrlNMeWPrOqvg32IA=&xsec_source=pc_search) | 待确认 | [sunyupeng01@baidu.com](mailto:sunyupeng01@baidu.com) | 在招 | 日常实习 |
 | 2026-11-04 | 帆软软件 | [产品经理实习生](https://www.xiaohongshu.com/explore/6aeae053000000001a015232?xsec_token=ABhfNWAHz2AdVoRaMEOAny8TNXbfpsQdRbQsCv2hHXmQY=&xsec_source=pc_search) | 无锡 | [rwm95p@163.com](mailto:rwm95p@163.com) | 在招 | 日常实习 |

@@ -49,19 +49,21 @@
 <!-- JOBS:START -->
 ## 岗位追踪
 
-**最新一期 · 2026-11-04**　按首次记录分期，旧岗位更新不重复计入新增。
+**最新一期 · 2026-11-05**　按首次记录分期，旧岗位更新不重复计入新增。
 
-### 本期新增 · 5
+### 本期新增 · 7
 
 | 公司 | 岗位 | Base | 投递 | 状态 | 转正 |
 |---|---|---|---|---|---|
-| 一念千身（上海）科技有限公司（Soloco） | [AI产品经理实习](https://www.xiaohongshu.com/explore/6aeafb6d00000000030042b0?xsec_token=ABhfNWAHz2AdVoRaMEOAny8U0STHq4VQ6tgrBoiQm05Uo=&xsec_source=pc_search) | 上海徐汇滨江 | [careers@soloco.cloud](mailto:careers@soloco.cloud) | 在招 | 可转正 |
-| 百度 | [运营平台产品实习生](https://www.xiaohongshu.com/explore/6aeae7b100000000180389b8?xsec_token=ABhfNWAHz2AdVoRaMEOAny8UvcWewrlNMeWPrOqvg32IA=&xsec_source=pc_search) | 待确认 | [sunyupeng01@baidu.com](mailto:sunyupeng01@baidu.com) | 在招 | 日常实习 |
-| 小红书 | [AI开放生态产品策划实习生（游戏方向）](https://www.xiaohongshu.com/explore/6aeae6f80000000019000a4e?xsec_token=ABhfNWAHz2AdVoRaMEOAny8e-EZ6Iz7r1W_fnBLD5UsVA=&xsec_source=pc_search) | 深圳 | [xiaohongshu.qiuxiaoping@outlook.com](mailto:xiaohongshu.qiuxiaoping@outlook.com) | 在招 | 日常实习 |
-| 帆软软件 | [产品经理实习生](https://www.xiaohongshu.com/explore/6aeae053000000001a015232?xsec_token=ABhfNWAHz2AdVoRaMEOAny8TNXbfpsQdRbQsCv2hHXmQY=&xsec_source=pc_search) | 无锡 | [rwm95p@163.com](mailto:rwm95p@163.com) | 在招 | 日常实习 |
-| 阿里巴巴 | [AI产品实习生](https://www.xiaohongshu.com/explore/6aeaea5e000000000301528d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z6Vr69UwIozL_6dStpy8FI=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6aeaea5e000000000301528d?xsec_token=ABhfNWAHz2AdVoRaMEOAny8Z6Vr69UwIozL_6dStpy8FI=&xsec_source=pc_search) | 在招 | 日常实习 |
+| JOY GROUP | [产品策划实习生](https://www.xiaohongshu.com/explore/6aec4d1b000000000300b5ea?xsec_token=AB-qI5NlhvcznM2DBNkAMZ69WID_ZCjEqkW9lzbLM92o8=&xsec_source=pc_search) | 上海 | [yuhong.wang@joy-group.com](mailto:yuhong.wang@joy-group.com) | 待确认 | 日常实习 |
+| 字节跳动 | [抖音直播AI产品实习生](https://www.xiaohongshu.com/explore/6aec2ae600000000100125cf?xsec_token=AB-qI5NlhvcznM2DBNkAMZ63RJCvnB0XfsfGHTrhzFHsI=&xsec_source=pc_search) | 深圳/北京 | [sunxu.0312@bytedance.com](mailto:sunxu.0312@bytedance.com) | 在招 | 日常实习 |
+| Ratus | [Channel内容产品运营](https://www.xiaohongshu.com/explore/6aec0a1c000000000b021b54?xsec_token=AB-qI5NlhvcznM2DBNkAMZ69rACfTo7ZnefGa-FxErpPk=&xsec_source=pc_search) | 上海 | [jobs@ratus.ai](mailto:jobs@ratus.ai) | 待确认 | 日常实习 |
+| 帆软软件 | [产品经理实习](https://www.xiaohongshu.com/explore/6aec5943000000000b020e1a?xsec_token=AB-qI5NlhvcznM2DBNkAMZ66hcllYDifIBSMNdsjtervA=&xsec_source=pc_search) | 无锡 | [见原帖](https://www.xiaohongshu.com/explore/6aec5943000000000b020e1a?xsec_token=AB-qI5NlhvcznM2DBNkAMZ66hcllYDifIBSMNdsjtervA=&xsec_source=pc_search) | 待确认 | 日常实习 |
+| 科大讯飞 | [产品经理实习生](https://www.xiaohongshu.com/explore/6aec5500000000001803ba7f?xsec_token=AB-qI5NlhvcznM2DBNkAMZ68Bcy9uBpdmpLRz2UoI8W0Q=&xsec_source=pc_search) | 合肥 | [见原帖](https://www.xiaohongshu.com/explore/6aec5500000000001803ba7f?xsec_token=AB-qI5NlhvcznM2DBNkAMZ68Bcy9uBpdmpLRz2UoI8W0Q=&xsec_source=pc_search) | 在招 | 日常实习 |
+| 字节跳动 | [AI产品运营](https://www.xiaohongshu.com/explore/6aec35d4000000000602da64?xsec_token=AB-qI5NlhvcznM2DBNkAMZ6_RJZAPk50XcQalThoyN3Pc=&xsec_source=pc_search) | 上海/北京 | [见原帖](https://www.xiaohongshu.com/explore/6aec35d4000000000602da64?xsec_token=AB-qI5NlhvcznM2DBNkAMZ6_RJZAPk50XcQalThoyN3Pc=&xsec_source=pc_search) | 在招 | 日常实习 |
+| 百度 | [产品实习生](https://www.xiaohongshu.com/explore/6aec2eb30000000003006560?xsec_token=AB-qI5NlhvcznM2DBNkAMZ62qW1hyEbU7BRRRPiof12JE=&xsec_source=pc_search) | 待确认 | [见原帖](https://www.xiaohongshu.com/explore/6aec2eb30000000003006560?xsec_token=AB-qI5NlhvcznM2DBNkAMZ62qW1hyEbU7BRRRPiof12JE=&xsec_source=pc_search) | 待确认 | 日常实习 |
 
-[查看全部 16 条 →](https://xuyixiao0224.github.io/product-intern-daily/history.html)
+[查看全部 21 条 →](https://xuyixiao0224.github.io/product-intern-daily/history.html)
 <!-- JOBS:END -->
 
 <!-- DASHBOARD:START -->
@@ -107,7 +109,7 @@
 <details>
 <summary>统计口径与更新说明</summary>
 
-截至 **2026-11-04**：往期 **16** ＋ 本期新增 **5** ＋ 日期未记录 **0** ＝ 历史累计 **21**。本期以日期为准，不把最近一期自动称为「昨日」。
+截至 **2026-11-05**：往期 **21** ＋ 本期新增 **7** ＋ 日期未记录 **0** ＝ 历史累计 **28**。本期以日期为准，不把最近一期自动称为「昨日」。
 
 - 新增按首次记录日期去重计算；旧岗位更新不再次计数，已截止岗位保留在累计中。
 - 本期日期可配置；严格 T-1 时按昨日截止日期生成，新旧分组与图表使用同一个截止日期，后续日期的记录不混入本期。

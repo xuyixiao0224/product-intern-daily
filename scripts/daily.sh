@@ -28,13 +28,14 @@ if ! lsof -nP -iTCP:18060 -sTCP:LISTEN >/dev/null 2>&1; then
 fi
 DAY="$(date +%F)"
 REPORT_DAY="${DAILY_REPORT_DATE:-$DAY}"
-TARGET="${DAILY_TARGET:-300}"
+TARGET="${DAILY_TARGET:-60}"
+COLLECT_TARGET="${DAILY_COLLECT_TARGET:-300}"
 PER_KEYWORD="${DAILY_PER_KEYWORD:-100}"
 OUT="data/daily/$DAY"
 mkdir -p "$OUT"
 
 # 19:00 跑采集
-python3 scripts/collect_seed.py --mode daily --target "$TARGET" --per-keyword "$PER_KEYWORD" --out "$OUT/candidates.json"
+python3 scripts/collect_seed.py --mode daily --target "$COLLECT_TARGET" --per-keyword "$PER_KEYWORD" --out "$OUT/candidates.json"
 FETCH_LOG="$(mktemp)"
 python3 scripts/fetch_parallel.py "$OUT/candidates.json" "$OUT/details" "$TARGET" 2 | tee "$FETCH_LOG"
 LAST="$(tail -1 "$FETCH_LOG")"
