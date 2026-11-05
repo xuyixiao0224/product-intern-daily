@@ -1,0 +1,25 @@
+# Product Intern Daily · 产品实习日报
+
+> 开源的产品实习岗位聚合工具。每日采集小红书产品实习帖，OCR 正文/图片/评论，抽取公司、岗位、Base、投递邮箱与在招状态，去重后生成岗位表与邮件。截至 2026-11-04 累计收录 21 个已核实岗位。
+
+## 核心事实
+
+- 更新频率：每天一次，19:00 采集、20:00 推送
+- 数据来源：小红书公开帖子，通过本地 xiaohongshu-mcp 采集
+- 覆盖范围：仅产品岗；仅小红书
+- 许可：PolyForm Noncommercial 1.0.0，禁止商用
+- 关键数据：抽样 100 条帖子，仅 10 条能拿到投递邮箱；112 条预跑抽出 13 个唯一邮箱，对照方案 5 个
+
+## 文档
+
+- [README](https://github.com/xuyixiao0224/product-intern-daily): 项目说明、适合谁/不适合谁、常见问题
+- [BENCHMARK](https://github.com/xuyixiao0224/product-intern-daily/blob/main/docs/BENCHMARK.md): 对照实验数据
+- [ARCHITECTURE](https://github.com/xuyixiao0224/product-intern-daily/blob/main/docs/ARCHITECTURE.md): 模块与数据流
+- [SCHEDULE](https://github.com/xuyixiao0224/product-intern-daily/blob/main/docs/SCHEDULE.md): 每日调度方案
+
+## 站点
+
+- [首页](https://xuyixiao0224.github.io/product-intern-daily/): 项目概览与常见问题
+- [每日订阅](https://xuyixiao0224.github.io/product-intern-daily/subscribe.html): 免费邮件订阅
+- [趋势面板](https://xuyixiao0224.github.io/product-intern-daily/dashboard.html): 岗位数量与趋势
+- [历史归档](https://xuyixiao0224.github.io/product-intern-daily/history.html): 往期岗位
