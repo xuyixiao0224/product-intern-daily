@@ -1,0 +1,23 @@
+# 注意：robots.txt 只在域名根目录生效（https://xuyixiao0224.github.io/robots.txt）。
+# 放在项目页 docs/ 下的这份，多数爬虫不会读取。
+# 想让它真正生效，需要建一个名为 xuyixiao0224.github.io 的仓库，把本文件放进去。
+
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+Sitemap: https://xuyixiao0224.github.io/product-intern-daily/sitemap.xml
