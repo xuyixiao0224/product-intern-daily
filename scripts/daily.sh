@@ -22,8 +22,9 @@ trap on_error ERR
 GIT="${GIT:-git}"
 ROOT="$(cd ../.. && pwd)"
 MCP_BIN="$ROOT/work/xhs-mcp-src/xiaohongshu-mcp-patched"
+XHS_HOME="${XHS_HOME:-$ROOT/.xhs-home}"
 if ! lsof -nP -iTCP:18060 -sTCP:LISTEN >/dev/null 2>&1; then
-  (HOME="$ROOT/.xhs-home" nohup "$MCP_BIN" -headless > /tmp/xhs-mcp-daily.log 2>&1 &)
+  (HOME="$XHS_HOME" nohup "$MCP_BIN" -headless > /tmp/xhs-mcp-daily.log 2>&1 &)
   sleep 6
 fi
 DAY="$(date +%F)"
