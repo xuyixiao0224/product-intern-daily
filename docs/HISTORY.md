@@ -1,9 +1,15 @@
 # 历史岗位池
 
-累计 **28** 条；首页按「本期新增 / 往期岗位」分组；这里保留完整收录记录（含已截止），未标记截止不等于已确认在招。
+累计 **34** 条；首页按「本期新增 / 往期岗位」分组；这里保留完整收录记录（含已截止），未标记截止不等于已确认在招。
 
 | 首次收录 | 公司 | 岗位 | Base | 投递 | 状态 | 转正 |
 |---|---|---|---|---|---|---|
+| 2026-11-06 | 石头科技 | [产品经理实习生](https://www.xiaohongshu.com/explore/6aeda8c0000000002b01f56b?xsec_token=AB9hcg8iHko3h0aXxby_h4BZy3f77N004fC49nrayJxg0=&xsec_source=pc_search) | 待确认 | [见原帖](https://www.xiaohongshu.com/explore/6aeda8c0000000002b01f56b?xsec_token=AB9hcg8iHko3h0aXxby_h4BZy3f77N004fC49nrayJxg0=&xsec_source=pc_search) | 无法确认 | 日常实习 |
+| 2026-11-06 | 未识别 | [AI4S产品经理实习生](https://www.xiaohongshu.com/explore/6aeda23d00000000280228da?xsec_token=AB9hcg8iHko3h0aXxby_h4BXRvRLbvYSU8q0GHP_DJnYc=&xsec_source=pc_search) | 清华大学校内 | [见原帖](https://www.xiaohongshu.com/explore/6aeda23d00000000280228da?xsec_token=AB9hcg8iHko3h0aXxby_h4BXRvRLbvYSU8q0GHP_DJnYc=&xsec_source=pc_search) | 在招 | 可转正 |
+| 2026-11-06 | 小红书 | [产品经理实习生、产品运营实习生](https://www.xiaohongshu.com/explore/6aed963f000000000902357b?xsec_token=AB9hcg8iHko3h0aXxby_h4BWKeIrtcLAb23qgivluQPr8=&xsec_source=pc_search) | 上海 | [jingjiawei@xiaohongshu.com](mailto:jingjiawei@xiaohongshu.com) | 在招 | 可转正 |
+| 2026-11-06 | 小红书 | [创新增长实习生（广告策略）](https://www.xiaohongshu.com/explore/6aed5d6d000000002203b201?xsec_token=AB9hcg8iHko3h0aXxby_h4BW416bUjustUj1gii3TrR0g=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6aed5d6d000000002203b201?xsec_token=AB9hcg8iHko3h0aXxby_h4BW416bUjustUj1gii3TrR0g=&xsec_source=pc_search) | 无法确认 | 日常实习 |
+| 2026-11-06 | 字节跳动 | [广告策略产品实习生](https://www.xiaohongshu.com/explore/6aed919d000000002a01e075?xsec_token=AB9hcg8iHko3h0aXxby_h4BXCtrdYLV_q0BjQxEvsQCds=&xsec_source=pc_search) | 待确认 | [daichengkai.4319@bytedance.com](mailto:daichengkai.4319@bytedance.com) | 在招 | 可转正 |
+| 2026-11-06 | 字节跳动 | [用户增长策略产品实习生 - TikTok Shop](https://www.xiaohongshu.com/explore/6aeca4cc0000000015022467?xsec_token=AB-qI5NlhvcznM2DBNkAMZ64tNz1yXVHthvNS_CPT6Y9Y=&xsec_source=pc_search) | 上海新江湾 | [huangyiwei.winnie@bytedance.com](mailto:huangyiwei.winnie@bytedance.com) | 在招 | 日常实习 |
 | 2026-11-05 | 科大讯飞 | [产品经理实习生](https://www.xiaohongshu.com/explore/6aec5500000000001803ba7f?xsec_token=AB-qI5NlhvcznM2DBNkAMZ68Bcy9uBpdmpLRz2UoI8W0Q=&xsec_source=pc_search) | 合肥 | [见原帖](https://www.xiaohongshu.com/explore/6aec5500000000001803ba7f?xsec_token=AB-qI5NlhvcznM2DBNkAMZ68Bcy9uBpdmpLRz2UoI8W0Q=&xsec_source=pc_search) | 在招 | 日常实习 |
 | 2026-11-05 | 百度 | [产品实习生](https://www.xiaohongshu.com/explore/6aec2eb30000000003006560?xsec_token=AB-qI5NlhvcznM2DBNkAMZ62qW1hyEbU7BRRRPiof12JE=&xsec_source=pc_search) | 待确认 | [见原帖](https://www.xiaohongshu.com/explore/6aec2eb30000000003006560?xsec_token=AB-qI5NlhvcznM2DBNkAMZ62qW1hyEbU7BRRRPiof12JE=&xsec_source=pc_search) | 无法确认 | 日常实习 |
 | 2026-11-05 | 帆软软件 | [产品经理实习](https://www.xiaohongshu.com/explore/6aec5943000000000b020e1a?xsec_token=AB-qI5NlhvcznM2DBNkAMZ66hcllYDifIBSMNdsjtervA=&xsec_source=pc_search) | 无锡 | [见原帖](https://www.xiaohongshu.com/explore/6aec5943000000000b020e1a?xsec_token=AB-qI5NlhvcznM2DBNkAMZ66hcllYDifIBSMNdsjtervA=&xsec_source=pc_search) | 无法确认 | 日常实习 |

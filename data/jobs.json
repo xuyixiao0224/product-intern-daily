@@ -1,6 +1,663 @@
 {
- "count": 28,
+ "count": 34,
  "jobs": [
+  {
+   "post_id": "6aeda8c0000000002b01f56b",
+   "platform": "xhs",
+   "source_url": "https://www.xiaohongshu.com/explore/6aeda8c0000000002b01f56b?xsec_token=AB9hcg8iHko3h0aXxby_h4BZy3f77N004fC49nrayJxg0=&xsec_source=pc_search",
+   "author": "煎饼果子",
+   "published_at": "2026-11-06T18:15:28+08:00",
+   "first_seen_at": "2026-11-06T19:39:34+08:00",
+   "title": "产品经理实习生招聘-石头科技",
+   "description": "",
+   "company": "石头科技",
+   "position": "产品经理实习生",
+   "base_location": "待确认",
+   "location": "待确认",
+   "employment_type": "实习",
+   "salary": "",
+   "email": "",
+   "email_source": "",
+   "comment_email": "",
+   "contact": "",
+   "referral_code": "",
+   "still_hiring": "无法确认",
+   "status_evidence": "标题明确为产品经理实习生招聘，公司为石头科技，评论提到简历私戳，属于有效投递方式；转正情况未明确，按false处理。",
+   "closed": false,
+   "convertible": false,
+   "conversion_evidence": "标题明确为产品经理实习生招聘，公司为石头科技，评论提到简历私戳，属于有效投递方式；转正情况未明确，按false处理。",
+   "excluded_reason": "",
+   "confidence": 0.7,
+   "dedup_key": "note:6aeda8c0000000002b01f56b",
+   "images": [
+    "http://sns-webpic-qc.xhscdn.com/202611061904/b56b2ae2ad300afdb5040caf095f59ff/1040g2sg3277p0nofn87049uukvkcflf0m9kf6kg!nd_dft_wlteh_webp_3",
+    "http://sns-webpic-qc.xhscdn.com/202611061904/b0fe4a7a54c3b5e68f1ddb6652ccd7de/1040g2sg3277p0nofn87g49uukvkcflf0hjuoh5o!nd_dft_wlteh_webp_3",
+    "http://sns-webpic-qc.xhscdn.com/202611061904/38677d90fea4d7697c4da72332510b50/1040g2sg3277p0nofn88049uukvkcflf025bv15g!nd_dft_wlteh_webp_3"
+   ],
+   "cover": "6aeda8c0000000002b01f56b/0.jpg",
+   "comments": [
+    {
+     "author": "煎饼果子",
+     "is_author": true,
+     "content": "项目组氛围超级nice,每天有下午茶，有意向者简历私戳[派对R]",
+     "created_at": "2026-11-06T18:20:28+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "我又睡不着了",
+     "is_author": false,
+     "content": "有没有转正hc呀",
+     "created_at": "2026-11-06T18:23:42+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    }
+   ]
+  },
+  {
+   "post_id": "6aeda23d00000000280228da",
+   "platform": "xhs",
+   "source_url": "https://www.xiaohongshu.com/explore/6aeda23d00000000280228da?xsec_token=AB9hcg8iHko3h0aXxby_h4BXRvRLbvYSU8q0GHP_DJnYc=&xsec_source=pc_search",
+   "author": "Alice的组织人才观察",
+   "published_at": "2026-11-06T17:47:41+08:00",
+   "first_seen_at": "2026-11-06T19:39:34+08:00",
+   "title": "帮清华startup找实习生｜AI4S产品经理",
+   "description": "帮清华同学（校长杯冠军团队）急找两名产品经理实习生。\n团队做AI for Science产品，用AI帮科研人员提效。目前产品已经有原型，正在内测打磨阶段。\n走进清华实验室，和真实的科研用户面对面，和算法同学一起推进产品迭代。\n\t\n💡神仙机会：\n- ￼不打杂：你的原型和设计会直接进核心产品版本。\n- ￼天花板极高：清华博导徐华教授亲自带（教了十多年产品设计），能学到真东西。\n- ￼背景极佳：团队全是大牛（姚班、算法竞赛金牌、超算冠军），这段经历写进简历非常加分。\n\t\n🎯希望你是：\n￼- 在读学生（研究生优先），设计/交互/心理学/产品相关专业。\n￼- 懂用户调研、能画原型，有过完整的项目经历（有作品集）。\n￼- Base清华校内，每周能有一部分时间线下沟通（具体天数可聊）。\n\t\n💰预算充足，时间灵活，表现好可长期/转正。\n\t\n📮感兴趣的同学带【作品集+简单自我介绍】私信我，或者直接评论区扣1，我发你内推邮箱。\n\t\n#产品经理[话题]# #招聘[话题]# #实习生[话题]# #实习[话题]# #清华大学[话题]# #交互设计[话题]# #留学生实习[话题]# #清华创业[话题]#",
+   "company": "未识别",
+   "position": "AI4S产品经理实习生",
+   "base_location": "清华大学校内",
+   "location": "清华大学校内",
+   "employment_type": "实习",
+   "salary": "",
+   "email": "",
+   "email_source": "",
+   "comment_email": "",
+   "contact": "私信",
+   "referral_code": "",
+   "still_hiring": "在招",
+   "status_evidence": "正文明确招聘AI for Science产品经理实习生，职责为用户调研、原型设计等产品工作，属产品岗；明确表现好可长期/转正；投递方式为私信或评论区扣1获取内推邮箱，属有效联系方式；作者其他笔记涉及多公司但本帖已有明确联系方式，不触发引流判据。",
+   "closed": false,
+   "convertible": true,
+   "conversion_evidence": "正文明确招聘AI for Science产品经理实习生，职责为用户调研、原型设计等产品工作，属产品岗；明确表现好可长期/转正；投递方式为私信或评论区扣1获取内推邮箱，属有效联系方式；作者其他笔记涉及多公司但本帖已有明确联系方式，不触发引流判据。",
+   "excluded_reason": "",
+   "confidence": 0.5,
+   "dedup_key": "note:6aeda23d00000000280228da",
+   "images": [
+    "http://sns-webpic-qc.xhscdn.com/202611061906/e4148fa4f441ef4618d3fe4c6da751f5/note_pre_post_uhdr/1040g3r03277o9b40mc005qemuefskhgvjk7q93g!nd_dft_wlteh_webp_3",
+    "http://sns-webpic-qc.xhscdn.com/202611061906/29136ad4174697c422296b597772f7b2/notes_pre_post/1040g3k83277noqb56ie05qemuefskhgvpckkmr0!nd_dft_wlteh_webp_3",
+    "http://sns-webpic-qc.xhscdn.com/202611061906/3507ead25534e2a08d670ae5e579055b/notes_pre_post/1040g3k83277noqb56ieg5qemuefskhgvci76k6g!nd_dft_wlteh_webp_3",
+    "http://sns-webpic-qc.xhscdn.com/202611061906/de781c7871ac8e2e29758da3db63cab5/notes_pre_post/1040g3k83277noqb56if05qemuefskhgv92mgk50!nd_dft_wlteh_webp_3",
+    "http://sns-webpic-qc.xhscdn.com/202611061906/99a2dd9aa796aa771a36b5535d26fb63/notes_pre_post/1040g3k83277noqb56ifg5qemuefskhgvf9uqlv0!nd_dft_wlteh_webp_3"
+   ],
+   "cover": "6aeda23d00000000280228da/0.jpg",
+   "comments": [
+    {
+     "author": "Alice的组织人才观察",
+     "is_author": true,
+     "content": "感兴趣的同学带【作品集+简单自我介绍】私信我，或者直接评论区扣1，我发你内推邮箱",
+     "created_at": "2026-11-06T17:51:21+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "b🥚mbaclarts",
+     "is_author": false,
+     "content": "1",
+     "created_at": "2026-11-06T18:31:44+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "Alice的组织人才观察",
+     "is_author": true,
+     "content": "👌",
+     "created_at": "2026-11-06T18:39:43+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    }
+   ]
+  },
+  {
+   "post_id": "6aed963f000000000902357b",
+   "platform": "xhs",
+   "source_url": "https://www.xiaohongshu.com/explore/6aed963f000000000902357b?xsec_token=AB9hcg8iHko3h0aXxby_h4BWKeIrtcLAb23qgivluQPr8=&xsec_source=pc_search",
+   "author": "奶布嘻嘻",
+   "published_at": "2026-11-06T16:56:31+08:00",
+   "first_seen_at": "2026-11-06T19:39:34+08:00",
+   "title": "招实习生！有转正机会！",
+   "description": "JD看第二页和第三页！\n\t\n给我自己招实习生！有转正机会！\n小红书，上海！\n产品经理实习生➕产品运营实习生！\n\t\n要求会vibe coding（能上手）\n（运营未必和我一起工作，但也是一个部门）\n\t\n速！！！\n简历投递本人工作邮箱：jingjiawei@xiaohongshu.com\n\t\n#互联网大厂实习[话题]# #找实习[话题]#",
+   "company": "小红书",
+   "position": "产品经理实习生、产品运营实习生",
+   "base_location": "上海",
+   "location": "上海",
+   "employment_type": "实习",
+   "salary": "",
+   "email": "jingjiawei@xiaohongshu.com",
+   "email_source": "AI复核",
+   "comment_email": "",
+   "contact": "邮箱",
+   "referral_code": "",
+   "still_hiring": "在招",
+   "status_evidence": "正文明确为小红书上海产品经理/产品运营实习生招聘，含转正机会，提供真实工作邮箱，作者回复仍在招",
+   "closed": false,
+   "convertible": true,
+   "conversion_evidence": "正文明确为小红书上海产品经理/产品运营实习生招聘，含转正机会，提供真实工作邮箱，作者回复仍在招",
+   "excluded_reason": "",
+   "confidence": 0.95,
+   "dedup_key": "email:jingjiawei@xiaohongshu.com",
+   "images": [
+    "http://sns-webpic-qc.xhscdn.com/202611061911/2626922fc27a438e08621623e914d6ac/1040g2sg3277ikouuma005pasco7gmmn46i16pl8!nd_dft_wlteh_webp_3",
+    "http://sns-webpic-qc.xhscdn.com/202611061911/7b8ef6f88cd76b9e2267f8a61926e7e2/1040g2sg3277ikouuma0g5pasco7gmmn42ne96k8!nd_dft_wlteh_webp_3",
+    "http://sns-webpic-qc.xhscdn.com/202611061911/8d54194a89e89f344746bf82b55354ce/1040g2sg3277ikouuma105pasco7gmmn4op9t4j8!nd_dft_wlteh_webp_3"
+   ],
+   "cover": "6aed963f000000000902357b/0.jpg",
+   "comments": [
+    {
+     "author": "奶布嘻嘻",
+     "is_author": true,
+     "content": "呜呜推荐28届，因为27届已经校招了呜呜",
+     "created_at": "2026-11-06T17:54:06+08:00",
+     "like_count": "0",
+     "pinned": true,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "H.",
+     "is_author": false,
+     "content": "29可以吗",
+     "created_at": "2026-11-06T18:36:47+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "词然",
+     "is_author": false,
+     "content": "老师，27届已投递",
+     "created_at": "2026-11-06T17:45:57+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "奶布嘻嘻",
+     "is_author": true,
+     "content": "呜呜推荐28届，因为27届已经校招了呜呜",
+     "created_at": "2026-11-06T17:53:52+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "Martin",
+     "is_author": false,
+     "content": "卡学历吗",
+     "created_at": "2026-11-06T17:00:11+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "奶布嘻嘻",
+     "is_author": true,
+     "content": "先投！",
+     "created_at": "2026-11-06T17:03:13+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "🎀星之躺比（秋招版）",
+     "is_author": false,
+     "content": "27届接受日常实习可投吗！",
+     "created_at": "2026-11-06T18:45:22+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "Oo3",
+     "is_author": false,
+     "content": "28届已投",
+     "created_at": "2026-11-06T18:59:35+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "👻",
+     "is_author": false,
+     "content": "老师老师 请问有27转正hc嘛",
+     "created_at": "2026-11-06T17:13:16+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "奶布嘻嘻",
+     "is_author": true,
+     "content": "呜呜推荐28届，因为27届已经校招了呜呜",
+     "created_at": "2026-11-06T17:53:56+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "反沉默的螺旋",
+     "is_author": false,
+     "content": "老师～截止什么时候呀",
+     "created_at": "2026-11-06T18:41:02+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "彭实",
+     "is_author": false,
+     "content": "你好，请问研0日常实习可以投嘛[皱眉R]",
+     "created_at": "2026-11-06T17:02:09+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "奶布嘻嘻",
+     "is_author": true,
+     "content": "先投！",
+     "created_at": "2026-11-06T17:03:06+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "接offer m21",
+     "is_author": false,
+     "content": "不能27届吗",
+     "created_at": "2026-11-06T18:29:18+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "你喝过百事可乐么",
+     "is_author": false,
+     "content": "27届可以投吗",
+     "created_at": "2026-11-06T17:04:38+08:00",
+     "like_count": "1",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "奶布嘻嘻",
+     "is_author": true,
+     "content": "呜呜推荐28届，因为27届已经校招了呜呜",
+     "created_at": "2026-11-06T17:53:48+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    }
+   ]
+  },
+  {
+   "post_id": "6aed919d000000002a01e075",
+   "platform": "xhs",
+   "source_url": "https://www.xiaohongshu.com/explore/6aed919d000000002a01e075?xsec_token=AB9hcg8iHko3h0aXxby_h4BXCtrdYLV_q0BjQxEvsQCds=&xsec_source=pc_search",
+   "author": "momo",
+   "published_at": "2026-11-06T16:36:45+08:00",
+   "first_seen_at": "2026-11-06T19:39:34+08:00",
+   "title": "27届实习 有转正 还有想来的uu吗！",
+   "description": "是广告业务-穿山甲团队的\n\t\n岗位职责\n1、负责站外电商货架场景的策略迭代，联合运营团队、合作App挖掘潜在流量机会，通过和App深度共建、提高搜索&推荐效率等，提升流量利用效率；\n2、深度调研用户下单链路，定位各环节流失点，通过产品策略提升整体转化率（CVR），推动更高效的链路覆盖；\n3、结合AIGC技术优化广告创意生成策略，如文本、图像和视频生成，探索AI在创意效率提升与效果优化中的应用；\n4、负责从需求挖掘、文档撰写、需求评审、项目推进、效果评估的全流程工作，主动通过数据分析、用户调研、产品调研等手段，挖掘用户需求或发现问题，产出可落地的优化策略。\n\t\n职位要求\n1、2027届本科及以上学历；\n2、出色的产品规划能力，能主导产品方向和制定长期规划，并拆分为可实施项目；\n3、良好的沟通协调能力，可独立完成跨职能和跨部门沟通；\n4、有策略产品/商业产品实习经验者优先。\n\t\n加分项\n1、在AIGC/AI Agent方向有一定实践经验或深度见解。\n\t\n#实习生内推[话题]# #校招[话题]# #招聘[话题]# #字节跳动[话题]# #广告策略产品[话题]# #广告策略[话题]#",
+   "company": "字节跳动",
+   "position": "广告策略产品实习生",
+   "base_location": "待确认",
+   "location": "待确认",
+   "employment_type": "实习",
+   "salary": "",
+   "email": "daichengkai.4319@bytedance.com",
+   "email_source": "AI复核",
+   "comment_email": "",
+   "contact": "",
+   "referral_code": "",
+   "still_hiring": "在招",
+   "status_evidence": "正文明确为字节跳动穿山甲团队策略产品实习岗，职责含产品策略迭代与需求全流程，属产品岗；评论明确有实习转正HC且仍在招，邮箱明确可投递。",
+   "closed": false,
+   "convertible": true,
+   "conversion_evidence": "正文明确为字节跳动穿山甲团队策略产品实习岗，职责含产品策略迭代与需求全流程，属产品岗；评论明确有实习转正HC且仍在招，邮箱明确可投递。",
+   "excluded_reason": "",
+   "confidence": 0.8,
+   "dedup_key": "note:6aed919d000000002a01e075",
+   "images": [
+    "http://sns-webpic-qc.xhscdn.com/202611061912/be584cc6f8b79941b613f5de7f437e30/notes_pre_post/1040g3k03277m6uo4n6705qbgp6mdov60m4bdgto!nd_dft_wlteh_webp_3"
+   ],
+   "cover": "6aed919d000000002a01e075/0.jpg",
+   "comments": [
+    {
+     "author": "momo",
+     "is_author": true,
+     "content": "简历直达！尽快到岗最佳！\n备注广告策略+到岗时间+可实习时长！\n📮daichengkai.4319@ bytedance .com",
+     "created_at": "2026-11-06T16:46:37+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "传奇耐面王",
+     "is_author": false,
+     "content": "有大厂策略产品经验～已投递",
+     "created_at": "2026-11-06T17:20:14+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "花树",
+     "is_author": false,
+     "content": "已投[派对R][派对R]",
+     "created_at": "2026-11-06T17:03:57+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "去吃盖浇饭",
+     "is_author": false,
+     "content": "已发[哭惹R]",
+     "created_at": "2026-11-06T17:00:07+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "momo",
+     "is_author": true,
+     "content": "目前只有实习转正了 希望有策略产品经验的同学加入我们 27届同学投递呀！",
+     "created_at": "2026-11-06T16:37:44+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "Strawbunny",
+     "is_author": false,
+     "content": "已投递 求捞捞",
+     "created_at": "2026-11-06T16:56:28+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    }
+   ]
+  },
+  {
+   "post_id": "6aed5d6d000000002203b201",
+   "platform": "xhs",
+   "source_url": "https://www.xiaohongshu.com/explore/6aed5d6d000000002203b201?xsec_token=AB9hcg8iHko3h0aXxby_h4BW416bUjustUj1gii3TrR0g=&xsec_source=pc_search",
+   "author": "Uuunseven",
+   "published_at": "2026-11-06T12:54:05+08:00",
+   "first_seen_at": "2026-11-06T19:39:34+08:00",
+   "title": "小红书创新增长实习生【广告策略】",
+   "description": "📍base 北京｜每周实习 4-5 天｜连续实习\n\t\n[赞R]参与创新产品的用户增长，从用户洞察、内容创意到广告投放和数据复盘。我们希望你能从数据中发现问题，提出优化想法并推动落地，也愿意用 AI 探索更高效的工作方式。\n\t\n[两颗心R] 你会做什么\n1、研究用户与市场：关注不同平台的受众、内容趋势和竞品表现，寻找适合产品的推广场景与创意方向。\n2、协助投放与合作：参与主流媒体广告投放，对接代理商，跟进日常优化、素材产出和测试进度。\n3、分析数据与转化：维护日报、周报，监控核心指标，发现异动并跟进排查；分析转化漏斗指标表现，为优化提供依据。\n4、推进投放/素材实验与 AI 提效：参与 Brief、脚本和文案策划，推动素材测试与复盘；尝试用 AI 辅助内容脑爆、分析及日常提效。\n\t\n[有R]希望你\n◎数据敏感：能从数据变化中发现问题、分析原因。\n◎有 owner 意识，沟通协作好：主动跟进事项，能协调合作方和内部团队推进落地。\n◎对内容和 AI 有兴趣：熟悉小红书等平台，对内容有判断；愿意尝试用 AI 辅助创意或工作提效。\n◎专业不限，统计、计算机、金融、新闻传播、市场营销等相关专业优先。\n[爱心R]加分项：有广告投放、增长或内容策划经历；会 SQL、Python，或做过 AI 提效项目；有垂类产品实习经历。\n📧 投递标题：增长实习生-姓名-学校-到岗时间-实习时长#实习生[话题]# #小红书实习内推[话题]# #小红书实习[话题]# #实习僧[话题]# #互联网大厂实习[话题]# #用户增长[话题]# #令人心动的实习日记[话题]# #找实习[话题]#",
+   "company": "小红书",
+   "position": "创新增长实习生（广告策略）",
+   "base_location": "北京",
+   "location": "北京",
+   "employment_type": "实习",
+   "salary": "",
+   "email": "",
+   "email_source": "",
+   "comment_email": "",
+   "contact": "",
+   "referral_code": "",
+   "still_hiring": "无法确认",
+   "status_evidence": "岗位为小红书创新增长实习生，职责涉及用户增长、广告投放策略、数据复盘与AI提效，属于产品/策略运营方向；正文明确公司为小红书，base北京；无明确邮箱，但正文有投递标题格式且评论互动，投递方式需私信确认；未明确转正信息。",
+   "closed": false,
+   "convertible": false,
+   "conversion_evidence": "岗位为小红书创新增长实习生，职责涉及用户增长、广告投放策略、数据复盘与AI提效，属于产品/策略运营方向；正文明确公司为小红书，base北京；无明确邮箱，但正文有投递标题格式且评论互动，投递方式需私信确认；未明确转正信息。",
+   "excluded_reason": "",
+   "confidence": 0.65,
+   "dedup_key": "note:6aed5d6d000000002203b201",
+   "images": [
+    "http://sns-webpic-qc.xhscdn.com/202611061906/329b4a88b2ab9483eeb7c7403ba1f16a/1040g0083277fhg1jng6g4a0m76ag8u0pmd7poqo!nd_dft_wlteh_webp_3"
+   ],
+   "cover": "6aed5d6d000000002203b201/0.jpg",
+   "comments": [
+    {
+     "author": "Uuunseven",
+     "is_author": true,
+     "content": "看这里",
+     "created_at": "2026-11-06T12:59:50+08:00",
+     "like_count": "0",
+     "pinned": true,
+     "pictures": [
+      {
+       "width": 1080,
+       "urlPre": "http://sns-webpic-qc.xhscdn.com/202611061907/89ecb83c2b4ca613df24c9dc9946e779/comment_uhdr/1040g3q83277g21b076604a0m76ag8u0p20d5428!nc_n_webp_mw_1",
+       "urlDefault": "http://sns-webpic-qc.xhscdn.com/202611061907/348e2eaac59cdd0a53b21151dc0a8097/comment_uhdr/1040g3q83277g21b076604a0m76ag8u0p20d5428!nd_whlt34_webp_wm_1",
+       "infoList": [
+        {
+         "imageScene": "WB_PRV",
+         "url": "http://sns-webpic-qc.xhscdn.com/202611061907/89ecb83c2b4ca613df24c9dc9946e779/comment_uhdr/1040g3q83277g21b076604a0m76ag8u0p20d5428!nc_n_webp_mw_1"
+        },
+        {
+         "imageScene": "WB_DFT",
+         "url": "http://sns-webpic-qc.xhscdn.com/202611061907/348e2eaac59cdd0a53b21151dc0a8097/comment_uhdr/1040g3q83277g21b076604a0m76ag8u0p20d5428!nd_whlt34_webp_wm_1"
+        }
+       ],
+       "height": 774
+      }
+     ],
+     "has_image": true
+    },
+    {
+     "author": "ririflyy",
+     "is_author": false,
+     "content": "这个是产品序列，还是偏策略运营呀",
+     "created_at": "2026-11-06T13:39:41+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "Uuunseven",
+     "is_author": true,
+     "content": "运营",
+     "created_at": "2026-11-06T17:38:46+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "Uuunseven",
+     "is_author": true,
+     "content": "28届之后[害羞R]",
+     "created_at": "2026-11-06T13:30:43+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    }
+   ]
+  },
+  {
+   "post_id": "6aeca4cc0000000015022467",
+   "platform": "xhs",
+   "source_url": "https://www.xiaohongshu.com/explore/6aeca4cc0000000015022467?xsec_token=AB-qI5NlhvcznM2DBNkAMZ64tNz1yXVHthvNS_CPT6Y9Y=&xsec_source=pc_search",
+   "author": "12349",
+   "published_at": "2026-11-05T23:46:20+08:00",
+   "first_seen_at": "2026-11-06T19:39:34+08:00",
+   "title": "宇宙厂产品实习招继任（base上海新江湾）",
+   "description": "来给自己招继任！超级nice的团队超级nice的带教，能学到很多！\n岗位名称：用户增长策略产品实习生 - TikTok Shop\n职位描述\n团队介绍：TikTok Shop 是 TikTok 旗下的内容电商。平台汇聚全球优质商家与创作者，通过短视频、直播等多场景连接消费者，让新奇好物畅销全球，让美好生活触手可得。目前团队分布在美国、英国、法国、印尼、墨西哥、中国等全球多个国家和地区，在这里你将有机会深入国际业务场景，面向全世界商家及用户，和跨区域团队协作，共同探索创新购物模式。期待和优秀的你一起创造更多可能！\n日常实习：面向全体在校生，为符合岗位要求的同学提供为期 3 个月及以上的项目实践机会。\n1. 补贴策略：参与优惠券、营销玩法等策略的设计和执行，包括但不限于补贴、产品和实验配置；\n2. 数据分析：关键数据分析、A/B 实验测试，追踪业务关键指标，发现数据背后的问题和机会点；\n3. 产品追踪：了解并追踪产品平台策略，记录并帮助团队制定对应打法；\n4. 支持跨部门沟通、项目管理、信息收集等工作。\n职位要求\n1. 本科及以上学历在读；\n2. 有策略产品/策略运营相关的实习经验优先，具备较好的沟通和协作能力，能快速适应国际化团队工作；\n3. 数据敏锐度高，熟练使用 Excel、SQL，具备一定的数据分析能力；\n4. 英语表达及书写流利，可作为工作语言，有国际化相关留学或经历者优先。\n简历投递邮箱：huangyiwei.winnie@bytedance.com  同步：yangjunzhuo.666@bytedance.com#互联网大厂实习[话题]# #内推[话题]# #大厂[话题]# #实习生内推[话题]#",
+   "company": "字节跳动",
+   "position": "用户增长策略产品实习生 - TikTok Shop",
+   "base_location": "上海新江湾",
+   "location": "上海新江湾",
+   "employment_type": "日常实习",
+   "salary": "",
+   "email": "huangyiwei.winnie@bytedance.com",
+   "email_source": "AI复核",
+   "comment_email": "yangjunzhuo.666@bytedance.com",
+   "contact": "邮箱",
+   "referral_code": "",
+   "still_hiring": "在招",
+   "status_evidence": "正文明确为TikTok Shop策略产品实习岗，职责含补贴策略、数据分析、产品追踪，属产品岗；有明确公司、岗位、base和投递邮箱；评论中作者回复无转正HC，故不可转正。",
+   "closed": false,
+   "convertible": false,
+   "conversion_evidence": "正文明确为TikTok Shop策略产品实习岗，职责含补贴策略、数据分析、产品追踪，属产品岗；有明确公司、岗位、base和投递邮箱；评论中作者回复无转正HC，故不可转正。",
+   "excluded_reason": "",
+   "confidence": 0.95,
+   "dedup_key": "email:huangyiwei.winnie@bytedance.com",
+   "images": [
+    "http://sns-webpic-qc.xhscdn.com/202611061902/1e21de05c2a197d1eecc68113c99685e/1040g0083276p7lbo6q5g5odnfhi416vhbl3q0j8!nd_dft_wgth_webp_3",
+    "http://sns-webpic-qc.xhscdn.com/202611061902/d94333d4c931d7f5a3a7769a0ff7e1b0/1040g0083276p7lbo6q305odnfhi416vh8763fe0!nd_dft_wgth_webp_3",
+    "http://sns-webpic-qc.xhscdn.com/202611061902/1dd1491aa7ca771e47b4095e16b86c98/1040g0083276p7lbo6q6g5odnfhi416vhhmb68v8!nd_dft_wgth_webp_3"
+   ],
+   "cover": "6aeca4cc0000000015022467/0.jpg",
+   "comments": [
+    {
+     "author": "去吃盖浇饭",
+     "is_author": false,
+     "content": "有转正 hc 吗[哭惹R]",
+     "created_at": "2026-11-06T10:23:27+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "12349",
+     "is_author": true,
+     "content": "应该没有[哭惹R]",
+     "created_at": "2026-11-06T11:58:42+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "小圆露露酱🌰",
+     "is_author": false,
+     "content": "已投[皱眉R]",
+     "created_at": "2026-11-06T16:45:32+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "12349",
+     "is_author": true,
+     "content": "简历同步：yangjunzhuo.666@bytedance.com",
+     "created_at": "2026-11-06T18:54:43+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "chen",
+     "is_author": false,
+     "content": "请问卡英文卡的严吗，书面工作OK口语不行这样可投吗[皱眉R]",
+     "created_at": "2026-11-06T15:59:31+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "尹十九",
+     "is_author": false,
+     "content": "已",
+     "created_at": "2026-11-06T16:05:15+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "fishkz9",
+     "is_author": false,
+     "content": "可以没事到岗[哭惹R]",
+     "created_at": "2026-11-06T09:20:44+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "小金鱼有有有劲儿",
+     "is_author": false,
+     "content": "已投，求捞[哇R]",
+     "created_at": "2026-11-06T14:27:21+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "阿多尼斯（发疯版）",
+     "is_author": false,
+     "content": "dd",
+     "created_at": "2026-11-06T00:45:09+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "天空没有lim",
+     "is_author": false,
+     "content": "有财务机会嘛～",
+     "created_at": "2026-11-05T23:50:29+08:00",
+     "like_count": "0",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    },
+    {
+     "author": "12349",
+     "is_author": true,
+     "content": "一周五天，尽快到岗[派对R]",
+     "created_at": "2026-11-05T23:57:28+08:00",
+     "like_count": "1",
+     "pinned": false,
+     "pictures": [],
+     "has_image": false
+    }
+   ]
+  },
   {
    "post_id": "6aec5943000000000b020e1a",
    "platform": "xhs",

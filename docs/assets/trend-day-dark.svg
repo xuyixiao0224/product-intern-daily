@@ -1,23 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="452" viewBox="0 0 900 452" role="img" aria-labelledby="title desc">
 <title id="title">岗位收录趋势 · 按日</title>
-<desc id="desc">本期 7，往期 21，累计 28。绿色柱为新增，折线为累计。[{&quot;date&quot;: &quot;2026-11-02&quot;, &quot;label&quot;: &quot;11/02&quot;, &quot;new&quot;: 3, &quot;total&quot;: 3}, {&quot;date&quot;: &quot;2026-11-03&quot;, &quot;label&quot;: &quot;11/03&quot;, &quot;new&quot;: 13, &quot;total&quot;: 16}, {&quot;date&quot;: &quot;2026-11-04&quot;, &quot;label&quot;: &quot;11/04&quot;, &quot;new&quot;: 5, &quot;total&quot;: 21}, {&quot;date&quot;: &quot;2026-11-05&quot;, &quot;label&quot;: &quot;11/05&quot;, &quot;new&quot;: 7, &quot;total&quot;: 28}]</desc>
+<desc id="desc">本期 6，往期 28，累计 34。绿色柱为新增，折线为累计。[{&quot;date&quot;: &quot;2026-11-02&quot;, &quot;label&quot;: &quot;11/02&quot;, &quot;new&quot;: 3, &quot;total&quot;: 3}, {&quot;date&quot;: &quot;2026-11-03&quot;, &quot;label&quot;: &quot;11/03&quot;, &quot;new&quot;: 13, &quot;total&quot;: 16}, {&quot;date&quot;: &quot;2026-11-04&quot;, &quot;label&quot;: &quot;11/04&quot;, &quot;new&quot;: 5, &quot;total&quot;: 21}, {&quot;date&quot;: &quot;2026-11-05&quot;, &quot;label&quot;: &quot;11/05&quot;, &quot;new&quot;: 7, &quot;total&quot;: 28}, {&quot;date&quot;: &quot;2026-11-06&quot;, &quot;label&quot;: &quot;11/06&quot;, &quot;new&quot;: 6, &quot;total&quot;: 34}]</desc>
 <rect x=".5" y=".5" width="899" height="451" rx="12" fill="#0d1117" stroke="#29352e"/>
 <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Microsoft YaHei,sans-serif">
 <text x="32" y="33" fill="#e6ede8" font-size="15" font-weight="600" text-anchor="start">岗位收录趋势</text>
-<text x="868" y="33" fill="#98a89e" font-size="12" font-weight="400" text-anchor="end">按日 · 截至 2026-11-05</text>
+<text x="868" y="33" fill="#98a89e" font-size="12" font-weight="400" text-anchor="end">按日 · 截至 2026-11-06</text>
 <text x="32" y="66" fill="#98a89e" font-size="12" font-weight="400" text-anchor="start">往期已收录</text>
-<text x="32" y="108" fill="#e6ede8" font-size="36" font-weight="600" text-anchor="start">21</text>
+<text x="32" y="108" fill="#e6ede8" font-size="36" font-weight="600" text-anchor="start">28</text>
 <text x="86" y="106" fill="#98a89e" font-size="12" font-weight="400" text-anchor="start">条</text>
-<text x="338" y="66" fill="#98a89e" font-size="12" font-weight="400" text-anchor="start">11/05 新增</text>
-<text x="338" y="108" fill="#6dcba0" font-size="36" font-weight="600" text-anchor="start">7</text>
+<text x="338" y="66" fill="#98a89e" font-size="12" font-weight="400" text-anchor="start">11/06 新增</text>
+<text x="338" y="108" fill="#6dcba0" font-size="36" font-weight="600" text-anchor="start">6</text>
 <text x="369" y="106" fill="#98a89e" font-size="12" font-weight="400" text-anchor="start">条</text>
 <text x="650" y="66" fill="#98a89e" font-size="12" font-weight="400" text-anchor="start">历史累计</text>
-<text x="650" y="108" fill="#e6ede8" font-size="36" font-weight="600" text-anchor="start">28</text>
+<text x="650" y="108" fill="#e6ede8" font-size="36" font-weight="600" text-anchor="start">34</text>
 <text x="704" y="106" fill="#98a89e" font-size="12" font-weight="400" text-anchor="start">条</text>
 <text x="265" y="96" fill="#98a89e" font-size="24" font-weight="400" text-anchor="start">+</text>
 <text x="576" y="96" fill="#98a89e" font-size="24" font-weight="400" text-anchor="start">=</text>
 <rect x="32" y="130" width="836" height="5" rx="2.5" fill="#25322a"/>
-<rect x="659.00" y="130" width="209.00" height="5" rx="2.5" fill="#6dcba0"/>
+<rect x="720.47" y="130" width="147.53" height="5" rx="2.5" fill="#6dcba0"/>
 <text x="32" y="167" fill="#98a89e" font-size="12" font-weight="400" text-anchor="start">新增与累计</text>
 <rect x="662" y="158" width="10" height="10" rx="2" fill="#375e49"/>
 <text x="679" y="167" fill="#98a89e" font-size="11" font-weight="400" text-anchor="start">新增</text>
@@ -33,25 +33,29 @@
 <text x="56" y="243.5" fill="#98a89e" font-size="10" font-weight="400" text-anchor="end">30</text>
 <line x1="68" y1="202.0" x2="830" y2="202.0" stroke="#29352e" stroke-dasharray="3 5"/>
 <text x="56" y="206.0" fill="#98a89e" font-size="10" font-weight="400" text-anchor="end">40</text>
-<rect x="134.25" y="340.75" width="58.00" height="11.25" rx="3" fill="#375e49"><title>11/02 新增 3 条</title></rect>
-<text x="163.25" y="331.75" fill="#6dcba0" font-size="11" font-weight="600" text-anchor="middle">3</text>
-<text x="163.25" y="377" fill="#98a89e" font-size="10" font-weight="400" text-anchor="middle">11/02</text>
-<rect x="324.75" y="303.25" width="58.00" height="48.75" rx="3" fill="#375e49"><title>11/03 新增 13 条</title></rect>
-<text x="353.75" y="323.25" fill="#e6ede8" font-size="11" font-weight="600" text-anchor="middle">13</text>
-<text x="353.75" y="377" fill="#98a89e" font-size="10" font-weight="400" text-anchor="middle">11/03</text>
-<rect x="515.25" y="333.25" width="58.00" height="18.75" rx="3" fill="#375e49"><title>11/04 新增 5 条</title></rect>
-<text x="544.25" y="324.25" fill="#6dcba0" font-size="11" font-weight="600" text-anchor="middle">5</text>
-<text x="544.25" y="377" fill="#98a89e" font-size="10" font-weight="400" text-anchor="middle">11/04</text>
-<rect x="705.75" y="325.75" width="58.00" height="26.25" rx="3" fill="#6dcba0"><title>11/05 新增 7 条</title></rect>
-<text x="734.75" y="316.75" fill="#6dcba0" font-size="11" font-weight="600" text-anchor="middle">7</text>
-<text x="734.75" y="377" fill="#98a89e" font-size="10" font-weight="400" text-anchor="middle">11/05</text>
-<polyline points="163.25,340.75 353.75,292.00 544.25,273.25 734.75,247.00" fill="none" stroke="#a0b7a8" stroke-width="2" stroke-linejoin="round"/>
-<circle cx="163.25" cy="340.75" r="3.5" fill="#0d1117" stroke="#a0b7a8" stroke-width="2"/>
-<circle cx="353.75" cy="292.00" r="3.5" fill="#0d1117" stroke="#a0b7a8" stroke-width="2"/>
-<circle cx="544.25" cy="273.25" r="3.5" fill="#0d1117" stroke="#a0b7a8" stroke-width="2"/>
-<circle cx="734.75" cy="247.00" r="3.5" fill="#0d1117" stroke="#a0b7a8" stroke-width="2"/>
-<text x="746.75" y="239.0" fill="#a0b7a8" font-size="12" font-weight="600" text-anchor="start">28</text>
+<rect x="115.20" y="340.75" width="58.00" height="11.25" rx="3" fill="#375e49"><title>11/02 新增 3 条</title></rect>
+<text x="144.2" y="331.75" fill="#6dcba0" font-size="11" font-weight="600" text-anchor="middle">3</text>
+<text x="144.2" y="377" fill="#98a89e" font-size="10" font-weight="400" text-anchor="middle">11/02</text>
+<rect x="267.60" y="303.25" width="58.00" height="48.75" rx="3" fill="#375e49"><title>11/03 新增 13 条</title></rect>
+<text x="296.6" y="323.25" fill="#e6ede8" font-size="11" font-weight="600" text-anchor="middle">13</text>
+<text x="296.6" y="377" fill="#98a89e" font-size="10" font-weight="400" text-anchor="middle">11/03</text>
+<rect x="420.00" y="333.25" width="58.00" height="18.75" rx="3" fill="#375e49"><title>11/04 新增 5 条</title></rect>
+<text x="449.0" y="324.25" fill="#6dcba0" font-size="11" font-weight="600" text-anchor="middle">5</text>
+<text x="449.0" y="377" fill="#98a89e" font-size="10" font-weight="400" text-anchor="middle">11/04</text>
+<rect x="572.40" y="325.75" width="58.00" height="26.25" rx="3" fill="#375e49"><title>11/05 新增 7 条</title></rect>
+<text x="601.4" y="316.75" fill="#6dcba0" font-size="11" font-weight="600" text-anchor="middle">7</text>
+<text x="601.4" y="377" fill="#98a89e" font-size="10" font-weight="400" text-anchor="middle">11/05</text>
+<rect x="724.80" y="329.50" width="58.00" height="22.50" rx="3" fill="#6dcba0"><title>11/06 新增 6 条</title></rect>
+<text x="753.8" y="320.5" fill="#6dcba0" font-size="11" font-weight="600" text-anchor="middle">6</text>
+<text x="753.8" y="377" fill="#98a89e" font-size="10" font-weight="400" text-anchor="middle">11/06</text>
+<polyline points="144.20,340.75 296.60,292.00 449.00,273.25 601.40,247.00 753.80,224.50" fill="none" stroke="#a0b7a8" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="144.20" cy="340.75" r="3.5" fill="#0d1117" stroke="#a0b7a8" stroke-width="2"/>
+<circle cx="296.60" cy="292.00" r="3.5" fill="#0d1117" stroke="#a0b7a8" stroke-width="2"/>
+<circle cx="449.00" cy="273.25" r="3.5" fill="#0d1117" stroke="#a0b7a8" stroke-width="2"/>
+<circle cx="601.40" cy="247.00" r="3.5" fill="#0d1117" stroke="#a0b7a8" stroke-width="2"/>
+<circle cx="753.80" cy="224.50" r="3.5" fill="#0d1117" stroke="#a0b7a8" stroke-width="2"/>
+<text x="765.8" y="216.5" fill="#a0b7a8" font-size="12" font-weight="600" text-anchor="start">34</text>
 <line x1="32" y1="402" x2="868" y2="402" stroke="#29352e" />
-<text x="32" y="429" fill="#98a89e" font-size="11" font-weight="400" text-anchor="start">明确在招 10   ·   待确认 18   ·   已截止 0</text>
-<text x="868" y="429" fill="#98a89e" font-size="11" font-weight="400" text-anchor="end">仅记录 4 个日期 · 不补造历史数据</text>
+<text x="32" y="429" fill="#98a89e" font-size="11" font-weight="400" text-anchor="start">明确在招 14   ·   待确认 20   ·   已截止 0</text>
+<text x="868" y="429" fill="#98a89e" font-size="11" font-weight="400" text-anchor="end">仅记录 5 个日期 · 不补造历史数据</text>
 </g></svg>

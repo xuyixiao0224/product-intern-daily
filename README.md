@@ -49,21 +49,20 @@
 <!-- JOBS:START -->
 ## 岗位追踪
 
-**最新一期 · 2026-11-05**　按首次记录分期，旧岗位更新不重复计入新增。
+**最新一期 · 2026-11-06**　按首次记录分期，旧岗位更新不重复计入新增。
 
-### 本期新增 · 7
+### 本期新增 · 6
 
 | 公司 | 岗位 | Base | 投递 | 状态 | 转正 |
 |---|---|---|---|---|---|
-| JOY GROUP | [产品策划实习生](https://www.xiaohongshu.com/explore/6aec4d1b000000000300b5ea?xsec_token=AB-qI5NlhvcznM2DBNkAMZ69WID_ZCjEqkW9lzbLM92o8=&xsec_source=pc_search) | 上海 | [yuhong.wang@joy-group.com](mailto:yuhong.wang@joy-group.com) | 待确认 | 日常实习 |
-| 字节跳动 | [抖音直播AI产品实习生](https://www.xiaohongshu.com/explore/6aec2ae600000000100125cf?xsec_token=AB-qI5NlhvcznM2DBNkAMZ63RJCvnB0XfsfGHTrhzFHsI=&xsec_source=pc_search) | 深圳/北京 | [sunxu.0312@bytedance.com](mailto:sunxu.0312@bytedance.com) | 在招 | 日常实习 |
-| Ratus | [Channel内容产品运营](https://www.xiaohongshu.com/explore/6aec0a1c000000000b021b54?xsec_token=AB-qI5NlhvcznM2DBNkAMZ69rACfTo7ZnefGa-FxErpPk=&xsec_source=pc_search) | 上海 | [jobs@ratus.ai](mailto:jobs@ratus.ai) | 待确认 | 日常实习 |
-| 帆软软件 | [产品经理实习](https://www.xiaohongshu.com/explore/6aec5943000000000b020e1a?xsec_token=AB-qI5NlhvcznM2DBNkAMZ66hcllYDifIBSMNdsjtervA=&xsec_source=pc_search) | 无锡 | [见原帖](https://www.xiaohongshu.com/explore/6aec5943000000000b020e1a?xsec_token=AB-qI5NlhvcznM2DBNkAMZ66hcllYDifIBSMNdsjtervA=&xsec_source=pc_search) | 待确认 | 日常实习 |
-| 科大讯飞 | [产品经理实习生](https://www.xiaohongshu.com/explore/6aec5500000000001803ba7f?xsec_token=AB-qI5NlhvcznM2DBNkAMZ68Bcy9uBpdmpLRz2UoI8W0Q=&xsec_source=pc_search) | 合肥 | [见原帖](https://www.xiaohongshu.com/explore/6aec5500000000001803ba7f?xsec_token=AB-qI5NlhvcznM2DBNkAMZ68Bcy9uBpdmpLRz2UoI8W0Q=&xsec_source=pc_search) | 在招 | 日常实习 |
-| 字节跳动 | [AI产品运营](https://www.xiaohongshu.com/explore/6aec35d4000000000602da64?xsec_token=AB-qI5NlhvcznM2DBNkAMZ6_RJZAPk50XcQalThoyN3Pc=&xsec_source=pc_search) | 上海/北京 | [见原帖](https://www.xiaohongshu.com/explore/6aec35d4000000000602da64?xsec_token=AB-qI5NlhvcznM2DBNkAMZ6_RJZAPk50XcQalThoyN3Pc=&xsec_source=pc_search) | 在招 | 日常实习 |
-| 百度 | [产品实习生](https://www.xiaohongshu.com/explore/6aec2eb30000000003006560?xsec_token=AB-qI5NlhvcznM2DBNkAMZ62qW1hyEbU7BRRRPiof12JE=&xsec_source=pc_search) | 待确认 | [见原帖](https://www.xiaohongshu.com/explore/6aec2eb30000000003006560?xsec_token=AB-qI5NlhvcznM2DBNkAMZ62qW1hyEbU7BRRRPiof12JE=&xsec_source=pc_search) | 待确认 | 日常实习 |
+| 小红书 | [产品经理实习生、产品运营实习生](https://www.xiaohongshu.com/explore/6aed963f000000000902357b?xsec_token=AB9hcg8iHko3h0aXxby_h4BWKeIrtcLAb23qgivluQPr8=&xsec_source=pc_search) | 上海 | [jingjiawei@xiaohongshu.com](mailto:jingjiawei@xiaohongshu.com) | 在招 | 可转正 |
+| 字节跳动 | [广告策略产品实习生](https://www.xiaohongshu.com/explore/6aed919d000000002a01e075?xsec_token=AB9hcg8iHko3h0aXxby_h4BXCtrdYLV_q0BjQxEvsQCds=&xsec_source=pc_search) | 待确认 | [daichengkai.4319@bytedance.com](mailto:daichengkai.4319@bytedance.com) | 在招 | 可转正 |
+| 字节跳动 | [用户增长策略产品实习生 - TikTok Shop](https://www.xiaohongshu.com/explore/6aeca4cc0000000015022467?xsec_token=AB-qI5NlhvcznM2DBNkAMZ64tNz1yXVHthvNS_CPT6Y9Y=&xsec_source=pc_search) | 上海新江湾 | [huangyiwei.winnie@bytedance.com](mailto:huangyiwei.winnie@bytedance.com) | 在招 | 日常实习 |
+| 石头科技 | [产品经理实习生](https://www.xiaohongshu.com/explore/6aeda8c0000000002b01f56b?xsec_token=AB9hcg8iHko3h0aXxby_h4BZy3f77N004fC49nrayJxg0=&xsec_source=pc_search) | 待确认 | [见原帖](https://www.xiaohongshu.com/explore/6aeda8c0000000002b01f56b?xsec_token=AB9hcg8iHko3h0aXxby_h4BZy3f77N004fC49nrayJxg0=&xsec_source=pc_search) | 待确认 | 日常实习 |
+| 公司未注明 | [AI4S产品经理实习生](https://www.xiaohongshu.com/explore/6aeda23d00000000280228da?xsec_token=AB9hcg8iHko3h0aXxby_h4BXRvRLbvYSU8q0GHP_DJnYc=&xsec_source=pc_search) | 清华大学校内 | [见原帖](https://www.xiaohongshu.com/explore/6aeda23d00000000280228da?xsec_token=AB9hcg8iHko3h0aXxby_h4BXRvRLbvYSU8q0GHP_DJnYc=&xsec_source=pc_search) | 在招 | 可转正 |
+| 小红书 | [创新增长实习生（广告策略）](https://www.xiaohongshu.com/explore/6aed5d6d000000002203b201?xsec_token=AB9hcg8iHko3h0aXxby_h4BW416bUjustUj1gii3TrR0g=&xsec_source=pc_search) | 北京 | [见原帖](https://www.xiaohongshu.com/explore/6aed5d6d000000002203b201?xsec_token=AB9hcg8iHko3h0aXxby_h4BW416bUjustUj1gii3TrR0g=&xsec_source=pc_search) | 待确认 | 日常实习 |
 
-[查看全部 21 条 →](https://xuyixiao0224.github.io/product-intern-daily/history.html)
+[查看全部 28 条 →](https://xuyixiao0224.github.io/product-intern-daily/history.html)
 <!-- JOBS:END -->
 
 <!-- DASHBOARD:START -->
@@ -109,7 +108,7 @@
 <details>
 <summary>统计口径与更新说明</summary>
 
-截至 **2026-11-05**：往期 **21** ＋ 本期新增 **7** ＋ 日期未记录 **0** ＝ 历史累计 **28**。本期以日期为准，不把最近一期自动称为「昨日」。
+截至 **2026-11-06**：往期 **28** ＋ 本期新增 **6** ＋ 日期未记录 **0** ＝ 历史累计 **34**。本期以日期为准，不把最近一期自动称为「昨日」。
 
 - 新增按首次记录日期去重计算；旧岗位更新不再次计数，已截止岗位保留在累计中。
 - 本期日期可配置；严格 T-1 时按昨日截止日期生成，新旧分组与图表使用同一个截止日期，后续日期的记录不混入本期。
