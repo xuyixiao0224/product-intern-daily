@@ -12,7 +12,7 @@ GitHub 的 runner 没有你的 Cookie，也不应该把 Cookie 放进 Secrets；
 ```text
 每天 19:00 采集、20:00 发布（本地 launchd / cron / VPS）
   ├─ 3 个关键词，只搜“一天内”
-  ├─ 40–60 条详情，2 并发，3–8 秒 jitter
+  ├─ 抓完全部候选（最多 300 条），2 并发，3–8 秒 jitter
   ├─ OCR → 抽取 → 过滤 → 去重 → 合并 jobs.json
   ├─ 生成 docs/index.html / JOBS.md / feed.xml
   ├─ git add data/jobs.json docs/

@@ -226,7 +226,7 @@ macOS 用 `sips` + `ocrmac`（Apple Vision），默认原图 + 180° 旋转 + �
 本地 `launchd`/cron 跑 `scripts/daily.sh`：
 
 ```text
-3 关键词 → 2 并发、40–60 条 → OCR → 筛选 → 合并 jobs.json → 生成 docs
+3 关键词 → 2 并发、抓完全部候选（最多 300 条）→ OCR → 筛选 → 合并 jobs.json → 生成 docs
 ```
 
 GitHub-hosted Actions 不能登录小红书；Cookie 不要进 Secrets。  
