@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="480" height="492" viewBox="0 0 480 492" role="img" aria-labelledby="title desc">
 <title id="title">岗位收录趋势 · 按日</title>
-<desc id="desc">本期 6，往期 28，累计 34。绿色柱为新增，折线为累计。[{&quot;date&quot;: &quot;2026-11-02&quot;, &quot;label&quot;: &quot;11/02&quot;, &quot;new&quot;: 3, &quot;total&quot;: 3}, {&quot;date&quot;: &quot;2026-11-03&quot;, &quot;label&quot;: &quot;11/03&quot;, &quot;new&quot;: 13, &quot;total&quot;: 16}, {&quot;date&quot;: &quot;2026-11-04&quot;, &quot;label&quot;: &quot;11/04&quot;, &quot;new&quot;: 5, &quot;total&quot;: 21}, {&quot;date&quot;: &quot;2026-11-05&quot;, &quot;label&quot;: &quot;11/05&quot;, &quot;new&quot;: 7, &quot;total&quot;: 28}, {&quot;date&quot;: &quot;2026-11-06&quot;, &quot;label&quot;: &quot;11/06&quot;, &quot;new&quot;: 6, &quot;total&quot;: 34}]</desc>
+<desc id="desc">本期 0，往期 34，累计 34。绿色柱为新增，折线为累计。[{&quot;date&quot;: &quot;2026-11-02&quot;, &quot;label&quot;: &quot;11/02&quot;, &quot;new&quot;: 3, &quot;total&quot;: 3}, {&quot;date&quot;: &quot;2026-11-03&quot;, &quot;label&quot;: &quot;11/03&quot;, &quot;new&quot;: 13, &quot;total&quot;: 16}, {&quot;date&quot;: &quot;2026-11-04&quot;, &quot;label&quot;: &quot;11/04&quot;, &quot;new&quot;: 5, &quot;total&quot;: 21}, {&quot;date&quot;: &quot;2026-11-05&quot;, &quot;label&quot;: &quot;11/05&quot;, &quot;new&quot;: 7, &quot;total&quot;: 28}, {&quot;date&quot;: &quot;2026-11-06&quot;, &quot;label&quot;: &quot;11/06&quot;, &quot;new&quot;: 6, &quot;total&quot;: 34}]</desc>
 <rect x=".5" y=".5" width="479" height="491" rx="12" fill="#ffffff" stroke="#e5eae6"/>
 <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Microsoft YaHei,sans-serif">
 <text x="24" y="33" fill="#1f2925" font-size="16" font-weight="600" text-anchor="start">岗位收录趋势</text>
-<text x="456" y="33" fill="#66736c" font-size="16" font-weight="400" text-anchor="end">按日 · 截至 2026-11-06</text>
+<text x="456" y="33" fill="#66736c" font-size="16" font-weight="400" text-anchor="end">按日 · 截至 2026-11-07</text>
 <text x="24" y="66" fill="#66736c" font-size="16" font-weight="400" text-anchor="start">往期已收录</text>
-<text x="24" y="108" fill="#1f2925" font-size="36" font-weight="600" text-anchor="start">28</text>
+<text x="24" y="108" fill="#1f2925" font-size="36" font-weight="600" text-anchor="start">34</text>
 <text x="78" y="106" fill="#66736c" font-size="16" font-weight="400" text-anchor="start">条</text>
-<text x="190" y="66" fill="#66736c" font-size="16" font-weight="400" text-anchor="start">11/06 新增</text>
-<text x="190" y="108" fill="#258564" font-size="36" font-weight="600" text-anchor="start">6</text>
+<text x="190" y="66" fill="#66736c" font-size="16" font-weight="400" text-anchor="start">11/07 新增</text>
+<text x="190" y="108" fill="#258564" font-size="36" font-weight="600" text-anchor="start">0</text>
 <text x="221" y="106" fill="#66736c" font-size="16" font-weight="400" text-anchor="start">条</text>
 <text x="352" y="66" fill="#66736c" font-size="16" font-weight="400" text-anchor="start">历史累计</text>
 <text x="352" y="108" fill="#1f2925" font-size="36" font-weight="600" text-anchor="start">34</text>
@@ -17,7 +17,6 @@
 <text x="148" y="96" fill="#66736c" font-size="24" font-weight="400" text-anchor="start">+</text>
 <text x="314" y="96" fill="#66736c" font-size="24" font-weight="400" text-anchor="start">=</text>
 <rect x="24" y="130" width="432" height="5" rx="2.5" fill="#eef2ef"/>
-<rect x="379.76" y="130" width="76.24" height="5" rx="2.5" fill="#258564"/>
 <text x="24" y="167" fill="#66736c" font-size="16" font-weight="400" text-anchor="start">新增与累计</text>
 <rect x="258" y="158" width="10" height="10" rx="2" fill="#aed6c0"/>
 <text x="276" y="167" fill="#66736c" font-size="16" font-weight="400" text-anchor="start">新增</text>
