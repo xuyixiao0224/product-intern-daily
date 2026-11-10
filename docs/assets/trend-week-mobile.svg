@@ -4,11 +4,11 @@
 <rect x=".5" y=".5" width="479" height="491" rx="12" fill="#ffffff" stroke="#e5eae6"/>
 <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Microsoft YaHei,sans-serif">
 <text x="24" y="33" fill="#1f2925" font-size="16" font-weight="600" text-anchor="start">岗位收录趋势</text>
-<text x="456" y="33" fill="#66736c" font-size="16" font-weight="400" text-anchor="end">按周 · 截至 2026-11-07</text>
+<text x="456" y="33" fill="#66736c" font-size="16" font-weight="400" text-anchor="end">按周 · 截至 2026-11-10</text>
 <text x="24" y="66" fill="#66736c" font-size="16" font-weight="400" text-anchor="start">往期已收录</text>
 <text x="24" y="108" fill="#1f2925" font-size="36" font-weight="600" text-anchor="start">34</text>
 <text x="78" y="106" fill="#66736c" font-size="16" font-weight="400" text-anchor="start">条</text>
-<text x="190" y="66" fill="#66736c" font-size="16" font-weight="400" text-anchor="start">11/07 新增</text>
+<text x="190" y="66" fill="#66736c" font-size="16" font-weight="400" text-anchor="start">11/10 新增</text>
 <text x="190" y="108" fill="#258564" font-size="36" font-weight="600" text-anchor="start">0</text>
 <text x="221" y="106" fill="#66736c" font-size="16" font-weight="400" text-anchor="start">条</text>
 <text x="352" y="66" fill="#66736c" font-size="16" font-weight="400" text-anchor="start">历史累计</text>
